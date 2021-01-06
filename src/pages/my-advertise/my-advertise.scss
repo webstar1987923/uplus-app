@@ -1,0 +1,9 @@
+page-my-advertise {
+    .list-header {
+        border-top: unset;
+    }
+    .item ion-avatar ion-img,
+    .item ion-avatar img {
+        border-radius: unset !important;
+    }
+}

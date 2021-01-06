@@ -1,0 +1,46 @@
+<!--
+  Generated template for the HelpSupportPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+    <ion-navbar>
+        <ion-title>服务中心</ion-title>
+        <ion-buttons end (click)="newTicket();">
+            <button ion-button icon-only>
+                <ion-icon name="create"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <img src="assets/imgs/other/setting_BG.jpg" alt="" class="one-way-bg">
+    <ion-list inset class="history-list">
+        <ion-item-sliding *ngFor="let item of historyData">
+            <button ion-item clear icon-start class="history-item" (click)="itemView(item);">
+              <ion-icon item-start name="mail" class="ico-new" *ngIf="item.readstate=='0'"></ion-icon>
+              <ion-icon item-start name="mail-open" class="ico-open" *ngIf="item.readstate=='1'"></ion-icon>
+              <ion-label>
+                  {{item.content_old}}
+              </ion-label>
+              <ion-note item-end class="action-date">
+                  {{item.addtime}}
+              </ion-note>
+          </button>
+            <ion-item-options side="right">
+                <button ion-button color="danger" (click)="deleteItem(item.id);">
+                  <ion-icon name="trash"></ion-icon>
+                  删除
+              </button>
+            </ion-item-options>
+        </ion-item-sliding>
+    </ion-list>
+    <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+        <ion-infinite-scroll-content></ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+</ion-content>

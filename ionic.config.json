@@ -1,0 +1,7 @@
+{
+  "name": "Uplus",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}

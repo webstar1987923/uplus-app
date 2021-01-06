@@ -1,0 +1,37 @@
+<ion-content class="login-content" padding>
+    <ion-row class="logo-row">
+        <ion-col></ion-col>
+        <ion-col width-67>
+            <img src="assets/imgs/login/logo-white.png" alt="">
+        </ion-col>
+        <ion-col></ion-col>
+    </ion-row>
+    <div class="login-box">
+        <ion-row>
+            <ion-col>
+                <ion-list>
+                    <ion-item>
+                        <ion-label floating>
+                            <ion-icon name="person" item-start class="text-primary"></ion-icon>
+                            会员编号
+                        </ion-label>
+                        <ion-input type="text" [(ngModel)]="username"></ion-input>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label floating>
+                            <ion-icon name="lock" item-start class="text-primary"></ion-icon>
+                            密码
+                        </ion-label>
+                        <ion-input type="password" [(ngModel)]="password"></ion-input>
+                    </ion-item>
+                </ion-list>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col class="signup-col">
+                <button ion-button class="forgot-btn" full clear (click)="forgotPassword();">记住密码?</button>
+                <button ion-button class="login-btn" full color="danger" (click)="login();">登录</button>
+            </ion-col>
+        </ion-row>
+    </div>
+</ion-content>

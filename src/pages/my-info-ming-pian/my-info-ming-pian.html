@@ -1,0 +1,81 @@
+<!--
+  Generated template for the MyInfoMingPianPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+    <ion-navbar>
+        <ion-title>名片信息</ion-title>
+        <ion-buttons end (click)="saveChanged();">
+            <button ion-button>
+                保管
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <img src="assets/imgs/other/setting_BG.jpg" alt="" class="one-way-bg">
+    <ion-list>
+        <button ion-item class="border-bottom" (click)="changeCompany();">
+          <ion-label class="value-item">单位名称</ion-label>
+          <ion-label class="value-item-time">{{company}}</ion-label>
+        </button>
+        <button ion-item class="border-bottom" (click)="changeJobCate();">
+          <ion-label class="value-item">职务</ion-label>
+          <ion-label class="value-item-time">{{job_cate}}</ion-label>
+        </button>
+        <button ion-item class="border-bottom" *ngFor="let other_item of other_cate_arr; let nIdx = index" (click)="changeOtherCate(nIdx);">
+          <ion-label class="value-item">其他社会职务{{nIdx + 1}}</ion-label>
+          <ion-label class="value-item-time">{{other_item}}</ion-label>
+        </button>
+        <button ion-item class="border-bottom" *ngIf="!other_cate_arr.length" (click)="changeOtherCate(0);">
+          <ion-label class="value-item">其他社会职务1</ion-label>
+          <ion-label class="value-item-time"></ion-label>
+        </button>
+        <button ion-item class="border-bottom">
+          <ion-label class="value-item">我的社会贡献</ion-label>
+        </button>
+        <ion-textarea class="desc_area" [(ngModel)]="job_desc"></ion-textarea>
+        <button ion-item class="border-bottom set_mingpian" (click)="changeMobile(1);">
+          <ion-label class="value-item">手机号码1</ion-label>
+          <ion-label class="value-item-time">{{mobile1}}</ion-label>
+        </button>
+        <button ion-item class="border-bottom" (click)="changeMobile(2);">
+          <ion-label class="value-item">手机号码2</ion-label>
+          <ion-label class="value-item-time">{{mobile2}}</ion-label>
+        </button>
+        <button ion-item class="border-bottom" (click)="changeMobile(3);">
+          <ion-label class="value-item">手机号码3</ion-label>
+          <ion-label class="value-item-time">{{mobile3}}</ion-label>
+        </button>
+        <button ion-item class="border-bottom set_mingpian" (click)="changePhone(1);">
+          <ion-label class="value-item">电话号码1</ion-label>
+          <ion-label class="value-item-time">{{phone1}}</ion-label>
+        </button>
+        <button ion-item class="border-bottom" (click)="changePhone(2);">
+          <ion-label class="value-item">电话号码2</ion-label>
+          <ion-label class="value-item-time">{{phone2}}</ion-label>
+        </button>
+        <button ion-item class="border-bottom" (click)="changePhone(3);">
+          <ion-label class="value-item">电话号码3</ion-label>
+          <ion-label class="value-item-time">{{phone3}}</ion-label>
+        </button>
+        <button ion-item class="border-bottom set_mingpian" (click)="changeCAddress();">
+          <ion-label class="value-item">地址</ion-label>
+          <ion-label class="value-item-time">{{c_address}}</ion-label>
+        </button>
+        <button ion-item class="border-bottom" (click)="changeEmail();">
+          <ion-label class="value-item">邮箱</ion-label>
+          <ion-label class="value-item-time">{{email}}</ion-label>
+        </button>
+        <button ion-item class="border-bottom" (click)="changeHomepage();">
+          <ion-label class="value-item">网址</ion-label>
+          <ion-label class="value-item-time">{{homepage}}</ion-label>
+        </button>
+    </ion-list>
+</ion-content>

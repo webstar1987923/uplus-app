@@ -1,0 +1,98 @@
+page-my-market-info {
+    .scroll-content {
+        // overflow: hidden;
+        padding: 0 !important;
+    }
+    .market-content {
+        padding: 20px;
+    }
+    .login-content {
+        // background: #f44336;
+        color: white;
+        overflow: hidden;
+        .logo-row {
+            padding-top: 50px;
+            padding-bottom: 20px;
+        }
+        .login-box {
+            padding: 5px 20px 0px 20px;
+        }
+        ion-row {
+            align-items: center;
+            text-align: center;
+        }
+        ion-item {
+            font-size: 0.9em;
+            margin-bottom: 10px;
+            box-shadow: none !important;
+            background: transparent;
+        }
+        .list .item {
+            padding-left: 0;
+            margin: 0 !important;
+        }
+        .item ion-icon {
+            margin: 0 !important;
+        }
+        .list ion-item {
+            border-bottom: solid 1px #333333 !important;
+        }
+        .label,
+        .label .input-has-focus {
+            color: #333333 !important;
+        }
+        .label {
+            font-size: 16px;
+        }
+        .item-inner {
+            border-bottom: 0 !important;
+            box-shadow: none !important;
+        }
+        .text-input {
+            color: #333333;
+            font-size: 16px;
+        }
+        .login-btn {
+            margin-top: 20px;
+            font-size: 16px;
+        }
+    }
+    .text-primary {
+        // color: #f44336 !important;
+        color: #f44336 !important;
+    }
+    .list>.item-block:first-child {
+        border-top: none !important;
+    }
+    .list>.item-block:last-child,
+    .list>.item-wrapper:last-child .item-block {
+        border-bottom: solid 0.55px #333333 !important;
+    }
+    .value-area {
+        // background: #435053 !important;
+        background: #05596d !important;
+        padding: 10px;
+        ion-label {
+            text-align: center;
+        }
+        .item-inner {
+            border-bottom: 0 !important;
+            color: white;
+            font-size: 20px;
+            text-align: center;
+        }
+    }
+    .item p {
+        font-size: 20px;
+        color: white;
+        margin: 2px 0 5px 0;
+    }
+    .value-item {
+        font-size: 16px;
+    }
+    .value-item-time {
+        text-align: right;
+        color: #808080;
+        font-size: 12px;
+    }
+}

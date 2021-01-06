@@ -1,0 +1,41 @@
+<!--
+  Generated template for the ShopMoleItemViewPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+    <ion-navbar>
+        <ion-title>商家信息</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <img src="assets/imgs/other/setting_BG.jpg" alt="" class="one-way-bg">
+    <div class="slogan_div">
+        <h3>共享富足, 共享快乐</h3>
+    </div>
+    <ion-item>
+        <ion-avatar item-start>
+            <img src="assets/imgs/other/shop_default.png" *ngIf="!mole_data.logo">
+            <img src="http://unak.vip/uplus/Resource/images/proimgs/upload/{{mole_data.logo}}" *ngIf="mole_data.logo">
+        </ion-avatar>
+        <h2 style="color: red;">{{mole_data.title}}</h2>
+        <!-- <h3>{{realname}} : {{mobile}}</h3> -->
+    </ion-item>
+    <p class="main-info">商城地址: </p>
+    <p class="desc_area">{{diqu}} {{ mole_data.address }}</p>
+    <p class="main-info">活动介绍: </p>
+    <p class="desc_area">{{ mole_data.action }}</p>
+    <p class="main-info">营业时间: </p>
+    <p class="desc_area">{{ mole_data.open_time }}</p>
+    <p class="main-info">商城介绍</p>
+    <div [innerHTML]="mole_data.description" class="desc_area"></div>
+    <baidu-map [options]="options" style="display: block; width: 550px; height: 350px;">
+        <marker *ngFor="let marker of markers" [point]="marker.point"></marker>
+    </baidu-map>
+    <div id="allmap"></div>
+</ion-content>

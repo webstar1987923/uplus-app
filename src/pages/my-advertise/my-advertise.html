@@ -1,0 +1,49 @@
+<!--
+  Generated template for the MyAdvertisePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+    <ion-navbar>
+        <ion-title>广告目录</ion-title>
+        <ion-buttons end (click)="addNewAds();">
+            <button ion-button icon-only>
+          <ion-icon name="add"></ion-icon>
+      </button>
+        </ion-buttons>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <img src="assets/imgs/other/setting_BG.jpg" alt="" class="one-way-bg">
+    <ion-list>
+        <ion-list-header>
+            <font *ngIf="total">{{total}} 个</font>
+            <font *ngIf="!total">没有数据</font>
+        </ion-list-header>
+        <ion-item-sliding *ngFor="let ads of my_ads_list">
+            <ion-item (click)="showCurrentAds(ads.id);">
+                <ion-avatar item-start>
+                    <img src="assets/imgs/other/default.png" *ngIf="!ads.photo">
+                    <img src="http://unak.vip/uplus/Resource/images/ads/images/{{ads.photo}}" *ngIf="ads.photo">
+                </ion-avatar>
+                <h2 style="float: left;">{{ads.req_company}}<br />{{ads.price}}¥</h2>
+                <p style="float: right;">{{ads.reg_date}}</p>
+            </ion-item>
+            <ion-item-options side="right">
+                <button ion-button color="danger" (click)="delAds(ads.id);">
+                  <ion-icon name="trash"></ion-icon>
+                  删除
+              </button>
+            </ion-item-options>
+        </ion-item-sliding>
+    </ion-list>
+    <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+        <ion-infinite-scroll-content></ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+
+</ion-content>

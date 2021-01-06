@@ -1,0 +1,58 @@
+<!--
+  Generated template for the MyInfoMorePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+    <ion-navbar>
+        <ion-title>更多信息</ion-title>
+        <ion-buttons end (click)="saveChanged();">
+            <button ion-button>
+                保管
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+    <img src="assets/imgs/other/setting_BG.jpg" alt="" class="one-way-bg">
+    <ion-list>
+        <button ion-item class="border-bottom" (click)="changeMobile();">
+          <ion-label class="value-item">手机号码</ion-label>
+          <ion-label class="value-item-time">{{phone}}</ion-label>
+        </button>
+        <ion-item>
+            <ion-label>出生日期</ion-label>
+            <ion-select [(ngModel)]="year" placeholder="年">
+                <ion-option *ngFor="let item of tmpYear" value="{{item.value}}">{{item.value}}</ion-option>
+            </ion-select>
+            <ion-select [(ngModel)]="month" placeholder="月">
+                <ion-option *ngFor="let item of tmpMonth" value="{{item.value}}">{{item.value}}</ion-option>
+            </ion-select>
+            <ion-select [(ngModel)]="day" placeholder="日">
+                <ion-option *ngFor="let item of tmpDay" value="{{item.value}}">{{item.value}}</ion-option>
+            </ion-select>
+        </ion-item>
+        <ion-item>
+            <ion-label>性别</ion-label>
+            <ion-select [(ngModel)]="sex">
+                <ion-option value="男">男</ion-option>
+                <ion-option value="女">女</ion-option>
+            </ion-select>
+        </ion-item>
+        <button ion-item class="border-bottom" (click)="changeProvince();">
+          <ion-label class="value-item">省份、城市、地区</ion-label>
+          <ion-label class="value-item-time">{{province}}/{{area}}/{{city}}</ion-label>
+        </button>
+        <button ion-item class="border-bottom" (click)="changeAddress();">
+          <ion-label class="value-item">地址</ion-label>
+          <ion-label class="value-item-time">{{address}}</ion-label>
+        </button>
+        <button ion-item class="border-bottom" (click)="changeMingPianInform();">
+          <ion-label class="value-item">名片修改</ion-label>
+        </button>
+    </ion-list>
+</ion-content>

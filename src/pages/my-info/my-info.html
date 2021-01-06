@@ -1,0 +1,45 @@
+<!--
+  Generated template for the MyInfoPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+    <ion-navbar>
+        <ion-title>个人信息</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <img src="assets/imgs/other/setting_BG.jpg" alt="" class="one-way-bg">
+    <ion-list>
+        <ion-item class="border-bottom" (click)="presentActionSheet();">
+            <h2>头像</h2>
+            <ion-thumbnail item-end>
+                <img src="assets/imgs/other/default.png" *ngIf="!photo">
+                <img src="{{serverUrl}}/profile_imgs/{{photo}}" *ngIf="photo">
+            </ion-thumbnail>
+        </ion-item>
+        <button ion-item class="border-bottom" (click)="changeName();">
+            <ion-label class="value-item">名字</ion-label>
+            <ion-label class="value-item-time">{{realname}}</ion-label>
+        </button>
+        <button ion-item class="border-bottom">
+          <ion-label class="value-item">会员账号</ion-label>
+            <ion-label class="value-item-time">{{username}}</ion-label>
+        </button>
+        <button ion-item class="border-bottom" (click)="gotoQrCode();">
+            <ion-label class="value-item">我的二维码</ion-label>
+            <ion-label class="value-item-time">
+                <img src="assets/imgs/other/default_qrcode.png" alt="" class="qr-code">
+            </ion-label>
+        </button>
+        <button ion-item class="border-bottom" (click)="gotoIntro();">
+            <ion-label class="value-item">更多</ion-label>
+            <ion-label class="value-item-time"></ion-label>
+        </button>
+    </ion-list>
+</ion-content>

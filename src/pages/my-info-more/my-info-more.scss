@@ -1,0 +1,63 @@
+page-my-info-more {
+    .scroll-content {
+        padding: 16px 0 !important;
+    }
+    .value-item {
+        font-size: 16px;
+    }
+    .value-item-time {
+        text-align: right;
+        color: #808080 !important;
+        font-size: 12px;
+    }
+    .qr-code {
+        width: 20px;
+        height: 20px;
+    }
+    .item h2 {
+        margin: 0 0 10px 0 !important;
+        color: #333333;
+    }
+    .scroll-content {
+        padding: 16px 0 !important;
+    }
+    .list .item-block .item-inner {
+        border-bottom: 0 !important;
+    }
+    .border-bottom {
+        border-bottom: 0.55px solid #efefef !important;
+    }
+    .list button ion-label {
+        color: #333333;
+    }
+    .item ion-thumbnail {
+        min-width: 70px;
+        min-height: 70px;
+    }
+    .item ion-thumbnail ion-img,
+    .item ion-thumbnail img {
+        width: 70px;
+        height: 70px;
+    }
+    .item-input .label-md,
+    .item-select .label-md,
+    .item-datetime .label-md {
+        color: #333333 !important;
+    }
+    .item-select .select-text {
+        color: #808080 !important;
+    }
+    .desc_area {
+        width: 100%;
+        resize: none;
+        padding: 5px 16px;
+        background: white;
+        color: #585858;
+    }
+    .text-input {
+        min-height: 120px;
+    }
+    .set_mingpian {
+        margin-top: 10px;
+    }
+}

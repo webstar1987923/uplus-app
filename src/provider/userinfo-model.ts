@@ -1,0 +1,30 @@
+export class UserInfoModel {
+    uid         : string = "";
+    realname    : string = "";
+    level       : string = "";
+    level_name  : string = "";
+    regtime     : string = "";
+    price       : string = "";
+    uplus       : string = "";
+    price_shop  : string = "";
+    sex         : string = "";
+    province    : string = "";
+    city        : string = "";
+    area        : string = "";
+    address     : string = "";
+    photo       : string = "";
+    birth       : string = "";
+    score       : string = "";
+    mobile      : string = "";
+    weixin      : string = "";
+    alipay      : string = "";
+    bank        : string = "";
+    sheng       : string = "";
+    shi         : string = "";
+    qu          : string = "";
+    e_coin      : string = "";
+    market      : string = "";
+    n_uplus     : string = "";  
+    n_price     : string = "";  
+    n_price_shop     : string = "";  
+}

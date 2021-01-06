@@ -1,0 +1,69 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>我的名片目录</ion-title>
+        <ion-buttons end (click)="presentPopover($event);">
+            <button ion-button icon-only>
+              <ion-icon name="person-add"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+    <img src="assets/imgs/other/setting_BG.jpg" alt="" class="one-way-bg">
+    <ion-list *ngIf="my_requests.length">
+        <ion-list-header>
+            新名片
+        </ion-list-header>
+        <ion-item-sliding *ngFor="let person of my_requests">
+            <ion-item>
+                <ion-thumbnail item-start>
+                    <img src="assets/imgs/other/default.png" *ngIf="!person.photo">
+                    <img src="{{person.photo}}" *ngIf="person.photo">
+                </ion-thumbnail>
+                <h2>{{person.realname}}</h2>
+                <p>会员帐号： {{person.username}}</p>
+                <button ion-button clear item-end (click)="acceptRequest(person.id);">同意</button>
+            </ion-item>
+            <ion-item-options side="right">
+                <button ion-button color="danger" (click)="rejectRequest(person.id);">
+                    <!-- <ion-icon name="trash"></ion-icon> -->
+                    保留
+                </button>
+            </ion-item-options>
+        </ion-item-sliding>
+    </ion-list>
+
+    <ion-list>
+        <ion-list-header>
+            我的名片
+        </ion-list-header>
+        <ion-item *ngIf="my_contacts.length == 0">
+            <p style="text-align: center;">没有名片</p>
+        </ion-item>
+        <ion-item-sliding *ngFor="let user of my_contacts">
+            <ion-item (click)="gotoFriendInfo(user.username, user.nickname);">
+                <ion-avatar item-start>
+                    <img src="assets/imgs/other/default.png" *ngIf="!user.photo">
+                    <img src="{{serverUrl}}/profile_imgs/{{user.photo}}" *ngIf="user.photo">
+                </ion-avatar>
+                <h2 *ngIf="user.nickname">{{user.nickname}}</h2>
+                <h2 *ngIf="!user.nickname">{{user.realname}}</h2>
+                <h3>会员帐号： {{user.username}}</h3>
+                <ion-badge color="danger" *ngIf="notiData[user.username] != 0">{{notiData[user.username]}}</ion-badge>
+                <!-- <p>I've had a pretty messed up day. If we just...</p> -->
+            </ion-item>
+            <ion-item-options side="right">
+                <button ion-button color="secondary" (click)="changeNickname(user.id, user.nickname);">
+                    <ion-icon name="document"></ion-icon>
+                    昵称输入
+                </button>
+                <button ion-button color="danger" (click)="deleteContact(user.id);">
+                    <ion-icon name="trash"></ion-icon>
+                    删除
+                </button>
+            </ion-item-options>
+        </ion-item-sliding>
+    </ion-list>
+</ion-content>

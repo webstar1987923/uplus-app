@@ -1,0 +1,59 @@
+<!--
+  Generated template for the MyWalletOutpuPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+    <ion-navbar>
+        <ion-title>我的提现目录</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <img src="assets/imgs/other/setting_BG.jpg" alt="" class="one-way-bg">
+    <ion-grid class="cate-grid">
+        <ion-row>
+            <ion-col col-12>
+                <ion-item class="value-area">
+                    <ion-label *ngIf="pageAction == 'price'">现金 : ¥{{n_price}}<br>
+                        <!-- <font style="font-size: 18px; color:#848484;">(锁现金 : ¥{{price}})</font> -->
+                    </ion-label>
+                    <ion-label *ngIf="pageAction != 'price'">现金 : ¥{{price}}</ion-label>
+                </ion-item>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+    <ion-list style="margin: 16px;">
+        <ion-item>
+            <ion-input type="number" placeholder="0.00" disabled *ngIf="level == '1' || level == '3'"></ion-input>
+            <ion-input type="number" placeholder="0.00" [(ngModel)]="requestValue" *ngIf="level != '1' && level != '3'"></ion-input>
+        </ion-item>
+        <button ion-button block color="primary" style="height: 50px;" disabled *ngIf="level == '1' || level == '3'">
+            提现
+        </button>
+        <button ion-button block color="main" style="height: 50px;" (click)="outputRequest();" *ngIf="level != '1' && level != '3'">
+            提现
+        </button>
+    </ion-list>
+    <ion-item *ngIf="level == '1' || level == '3'">
+        <!-- <p style="color: #f44336; width: 100%; text-align: center;">如推荐两名以上同级别会员,可申请提现。</p> -->
+        <p style="color: #f44336; width: 100%; text-align: center;">如推荐两名以上同级别会员,可申请提现。</p>
+    </ion-item>
+    <ion-list inset class="history-list">
+        <button ion-item clear icon-start class="history-item" *ngFor="let item of historyData">
+            <ion-icon item-start name="information-circle" *ngIf="item.state=='0'" class="ico-info"></ion-icon>
+            <ion-icon item-start name="checkmark" *ngIf="item.state=='1'" class="ico-check"></ion-icon>
+            <ion-icon item-start name="close" *ngIf="item.state=='2'" class="ico-cancel"></ion-icon>
+            <ion-label>
+                ¥ {{item.price}}
+            </ion-label>
+            <ion-note item-end class="action-date">
+                {{item.addtime}}<br>{{item.updatetime}}
+            </ion-note>
+        </button>
+    </ion-list>
+</ion-content>

@@ -1,0 +1,26 @@
+page-my-charge {
+    .button {
+        height: auto !important;
+        width: 100%;
+        padding: 15px 0;
+    }
+    .price,
+    .price-desc {
+        padding: 0;
+        margin: 0;
+    }
+    .price {
+        font-size: 20px;
+    }
+    .price-desc {
+        font-size: 14px;
+        padding-top: 5px;
+        font-weight: 400;
+    }
+    .button-inner {
+        flex-flow: column;
+    }
+    p {
+        margin-bottom: 0;
+    }
+}

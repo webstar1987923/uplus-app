@@ -1,0 +1,60 @@
+page-my-contact-find {
+    .scroll-content {
+        background: #fb4e26;
+        padding: 0 !important;
+    }
+    .shake-bg {
+        position: absolute;
+        width: 40%;
+        z-index: -1;
+        opacity: 0.9;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    .shake-area {
+        width: 50%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    .shake-img {
+        width: 100%;
+    }
+    .shake-bottom {
+        margin-top: -5px;
+    }
+    .animation-sliding {
+        animation-duration: 2s;
+        animation-name: slidein;
+        animation-direction: alternate;
+    }
+    @keyframes slidein {
+        0% {
+            margin-top: -5px;
+        }
+        50% {
+            margin-top: 200px;
+        }
+        100% {
+            margin-top: -5px;
+        }
+    }
+    .contact-list {
+        padding: 0 30px;
+        position: absolute;
+        width: 100%;
+        top: 60%;
+        left: 50%;
+        transform: translate(-50%, 0%);
+    }
+    .item ion-thumbnail {
+        min-width: 60px !important;
+        min-height: 60px !important
+    }
+    .item ion-thumbnail img {
+        width: 60px !important;
+        height: 60px !important;
+    }
+}

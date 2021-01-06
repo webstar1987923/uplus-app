@@ -1,0 +1,37 @@
+<!--
+  Generated template for the MyWalletPricePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+    <ion-navbar>
+        <ion-buttons start class="back-button-custom">
+            <button ion-button icon-only (click)="gotoBack()">
+              <ion-icon name="arrow-back"></ion-icon>
+            </button>
+        </ion-buttons>
+        <ion-title>现金包</ion-title>
+        <ion-buttons end>
+            <button ion-button icon-only (click)="gotoOutPut()">
+                <ion-icon name="add"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+    <img src="assets/imgs/other/setting_BG.jpg" alt="" class="one-way-bg">
+    <ion-item class="value-area">
+        <p>现金 : ¥{{n_price}}</p>
+        <!-- <p style="font-size: 18px; color:#848484;">(转换加密货币中 : ¥{{price}})</p> -->
+        <p>已提现 : ¥{{out_price}}</p>
+    </ion-item>
+    <ion-list>
+        <ion-item *ngFor="let item of historyData">
+            <ion-label class="value-item">{{item.state}} {{item.price}}</ion-label>
+            <ion-label class="value-item-time">{{item.date}}<br>{{item.kind}}</ion-label>
+        </ion-item>
+    </ion-list>
+</ion-content>

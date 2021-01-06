@@ -1,0 +1,68 @@
+page-uplus-sell-board {
+    .slogan_div {
+        background: #66c1dc;
+        width: 100%;
+        height: 60px;
+        h3 {
+            text-align: center;
+            color: #e2e2e2;
+            padding-top: 15px;
+            font-size: 24px;
+            font-weight: 600;
+        }
+    }
+    .scroll-content {
+        padding: 0 !important;
+        color: #e2e2e2;
+    }
+    .item-desc {
+        text-align: center;
+        width: 100%;
+    }
+    .balance-value {
+        font-size: 12px;
+    }
+    .text-on-bottom {
+        background: transparent;
+        border: none !important;
+        box-shadow: none !important;
+    }
+    // .text-on-bottom .button-inner {
+    // justify-content: left;
+    // }
+    .button.activated {
+        background-color: #313131 !important;
+    }
+    // .history-list {}
+    .history-item {
+        .item-inner {
+            margin-left: 0 !important;
+        }
+    }
+    .action-date {
+        font-size: 12px;
+    }
+    .ico-check {
+        color: #1ca8ff;
+    }
+    .ico-info {
+        color: #ffb21c;
+    }
+    .ico-cancel {
+        color: #ff1c1c;
+    }
+    .list {
+        margin: 0 !important;
+    }
+    .top-slider {
+        height: 160px !important;
+        margin-top: 1px;
+        ion-slide {
+            background-size: cover;
+            background-position: center center;
+        }
+    }
+    .disable-market {
+        color: #888888;
+    }
+}

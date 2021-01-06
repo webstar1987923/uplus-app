@@ -1,0 +1,62 @@
+<!--
+  Generated template for the UplusSellBoardPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+    <ion-navbar>
+        <ion-title>{{title}}</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <img src="assets/imgs/other/setting_BG.jpg" alt="" class="one-way-bg">
+    <ion-grid class="cate-grid" *ngIf="m_message">
+        <ion-row>
+            <ion-col col-12>
+                <ion-item class="value-area">
+                    <ion-label>{{m_message}}</ion-label>
+                </ion-item>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+    <ion-list inset class="history-list">
+        <div class="ion-padding">
+            <canvas #lineCanvas></canvas>
+        </div>
+    </ion-list>
+    <ion-list style="margin: 16px;">
+        <ion-item>
+            <ion-label style="color: brown;">可申请量: {{n_uplus}}(POINT)</ion-label>
+        </ion-item>
+        <ion-item>
+            <ion-input type="number" placeholder="0.00" [(ngModel)]="requestValue"></ion-input>
+        </ion-item>
+        <button ion-button block color="main" style="height: 50px;" (click)="convertRequest();">
+            提现
+        </button>
+    </ion-list>
+    <ion-list style="margin: 16px;">
+        <ion-item-sliding *ngFor="let item of my_request">
+            <ion-item>
+                <ion-icon item-start name="information-circle" class="ico-info"></ion-icon>
+                <ion-label>
+                    {{item.amount * 100}}
+                </ion-label>
+                <ion-note item-end class="action-date">
+                    {{item.time}}
+                </ion-note>
+            </ion-item>
+            <ion-item-options side="right">
+                <button ion-button color="danger" (click)="rejectRequest(item.id);">
+                    <ion-icon name="trash"></ion-icon>
+                    <!-- 保留 -->
+                </button>
+            </ion-item-options>
+        </ion-item-sliding>
+    </ion-list>
+</ion-content>

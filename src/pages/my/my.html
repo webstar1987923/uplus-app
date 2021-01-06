@@ -1,0 +1,82 @@
+<!--
+  Generated template for the MyPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+    <ion-navbar>
+        <ion-title>我的</ion-title>
+        <ion-buttons end (click)="presentPopover($event);">
+            <button ion-button icon-only>
+                <ion-icon name="add"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <img src="assets/imgs/other/setting_BG.jpg" alt="" class="one-way-bg">
+    <ion-list>
+        <ion-item>
+            <ion-thumbnail item-start (click)="gotoInfo(username);">
+                <img src="assets/imgs/other/default.png" *ngIf="!photo">
+                <img src="{{serverUrl}}/profile_imgs/{{photo}}" *ngIf="photo">
+            </ion-thumbnail>
+            <h2 (click)="gotoInfo(username);">{{realname}}</h2>
+            <p (click)="gotoInfo(username);">会员帐号: {{username}}</p>
+            <button ion-button clear item-end (click)="gotoMyQRCode()">
+              <img src="assets/imgs/other/default_qrcode.png" alt="" class="qr-code">
+            </button>
+        </ion-item>
+    </ion-list>
+    <ion-list>
+        <button ion-item class="download" (click)="gotoDownload();" *ngIf="curVersion!='' && curVersion!=undefined">
+            <ion-icon name="download" item-start color="main"></ion-icon>
+            新版本 {{curVersion}}
+        </button>
+    </ion-list>
+    <ion-list>
+        <button ion-item (click)="gotoWallet();">
+            <ion-icon name="cash" item-start color="main"></ion-icon>
+            钱包
+        </button>
+    </ion-list>
+    <ion-list>
+        <button ion-item class="border-bottom" (click)="gotoLevel();">
+            <ion-icon name="stats" item-start color="main"></ion-icon>
+            等级 : {{levelname}}
+        </button>
+        <!-- <button ion-item class="border-bottom" (click)="gotoAds();">
+            <ion-icon name="logo-youtube" item-start color="main"></ion-icon>
+            我的广告
+        </button> -->
+        <button ion-item class="border-bottom" (click)="gotoCharge();">
+            <ion-icon name="logo-yen" item-start color="main"></ion-icon>
+            支付
+        </button>
+        <button ion-item class="border-bottom" (click)="gotoShopMole();">
+            <ion-icon name="cart" item-start color="main"></ion-icon>
+            我的商家
+        </button>
+        <button ion-item class="border-bottom" (click)="gotoMarket();">
+            <ion-icon name="globe" item-start color="main"></ion-icon>
+            我的交易所
+        </button>
+        <button ion-item class="border-bottom" (click)="gotoContact();">
+            <ion-icon name="contacts" item-start color="main"></ion-icon>
+            我的名片目录
+            <ion-badge color="danger" *ngIf="newChatCount != 0">{{newChatCount}}</ion-badge>
+        </button>
+        <button ion-item (click)="gotoGame();">
+            <ion-icon name="game-controller-b" item-start color="main"></ion-icon>
+            我的游戏
+        </button>
+    </ion-list>
+    <ion-list>
+        <button ion-item (click)="gotoSetting();">
+            <ion-icon name="settings" item-start color="main"></ion-icon>
+            设置
+        </button>
+    </ion-list>
+</ion-content>

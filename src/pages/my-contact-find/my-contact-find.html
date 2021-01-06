@@ -1,0 +1,34 @@
+<!--
+  Generated template for the MyContactFindPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+    <ion-navbar>
+        <ion-title>摇一摇</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <img src="assets/imgs/other/shake_bg.png" alt="" class="shake-bg">
+    <div class="shake-area">
+        <img src="assets/imgs/other/shake_top.png" alt="" class="shake-img">
+        <!-- <img src="assets/imgs/other/shake_bottom.png" alt="" class="shake-img shake-bottom" [ngClass]="{'animation-sliding': shakeFlag}"> -->
+        <img src="assets/imgs/other/shake_bottom.png" alt="" id="shake-bottom-img" class="shake-img shake-bottom">
+    </div>
+    <ion-list class="contact-list">
+        <ion-item *ngFor="let person of persons">
+            <ion-thumbnail item-start>
+                <img src="assets/imgs/other/default.png" *ngIf="!person.photo">
+                <img src="{{person.photo}}" *ngIf="person.photo">
+            </ion-thumbnail>
+            <h2>{{person.realname}}</h2>
+            <p>会员帐号： {{person.username}}</p>
+            <button ion-button clear item-end (click)="sendAddRequest(person.username);">添加</button>
+        </ion-item>
+    </ion-list>
+</ion-content>

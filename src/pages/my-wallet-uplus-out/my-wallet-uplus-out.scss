@@ -1,0 +1,38 @@
+page-my-wallet-uplus-out {
+    .scroll-content {
+        padding: 0 !important;
+        color: #e2e2e2;
+    }
+    .value-area {
+        // background: #435053;
+        background: #05596d;
+        padding: 10px;
+        ion-label {
+            text-align: center;
+        }
+        .item-inner {
+            border-bottom: 0 !important;
+            color: white;
+            font-size: 20px;
+        }
+    }
+    .value-item {
+        font-size: 16px;
+    }
+    .value-item-time {
+        text-align: right;
+        color: #808080;
+        font-size: 12px;
+    }
+    .back-button-custom {
+        -webkit-box-ordinal-group: 3;
+        -webkit-order: 3;
+        -ms-flex-order: 3;
+        order: 3;
+        margin: 0 6px;
+        min-width: 44px;
+    }
+    .list .item-block .item-inner {
+        border-bottom: 0 !important;
+    }
+}

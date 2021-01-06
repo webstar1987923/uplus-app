@@ -1,0 +1,36 @@
+<!--
+  Generated template for the AdsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+    <ion-navbar>
+        <ion-title>广告</ion-title>
+        <!-- <ion-buttons end (click)="presentPopover($event);">
+            <button ion-button icon-only>
+        <ion-icon name="add"></ion-icon>
+      </button>
+        </ion-buttons> -->
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding [ngStyle]="{'background-color': color}" (click)="gotoDetailPage();">
+    <div class="img_area" *ngIf="flag == ''">
+        <img src="assets/imgs/other/ads_top.png" alt="" />
+        <img src="assets/imgs/other/ads_new.png" alt="" />
+        <img src="assets/imgs/other/ads_bottom.png" alt="" />
+    </div>
+    <div class="img_area" *ngIf="flag == '1'">
+        <img src="http://unak.vip/uplus/qr_code/Template/ads/img/{{top}}" alt="" />
+        <img src="http://unak.vip/uplus/qr_code/Template/ads/img/{{center}}" alt="" *ngIf="slide != '1'" />
+        <ion-slides class="top-slider" (ionSlideDidChange)="slideChanged()" *ngIf="slide == '1'">
+            <ion-slide *ngFor="let s_bg of center" [ngStyle]="{'background-image': 'url(http://unak.vip/uplus/qr_code/Template/ads/img/' + s_bg + ')'}">
+            </ion-slide>
+        </ion-slides>
+        <img src="http://unak.vip/uplus/qr_code/Template/ads/img/{{bottom}}" alt="" />
+    </div>
+</ion-content>

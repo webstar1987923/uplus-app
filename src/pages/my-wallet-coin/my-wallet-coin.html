@@ -1,0 +1,87 @@
+<!--
+  Generated template for the MyWalletCoinPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+    <ion-navbar>
+        <ion-buttons start class="back-button-custom">
+            <button ion-button icon-only (click)="gotoBack()">
+              <ion-icon name="arrow-back"></ion-icon>
+            </button>
+        </ion-buttons>
+        <ion-title>钱途加密货币</ion-title>
+        <ion-buttons end>
+            <button ion-button icon-only (click)="gotoHistory()">
+                <ion-icon name="add"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <div class="coin-value-area">
+        <div class="coin-bg"></div>
+        <div class="coin-info" (click)="gotoHistory()">
+            <img src="assets/imgs/other/default.png" *ngIf="!photo">
+            <img src="{{serverUrl}}/profile_imgs/{{photo}}" *ngIf="photo">
+            <p>钱途加密货币</p>
+            <p>{{e_coin}}个</p>
+        </div>
+        <div class="scan-img-area">
+            <img src="assets/imgs/scan.png" alt="" (click)="scanCode();">
+        </div>
+    </div>
+    <ion-slides class="top-slider" (ionSlideDidChange)="slideChanged()" *ngIf="slides_bg.length > 0">
+        <ion-slide *ngFor="let s_bg of slides_bg" [ngStyle]="{'background-image': 'url(assets/imgs/coin/c_b_' + s_bg.id + '.jpg)'}">
+        </ion-slide>
+    </ion-slides>
+    <ion-grid>
+        <img src="assets/imgs/other/setting_BG.jpg" alt="" class="one-way-bg">
+
+        <ion-row>
+            <ion-col>
+                <button ion-button class="text-on-bottom" (click)="alertWarning();">
+                    <img src="assets/imgs/coin/sell.png" alt="">
+                    <p>卖出</p>
+                </button>
+            </ion-col>
+            <ion-col>
+                <button ion-button class="text-on-bottom" (click)="alertWarning();">
+                    <img src="assets/imgs/coin/digital.png" alt="">
+                    <p>数字资产</p>
+                </button>
+            </ion-col>
+            <ion-col>
+                <button ion-button class="text-on-bottom" (click)="gotoSellBoard();">
+                    <img src="assets/imgs/coin/shop.png" alt="">
+                    <p style="color: red;">积分交易所</p>
+                </button>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col>
+                <button ion-button class="text-on-bottom" (click)="alertWarning();">
+                    <img src="assets/imgs/coin/tranfer_out.png" alt="">
+                    <p>转出</p>
+                </button>
+            </ion-col>
+            <ion-col>
+                <button ion-button class="text-on-bottom" (click)="alertWarning();">
+                    <img src="assets/imgs/coin/transfer_in.png" alt="">
+                    <p>转入</p>
+                </button>
+            </ion-col>
+            <ion-col>
+                <button ion-button class="text-on-bottom" (click)="alertWarning();">
+                    <img src="assets/imgs/coin/buy.png" alt="">
+                    <p>买入</p>
+                </button>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>

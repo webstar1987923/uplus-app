@@ -1,0 +1,102 @@
+<!--
+  Generated template for the MyFriendInfoPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+    <ion-navbar>
+        <ion-title></ion-title>
+        <ion-buttons end (click)="chatWithFriend()">
+            <button ion-button icon-only>
+          <ion-icon name="chatbubbles"></ion-icon>
+        </button>
+        </ion-buttons>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <img src="assets/imgs/other/setting_BG.jpg" alt="" class="one-way-bg">
+    <ion-card class="card{{friendData.card_style}}">
+        <div class="cover-layer"></div>
+        <div class="card-top{{friendData.card_style}}"></div>
+        <div class="card-bottom{{friendData.card_style}}"></div>
+        <ion-card-content>
+            <ion-grid>
+                <ion-row>
+                    <ion-col>
+                        <h1>{{friendData.c_name}}</h1>
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col col-6 class="user-img">
+                        <img src="assets/imgs/other/default.png" *ngIf="!photo">
+                        <img src="{{serverUrl}}/profile_imgs/{{photo}}" *ngIf="photo">
+                        <h2 style="color: #ecdd44 !important; font-weight: 800 !important;" *ngIf="nickname">{{nickname}}</h2>
+                        <h2 style="color: #ecdd44 !important; font-weight: 800 !important;" *ngIf="!nickname">{{realname}}</h2>
+                    </ion-col>
+                    <ion-col col-6>
+                        <h2>{{realname}}</h2>
+                        <h3>{{friendData.job_cate}}</h3>
+                        <button ion-button icon-start small color="light" clear *ngIf="friendData.mobile1" (click)="callFriend(friendData.mobile1)">
+                            <ion-icon name="call"></ion-icon>
+                            {{friendData.mobile1}}
+                        </button>
+                        <button ion-button icon-start small color="light" clear *ngIf="friendData.mobile2" (click)="callFriend(friendData.mobile2)">
+                            <ion-icon name="call"></ion-icon>
+                            {{friendData.mobile2}}
+                        </button>
+                        <button ion-button icon-start small color="light" clear *ngIf="friendData.mobile3" (click)="callFriend(friendData.mobile3)">
+                            <ion-icon name="call"></ion-icon>
+                            {{friendData.mobile3}}
+                        </button>
+                        <button ion-button icon-start small color="light" clear *ngIf="friendData.phone1" (click)="callFriend(friendData.phone1)">
+                            <ion-icon name="phone-portrait"></ion-icon>
+                            {{friendData.phone1}}
+                        </button>
+                        <button ion-button icon-start small color="light" clear *ngIf="friendData.phone2" (click)="callFriend(friendData.phone2)">
+                            <ion-icon name="phone-portrait"></ion-icon>
+                            {{friendData.phone2}}
+                        </button>
+                        <button ion-button icon-start small color="light" clear *ngIf="friendData.phone3" (click)="callFriend(friendData.phone3)">
+                            <ion-icon name="phone-portrait"></ion-icon>
+                            {{friendData.phone3}}
+                        </button>
+                        <!-- <p *ngFor="let cate of other_cate; let nIdx = index"><u>其他社会职务{{nIdx + 1}}:</u><br>{{cate}}</p> -->
+                        <!-- <p *ngIf="friendData.other_cate"><u>其他社会职务:</u></p>
+                        <p *ngIf="friendData.other_cate">{{friendData.other_cate}}</p> -->
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col>
+                        <p *ngFor="let cate of other_cate; let nIdx = index"><u>其他社会职务{{nIdx + 1}}: </u>{{cate}}</p>
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col *ngIf="friendData.job_desc">
+                        <p><u>社会贡献:</u></p>
+                        <p>{{friendData.job_desc}}</p>
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col>
+                        <p *ngIf="friendData.c_address"><u>地址:</u> {{friendData.c_address}}</p>
+                        <p *ngIf="friendData.email"><u>邮箱:</u> {{friendData.email}}</p>
+                        <p *ngIf="friendData.homepage"><u>网址:</u> {{friendData.homepage}}</p>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </ion-card-content>
+        <!-- <ion-row>
+            <ion-col>
+                <button ion-button icon-start clear small (click)="callFriend(friendData.mobile)">
+                    <ion-icon name="call"></ion-icon>
+                    <div>{{friendData.mobile}}</div>
+                </button>
+            </ion-col>
+        </ion-row> -->
+    </ion-card>
+</ion-content>

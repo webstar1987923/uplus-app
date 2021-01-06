@@ -1,0 +1,70 @@
+<!--
+  Generated template for the MyChargePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+    <ion-navbar>
+        <ion-title>支付 - 充值</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <img src="assets/imgs/other/setting_BG.jpg" alt="" class="one-way-bg">
+    <p>消费充值</p>
+    <ion-grid>
+        <ion-row>
+            <ion-col col-4 col-sm-4 col-md-4 col-lg-2 col-xl-2>
+                <button ion-button color="secondary" outline (click)="chargePrice(100, 1);">
+                  <p class="price">100元</p>
+                </button>
+            </ion-col>
+            <ion-col col-4 col-sm-4 col-md-4 col-lg-2 col-xl-2>
+                <button ion-button color="secondary" outline (click)="chargePrice(200, 1);">
+                  <p class="price">200元</p>
+                </button>
+            </ion-col>
+            <ion-col col-4 col-sm-4 col-md-4 col-lg-2 col-xl-2>
+                <button ion-button color="secondary" outline (click)="chargePrice(300, 1);">
+                  <p class="price">300元</p>
+                </button>
+            </ion-col>
+            <ion-col col-4 col-sm-4 col-md-4 col-lg-2 col-xl-2>
+                <button ion-button color="secondary" outline (click)="chargePrice(500, 1);">
+                  <p class="price">500元</p>
+                </button>
+            </ion-col>
+            <ion-col col-4 col-sm-4 col-md-4 col-lg-2 col-xl-2>
+                <button ion-button color="secondary" outline (click)="chargePrice(1000, 1);">
+                  <p class="price">1000元</p>
+                </button>
+            </ion-col>
+            <ion-col col-4 col-sm-4 col-md-4 col-lg-2 col-xl-2>
+                <button ion-button color="secondary" outline (click)="chargePrice(5000, 1);">
+                  <p class="price">5000元</p>
+                </button>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+    <p>广告位及广告充值</p>
+    <ion-grid>
+        <ion-row>
+            <ion-col col-4 col-sm-4 col-md-4 col-lg-2 col-xl-2>
+                <button ion-button color="secondary" outline (click)="chargePrice(1000, 2);">
+                  <p class="price">1000元</p>
+                  <p class="price-desc">1 年</p>
+                </button>
+            </ion-col>
+            <ion-col col-4 col-sm-4 col-md-4 col-lg-2 col-xl-2>
+                <button ion-button color="secondary" outline (click)="chargePrice(10000, 2);">
+                  <p class="price">10000元</p>
+                  <p class="price-desc">10 年</p>
+                </button>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>

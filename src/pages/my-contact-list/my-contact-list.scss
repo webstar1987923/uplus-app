@@ -1,0 +1,29 @@
+page-my-contact-list {
+    .item ion-thumbnail {
+        min-width: 40px !important;
+        min-height: 40px !important
+    }
+    .item ion-thumbnail img {
+        width: 40px !important;
+        height: 40px !important;
+        border-radius: 50%;
+    }
+    .list-header {
+        margin-bottom: 0 !important;
+        border-top: none !important;
+        background: transparent !important;
+        .label {
+            margin-bottom: 0px !important;
+        }
+    }
+    .list {
+        margin-bottom: 40px !important;
+    }
+    .item {
+        ion-badge {
+            position: absolute;
+            top: 25px;
+            right: 10px;
+        }
+    }
+}

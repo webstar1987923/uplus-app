@@ -1,0 +1,37 @@
+page-ads {
+    html,
+    body {
+        margin: 0;
+        padding: 0;
+    }
+    body {
+        min-height: 100vh;
+        // background: #ff9000;
+        background: #666fb2;
+    }
+    .img_area {
+        width: 100%;
+        margin: 0;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        -webkit-transform: translate(-50%, -50%);
+        -moz-transform: translate(-50%, -50%);
+        -o-transform: translate(-50%, -50%);
+    }
+    .img_area img {
+        width: 100%;
+    }
+    .scroll-content {
+        background-color: transparent !important;
+    }
+    .top-slider {
+        height: 35vh !important;
+        margin-top: 1px;
+        ion-slide {
+            background-size: cover;
+            background-position: center center;
+        }
+    }
+}

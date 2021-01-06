@@ -1,0 +1,57 @@
+page-my-wallet {
+    .scroll-content {
+        padding: 0 !important;
+        color: #e2e2e2;
+    }
+    .cate-grid {
+        // background: #435053;
+        background: #05596d;
+        padding: 10px 0;
+    }
+    .cate-grid ion-col {
+        text-align: center;
+        padding: 0 !important;
+    }
+    .cate-grid ion-icon {
+        font-size: 30px;
+        color: #e2e2e2;
+    }
+    .item-desc {
+        text-align: center;
+        width: 100%;
+    }
+    .balance-value {
+        font-size: 12px;
+    }
+    .text-on-bottom {
+        white-space: unset !important;
+        width: 100% !important;
+        height: 100% !important;
+        background: transparent;
+        margin: 0 !important;
+        border: none !important;
+        box-shadow: none !important;
+    }
+    .button.activated {
+        background-color: #313131 !important;
+    }
+    .text-on-bottom .button-inner {
+        display: block !important;
+        padding: 16px;
+        text-transform: initial !important;
+    }
+    .list .item-block .item-inner {
+        border-bottom: 0 !important;
+    }
+    .border-bottom {
+        border-bottom: 1px solid #efefef !important;
+    }
+    .list button ion-label {
+        color: #333333;
+    }
+    .tabs .tab-button[aria-selected=true],
+    .tabs .tab-button[aria-selected=true] .tab-button-icon {
+        // color: #f44336;
+        color: #f44336;
+    }
+}

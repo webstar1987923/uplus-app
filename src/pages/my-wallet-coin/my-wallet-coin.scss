@@ -1,0 +1,91 @@
+page-my-wallet-coin {
+    .scroll-content {
+        padding: 0 !important;
+    }
+    .back-button-custom {
+        -webkit-box-ordinal-group: 3;
+        -webkit-order: 3;
+        -ms-flex-order: 3;
+        order: 3;
+        margin: 0 6px;
+        min-width: 44px;
+    }
+    .top-slider {
+        height: 160px !important;
+        margin-top: 1px;
+        ion-slide {
+            background-size: cover;
+            background-position: center center;
+        }
+    }
+    .coin-value-area {
+        position: relative;
+        background: #0089ff;
+        height: 300px;
+        z-index: -2
+    }
+    .coin-bg {
+        position: absolute;
+        background: url('./../assets/imgs/coin/bg.png') no-repeat;
+        background-size: cover;
+        background-position: center center;
+        width: 100%;
+        height: 300px;
+        opacity: 0.5;
+        z-index: -11;
+    }
+    .coin-info {
+        text-align: center;
+        position: absolute;
+        top: 35%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        img {
+            width: 80px;
+            height: 80px;
+            border-radius: 100px;
+            // border: solid 3px #17c4e0;
+        }
+        p {
+            color: white;
+            font-weight: 600;
+            font-size: 20px;
+            margin: 10px 0 0 0 !important;
+        }
+    }
+    .text-on-bottom>.button-inner {
+        flex-direction: column;
+    }
+    ion-col {
+        text-align: center !important;
+    }
+    .button {
+        background: transparent !important;
+        height: 100% !important;
+        color: #585858 !important;
+        border-radius: unset !important;
+        box-shadow: unset !important;
+        img {
+            width: 35px;
+            // height: 50px;
+        }
+        p {
+            margin: 5px 0 !important;
+            font-size: 12px !important;
+        }
+    }
+    .grid {
+        position: relative;
+    }
+    .scan-img-area {
+        width: 270px;
+        position: absolute;
+        bottom: 0%;
+        left: 50%;
+        transform: translate(-50%, -5%);
+        opacity: 0.8;
+        img {
+            width: 100%;
+        }
+    }
+}
