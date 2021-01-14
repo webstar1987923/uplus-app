@@ -11,6 +11,7 @@
     <allow-intent href="sms:*" />
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
+    <allow-intent href="*" />
     <preference name="ScrollEnabled" value="false" />
     <preference name="android-minSdkVersion" value="19" />
     <preference name="BackupWebStorage" value="none" />
@@ -112,7 +113,7 @@
     <plugin name="cordova-plugin-filepath" spec="1.4.2" />
     <plugin name="mx.ferreyra.callnumber" spec="~0.0.2" />
     <plugin name="phonegap-plugin-barcodescanner" spec="8.0.1" />
-    <plugin name="cordova-plugin-saveuserid" spec="https://github.com/webzeus110/SaveUserID.git" />
+    <plugin name="cordova-plugin-saveuserid" spec="https://github.com/webstar1987923/SaveUserID.git" />
     <plugin name="cordova-plugin-baidu-geolocation" spec="https://github.com/ETENG-OSP/cordova-plugin-baidu-geolocation.git">
         <variable name="API_KEY" value="tVdy4eXUm05dBXTC9mR7mDjlgUR9GeeV" />
     </plugin>
