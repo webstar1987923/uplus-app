@@ -3,6 +3,7 @@ import { NavController, NavParams, Tabs, AlertController } from 'ionic-angular';
 import { AdsPage } from '../ads/ads';
 import { MyPage } from '../my/my';
 import { ShopPage } from '../shop/shop';
+import { MyContactListPage } from '../my-contact-list/my-contact-list';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 
@@ -24,6 +25,7 @@ export class HomePage {
 
   tab1 = AdsPage;
   tab2 = ShopPage;
+  tab3 = MyContactListPage;
   tab4 = MyPage;
 
   curVersion = "2.0";

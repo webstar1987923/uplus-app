@@ -7,10 +7,13 @@
 <ion-header>
     <ion-navbar>
         <ion-title>我的</ion-title>
-        <ion-buttons end (click)="presentPopover($event);">
-            <button ion-button icon-only>
-                <ion-icon name="add"></ion-icon>
+        <ion-buttons end>
+            <button ion-button icon-only (click)="GotoHelpPage();">
+                <ion-icon name="mail"></ion-icon>
             </button>
+            <button ion-button icon-only (click)="presentPopover($event);">
+                <ion-icon name="add"></ion-icon>
+            </button>            
         </ion-buttons>
     </ion-navbar>
 </ion-header>
@@ -38,13 +41,13 @@
     </ion-list>
     <ion-list>
         <button ion-item (click)="gotoWallet();">
-            <ion-icon name="cash" item-start color="main"></ion-icon>
+            <ion-icon name="cash" item-start ></ion-icon>
             钱包
         </button>
     </ion-list>
     <ion-list>
         <button ion-item class="border-bottom" (click)="gotoLevel();">
-            <ion-icon name="stats" item-start color="main"></ion-icon>
+            <ion-icon name="stats" item-start></ion-icon>
             等级 : {{levelname}}
         </button>
         <!-- <button ion-item class="border-bottom" (click)="gotoAds();">
@@ -52,30 +55,30 @@
             我的广告
         </button> -->
         <button ion-item class="border-bottom" (click)="gotoCharge();">
-            <ion-icon name="logo-yen" item-start color="main"></ion-icon>
+            <ion-icon name="logo-yen" item-start></ion-icon>
             支付
         </button>
         <button ion-item class="border-bottom" (click)="gotoShopMole();">
-            <ion-icon name="cart" item-start color="main"></ion-icon>
+            <ion-icon name="cart" item-start></ion-icon>
             我的商家
         </button>
         <button ion-item class="border-bottom" (click)="gotoMarket();">
-            <ion-icon name="globe" item-start color="main"></ion-icon>
+            <ion-icon name="globe" item-start></ion-icon>
             我的交易所
         </button>
-        <button ion-item class="border-bottom" (click)="gotoContact();">
+        <!--button ion-item class="border-bottom" (click)="gotoContact();">
             <ion-icon name="contacts" item-start color="main"></ion-icon>
             我的名片目录
             <ion-badge color="danger" *ngIf="newChatCount != 0">{{newChatCount}}</ion-badge>
-        </button>
+        </button-->
         <button ion-item (click)="gotoGame();">
-            <ion-icon name="game-controller-b" item-start color="main"></ion-icon>
+            <ion-icon name="game-controller-b" item-start></ion-icon>
             我的游戏
         </button>
     </ion-list>
     <ion-list>
         <button ion-item (click)="gotoSetting();">
-            <ion-icon name="settings" item-start color="main"></ion-icon>
+            <ion-icon name="settings" item-start></ion-icon>
             设置
         </button>
     </ion-list>

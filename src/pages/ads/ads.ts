@@ -32,7 +32,7 @@ export class AdsPage {
   slide: string = ""; 
   // color: string = "#ff9000";
   color: string = "#666fb2";
-
+ 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     public http: Http,
@@ -59,6 +59,7 @@ export class AdsPage {
         this.bottom = data.bottom;
         this.color = data.color;
         this.slide = data.slide;
+
         if(this.slide == '1') {
           setTimeout(()=>{
             if(this.center && this.center.length > 0){
@@ -66,7 +67,8 @@ export class AdsPage {
               this.slides.autoplay = 2000;
               this.slides.speed = 500;
               this.slides.loop = true;
-              this.slides.startAutoplay()
+              this.slides.autoplayDisableOnInteraction = false;
+              this.slides.startAutoplay();
             }
           },1000);
         }
@@ -81,6 +83,10 @@ export class AdsPage {
     });
   }
   
+  ionViewWillLeave() {
+    this.slides.stopAutoplay();
+  }
+
   slideChanged(){
     // console.log("slide changed.");
     this.slides.startAutoplay();

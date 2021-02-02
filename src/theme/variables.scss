@@ -1,3 +1,4 @@
+@use "sass:map";
 // Ionic Variables and Theming. For more info, please see:
 // http://ionicframework.com/docs/theming/
 // Font path is used to include ionicons,
@@ -30,7 +31,8 @@ ion-app.cameraView .nav-decor {
 // $colors: ( primary: #488aff, secondary: #32db64, danger: #f53d3d, light: #f4f4f4, dark: #222, main: #f44336, );
 // $toolbar-background: #f44336;
 $colors: ( primary: #f53d3d, secondary: #32db64, danger: #488aff, light: #f4f4f4, dark: #222, main: #f44336, );
-$toolbar-background: #f44336;
+//$toolbar-background: #f44336;
+$toolbar-background: #488aff;
 // App iOS Variables
 // --------------------------------------------------
 // iOS only Sass variables can go here

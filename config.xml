@@ -118,5 +118,10 @@
         <variable name="API_KEY" value="tVdy4eXUm05dBXTC9mR7mDjlgUR9GeeV" />
     </plugin>
     <plugin name="cordova-plugin-splashscreen" spec="^5.0.3" />
+    <plugin name="cordova-plugin-wechat" spec="^3.0.0">
+        <variable name="WECHATAPPID" value="wxedd4ddf7e0543ad8" />
+        <variable name="UNIVERSALLINK" value="uank.vip" />
+    </plugin>
+    <plugin name="call-number" spec="1.0.1" />
     <engine name="android" spec="^8.0.0" />
 </widget>

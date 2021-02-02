@@ -27,7 +27,7 @@
     <div class="img_area" *ngIf="flag == '1'">
         <img src="http://unak.vip/uplus/qr_code/Template/ads/img/{{top}}" alt="" />
         <img src="http://unak.vip/uplus/qr_code/Template/ads/img/{{center}}" alt="" *ngIf="slide != '1'" />
-        <ion-slides class="top-slider" (ionSlideDidChange)="slideChanged()" *ngIf="slide == '1'">
+        <ion-slides class="top-slider" (ionSlideDidChange)="slideChanged()" *ngIf="center.length > 1">
             <ion-slide *ngFor="let s_bg of center" [ngStyle]="{'background-image': 'url(http://unak.vip/uplus/qr_code/Template/ads/img/' + s_bg + ')'}">
             </ion-slide>
         </ion-slides>

@@ -43,4 +43,12 @@ page-my {
             right: 10px;
         }
     }
+
+    ion-icon {
+        color: #488aff;
+    }
+
+    ion-navbar ion-icon {
+        color: white;
+    }
 }

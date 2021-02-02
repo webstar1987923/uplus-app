@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, AlertController } from 'ionic-angular';
 import { MyChargeOptionPage } from '../my-charge-option/my-charge-option';
+import { WechatPlugin } from '../../providers/WechatPlugin';
 
 /**
  * Generated class for the MyChargePage page.

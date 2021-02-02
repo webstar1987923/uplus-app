@@ -34,7 +34,7 @@ var NormallPopoverComponent = /** @class */ (function () {
     };
     NormallPopoverComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'normall-popover',template:/*ion-inline-start:"F:\OnSite\chol\uplus-app\src\components\normall-popover\normall-popover.html"*/'<ion-list>\n    <ion-item (click)="itemClick(\'new_contact\');" class="border-bottom">\n        <ion-icon name="person-add" item-start></ion-icon>\n        新名片\n    </ion-item>\n    <ion-item (click)="itemClick(\'scan\');" class="border-bottom">\n        <ion-icon name="qr-scanner" item-start></ion-icon>\n        扫一扫\n    </ion-item>\n    <ion-item (click)="itemClick(\'help\');">\n        <ion-icon name="mail" item-start></ion-icon>\n        服务中心\n    </ion-item>\n</ion-list>'/*ion-inline-end:"F:\OnSite\chol\uplus-app\src\components\normall-popover\normall-popover.html"*/
+            selector: 'normall-popover',template:/*ion-inline-start:"F:\OnSite\chol\uplus-app\src\components\normall-popover\normall-popover.html"*/'<ion-list>\n    <ion-item (click)="itemClick(\'new_contact\');" class="border-bottom">\n        <ion-icon name="person-add" item-start></ion-icon>\n        新名片\n    </ion-item>\n    <ion-item (click)="itemClick(\'scan\');" class="border-bottom">\n        <ion-icon name="qr-scanner" item-start></ion-icon>\n        扫一扫\n    </ion-item>\n    <!--ion-item (click)="itemClick(\'help\');">\n        <ion-icon name="mail" item-start></ion-icon>\n        服务中心\n    </ion-item-->\n</ion-list>'/*ion-inline-end:"F:\OnSite\chol\uplus-app\src\components\normall-popover\normall-popover.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["s" /* ViewController */]])
     ], NormallPopoverComponent);
@@ -52,11 +52,11 @@ var NormallPopoverComponent = /** @class */ (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HelpSupportPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__new_ticket_new_ticket__ = __webpack_require__(218);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__new_ticket_new_ticket__ = __webpack_require__(219);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_http__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_map__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_map__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__help_support_item_view_help_support_item_view__ = __webpack_require__(219);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__help_support_item_view_help_support_item_view__ = __webpack_require__(220);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -217,6 +217,206 @@ var HelpSupportPage = /** @class */ (function () {
 }());
 
 //# sourceMappingURL=help-support.js.map
+
+/***/ }),
+
+/***/ 111:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AdsListPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_http__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ads_item_detail_ads_item_detail__ = __webpack_require__(222);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+var AdsListPage = /** @class */ (function () {
+    function AdsListPage(navCtrl, navParams, http, loadingCtrl, alertCtrl, actionSheet) {
+        this.navCtrl = navCtrl;
+        this.navParams = navParams;
+        this.http = http;
+        this.loadingCtrl = loadingCtrl;
+        this.alertCtrl = alertCtrl;
+        this.actionSheet = actionSheet;
+        this.serverUrl = "http://unak.vip/uplus/Api";
+        this.ads_list = [];
+        this.total = 0;
+        this.provinces = [];
+        this.cities = [];
+        this.page_num = 0;
+        this.s_province = "";
+        this.s_city = "";
+        this.diqu = "";
+        this.searchFlag = false;
+        this.isValid = true;
+    }
+    AdsListPage.prototype.ionViewDidLoad = function () {
+        this.uid = localStorage.getItem('uid');
+    };
+    AdsListPage.prototype.ionViewWillEnter = function () {
+        var _this = this;
+        var postData = {
+            action: 'get',
+            uid: localStorage.getItem("uid"),
+            province: localStorage.getItem("province"),
+            city: localStorage.getItem("city"),
+            loc_type: 'str'
+        };
+        this.diqu = localStorage.getItem("province") + "/" + localStorage.getItem("city");
+        var loading = this.loadingCtrl.create();
+        loading.present();
+        this.http.post(this.serverUrl + "/adsmanage.php", JSON.stringify(postData))
+            .map(function (res) { return res.json(); })
+            .subscribe(function (data) {
+            loading.dismiss();
+            _this.s_province = data.provinceID;
+            _this.s_city = data.cityID;
+            _this.ads_list = [];
+            for (var index = 0; index < data.highlight.length; index++) {
+                _this.ads_list.push(data.highlight[index]);
+                _this.total = data.total;
+            }
+        }, function (err) {
+            loading.dismiss();
+        });
+    };
+    AdsListPage.prototype.itemDetail = function (index) {
+        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_3__ads_item_detail_ads_item_detail__["a" /* AdsItemDetailPage */], { items: this.ads_list, index: index });
+    };
+    //dialog
+    AdsListPage.prototype.inputProvinceData = function () {
+        this.getProvinceData();
+    };
+    AdsListPage.prototype.inputCityData = function () {
+        this.getCityData();
+    };
+    AdsListPage.prototype.getProvinceData = function () {
+        var _this = this;
+        this.http.get("assets/json/dg_province.json")
+            .map(function (res) { return res.json(); })
+            .subscribe(function (data) {
+            _this.provinces = [];
+            for (var index = 0; index < data.length; index++) {
+                _this.provinces.push(data[index]);
+            }
+            var provinceSheet = _this.actionSheet.create({
+                title: "省份",
+                cssClass: "cus_height",
+                buttons: [{
+                        text: "搜索",
+                        handler: function () {
+                            /*this.page_num = 0;
+                            this.searchData();*/
+                        }
+                    }]
+            });
+            var _loop_1 = function (index) {
+                button = {
+                    text: _this.provinces[index].province,
+                    handler: function () {
+                        _this.s_province = _this.provinces[index].provinceID;
+                        _this.inputCityData();
+                    }
+                };
+                provinceSheet.addButton(button);
+            };
+            var button;
+            for (var index = 0; index < _this.provinces.length; index++) {
+                _loop_1(index);
+            }
+            provinceSheet.present();
+        });
+    };
+    AdsListPage.prototype.getCityData = function () {
+        var _this = this;
+        this.http.get("assets/json/dg_city.json")
+            .map(function (res) { return res.json(); })
+            .subscribe(function (data) {
+            _this.cities = [];
+            for (var index = 0; index < data.length; index++) {
+                if (data[index].father == _this.s_province) {
+                    _this.cities.push(data[index]);
+                }
+            }
+            var citySheet = _this.actionSheet.create({
+                title: "城市",
+                cssClass: "cus_height",
+                buttons: [{
+                        text: "搜索",
+                        handler: function () {
+                            _this.searchData();
+                        }
+                    }]
+            });
+            var _loop_2 = function (index) {
+                button = {
+                    text: _this.cities[index].city,
+                    handler: function () {
+                        _this.s_city = _this.cities[index].cityID;
+                        _this.searchData();
+                    }
+                };
+                citySheet.addButton(button);
+            };
+            var button;
+            for (var index = 0; index < _this.cities.length; index++) {
+                _loop_2(index);
+            }
+            citySheet.present();
+        });
+    };
+    AdsListPage.prototype.searchData = function () {
+        var _this = this;
+        var postData = {
+            action: 'get',
+            uid: localStorage.getItem("uid"),
+            province: this.s_province,
+            city: this.s_city,
+            loc_type: 'number'
+        };
+        var loading = this.loadingCtrl.create();
+        loading.present();
+        this.http.post(this.serverUrl + "/adsmanage.php", JSON.stringify(postData))
+            .map(function (res) { return res.json(); })
+            .subscribe(function (data) {
+            loading.dismiss();
+            _this.diqu = data.diqu;
+            _this.ads_list = [];
+            for (var index = 0; index < data.highlight.length; index++) {
+                _this.ads_list.push(data.highlight[index]);
+                _this.total = data.total;
+            }
+        }, function (err) {
+            loading.dismiss();
+        });
+    };
+    AdsListPage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
+            selector: 'page-ads-list',template:/*ion-inline-start:"F:\OnSite\chol\uplus-app\src\pages\ads-list\ads-list.html"*/'<!--\n  Generated template for the AdsDetailPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n    <ion-navbar>\n        <ion-title>广告介绍</ion-title>\n    </ion-navbar>\n    <ion-toolbar>\n        <ion-searchbar (click)="inputProvinceData()" placeholder="省/市" [(ngModel)]="diqu" readonly></ion-searchbar>\n    </ion-toolbar>\n</ion-header>\n\n<ion-content padding>\n    <img src="assets/imgs/other/setting_BG.jpg" alt="" class="one-way-bg">\n    <ion-list>\n        <ion-grid>\n            <ion-row>\n                <ion-col col-6 size-sm *ngFor="let ads of ads_list; let i = index" (click)="itemDetail(i);">\n                    <div>\n                        <img src="assets/imgs/other/default.png" *ngIf="!ads.thumb">\n                        <img src="http://unak.vip/uplus{{ads.thumb}}" *ngIf="ads.thumb">\n                    </div>\n                </ion-col>\n            </ion-row>\n        </ion-grid>\n    </ion-list>\n</ion-content>'/*ion-inline-end:"F:\OnSite\chol\uplus-app\src\pages\ads-list\ads-list.html"*/,
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* NavParams */],
+            __WEBPACK_IMPORTED_MODULE_2__angular_http__["a" /* Http */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* LoadingController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* ActionSheetController */]])
+    ], AdsListPage);
+    return AdsListPage;
+}());
+
+//# sourceMappingURL=ads-list.js.map
 
 /***/ }),
 
@@ -481,7 +681,7 @@ var MyInfoQrCodePage = /** @class */ (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MyChargePage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__my_charge_option_my_charge_option__ = __webpack_require__(372);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__my_charge_option_my_charge_option__ = __webpack_require__(368);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -630,7 +830,7 @@ var SaveUserNameProvider = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 127:
+/***/ 128:
 /***/ (function(module, exports) {
 
 function webpackEmptyAsyncContext(req) {
@@ -643,11 +843,11 @@ function webpackEmptyAsyncContext(req) {
 webpackEmptyAsyncContext.keys = function() { return []; };
 webpackEmptyAsyncContext.resolve = webpackEmptyAsyncContext;
 module.exports = webpackEmptyAsyncContext;
-webpackEmptyAsyncContext.id = 127;
+webpackEmptyAsyncContext.id = 128;
 
 /***/ }),
 
-/***/ 168:
+/***/ 169:
 /***/ (function(module, exports) {
 
 function webpackEmptyAsyncContext(req) {
@@ -660,23 +860,24 @@ function webpackEmptyAsyncContext(req) {
 webpackEmptyAsyncContext.keys = function() { return []; };
 webpackEmptyAsyncContext.resolve = webpackEmptyAsyncContext;
 module.exports = webpackEmptyAsyncContext;
-webpackEmptyAsyncContext.id = 168;
+webpackEmptyAsyncContext.id = 169;
 
 /***/ }),
 
-/***/ 216:
+/***/ 217:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HomePage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ads_ads__ = __webpack_require__(217);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ads_ads__ = __webpack_require__(218);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__my_my__ = __webpack_require__(225);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__shop_shop__ = __webpack_require__(383);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_http__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_map__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_map__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__shop_shop__ = __webpack_require__(379);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__my_contact_list_my_contact_list__ = __webpack_require__(381);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__angular_http__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_rxjs_add_operator_map__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_rxjs_add_operator_map__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -686,6 +887,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
 
 
 
@@ -708,6 +910,7 @@ var HomePage = /** @class */ (function () {
         this.serverUrl = "http://unak.vip/uplus/Api/mobile";
         this.tab1 = __WEBPACK_IMPORTED_MODULE_2__ads_ads__["a" /* AdsPage */];
         this.tab2 = __WEBPACK_IMPORTED_MODULE_4__shop_shop__["a" /* ShopPage */];
+        this.tab3 = __WEBPACK_IMPORTED_MODULE_5__my_contact_list_my_contact_list__["a" /* MyContactListPage */];
         this.tab4 = __WEBPACK_IMPORTED_MODULE_3__my_my__["a" /* MyPage */];
         this.curVersion = "2.0";
     }
@@ -760,10 +963,10 @@ var HomePage = /** @class */ (function () {
     ], HomePage.prototype, "tabRef", void 0);
     HomePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-home',template:/*ion-inline-start:"F:\OnSite\chol\uplus-app\src\pages\home\home.html"*/'<ion-tabs #myTabs>\n    <ion-tab tabIcon="logo-youtube" tabTitle="广告" [root]="tab1"></ion-tab>\n    <ion-tab tabIcon="cart" tabTitle="城市商城" [root]="tab2"></ion-tab>\n    <ion-tab tabIcon="person" tabTitle="我的" [root]="tab4"></ion-tab>\n    <!-- <ion-tab tabIcon="chatbubbles" tabTitle="Chat" [root]="tab3"></ion-tab> -->\n</ion-tabs>'/*ion-inline-end:"F:\OnSite\chol\uplus-app\src\pages\home\home.html"*/,
+            selector: 'page-home',template:/*ion-inline-start:"F:\OnSite\chol\uplus-app\src\pages\home\home.html"*/'<ion-tabs #myTabs>\n    <ion-tab tabIcon="logo-youtube" tabTitle="广告" [root]="tab1"></ion-tab>\n    <ion-tab tabIcon="cart" tabTitle="城市商城" [root]="tab2"></ion-tab>\n    <ion-tab tabIcon="card" tabTitle="消息" [root]="tab3"></ion-tab>\n    <ion-tab tabIcon="person" tabTitle="我的" [root]="tab4"></ion-tab>    \n</ion-tabs>'/*ion-inline-end:"F:\OnSite\chol\uplus-app\src\pages\home\home.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_5__angular_http__["a" /* Http */],
+            __WEBPACK_IMPORTED_MODULE_6__angular_http__["a" /* Http */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* NavParams */]])
     ], HomePage);
@@ -774,7 +977,7 @@ var HomePage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 217:
+/***/ 218:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -787,7 +990,7 @@ var HomePage = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_normall_popover_normall_popover__ = __webpack_require__(109);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__help_support_help_support__ = __webpack_require__(110);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__my_contact_find_my_contact_find__ = __webpack_require__(57);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__ads_detail_ads_detail__ = __webpack_require__(220);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__ads_detail_ads_detail__ = __webpack_require__(221);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__qr_code_scanner_qr_code_scanner__ = __webpack_require__(58);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -854,6 +1057,7 @@ var AdsPage = /** @class */ (function () {
                             _this.slides.autoplay = 2000;
                             _this.slides.speed = 500;
                             _this.slides.loop = true;
+                            _this.slides.autoplayDisableOnInteraction = false;
                             _this.slides.startAutoplay();
                         }
                     }, 1000);
@@ -868,6 +1072,9 @@ var AdsPage = /** @class */ (function () {
                 _this.color = "#ff9000";
             }
         });
+    };
+    AdsPage.prototype.ionViewWillLeave = function () {
+        this.slides.stopAutoplay();
     };
     AdsPage.prototype.slideChanged = function () {
         // console.log("slide changed.");
@@ -904,7 +1111,7 @@ var AdsPage = /** @class */ (function () {
     ], AdsPage.prototype, "slides", void 0);
     AdsPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-ads',template:/*ion-inline-start:"F:\OnSite\chol\uplus-app\src\pages\ads\ads.html"*/'<!--\n  Generated template for the AdsPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n    <ion-navbar>\n        <ion-title>广告</ion-title>\n        <!-- <ion-buttons end (click)="presentPopover($event);">\n            <button ion-button icon-only>\n        <ion-icon name="add"></ion-icon>\n      </button>\n        </ion-buttons> -->\n    </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding [ngStyle]="{\'background-color\': color}" (click)="gotoDetailPage();">\n    <div class="img_area" *ngIf="flag == \'\'">\n        <img src="assets/imgs/other/ads_top.png" alt="" />\n        <img src="assets/imgs/other/ads_new.png" alt="" />\n        <img src="assets/imgs/other/ads_bottom.png" alt="" />\n    </div>\n    <div class="img_area" *ngIf="flag == \'1\'">\n        <img src="http://unak.vip/uplus/qr_code/Template/ads/img/{{top}}" alt="" />\n        <img src="http://unak.vip/uplus/qr_code/Template/ads/img/{{center}}" alt="" *ngIf="slide != \'1\'" />\n        <ion-slides class="top-slider" (ionSlideDidChange)="slideChanged()" *ngIf="slide == \'1\'">\n            <ion-slide *ngFor="let s_bg of center" [ngStyle]="{\'background-image\': \'url(http://unak.vip/uplus/qr_code/Template/ads/img/\' + s_bg + \')\'}">\n            </ion-slide>\n        </ion-slides>\n        <img src="http://unak.vip/uplus/qr_code/Template/ads/img/{{bottom}}" alt="" />\n    </div>\n</ion-content>'/*ion-inline-end:"F:\OnSite\chol\uplus-app\src\pages\ads\ads.html"*/,
+            selector: 'page-ads',template:/*ion-inline-start:"F:\OnSite\chol\uplus-app\src\pages\ads\ads.html"*/'<!--\n  Generated template for the AdsPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n    <ion-navbar>\n        <ion-title>广告</ion-title>\n        <!-- <ion-buttons end (click)="presentPopover($event);">\n            <button ion-button icon-only>\n        <ion-icon name="add"></ion-icon>\n      </button>\n        </ion-buttons> -->\n    </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding [ngStyle]="{\'background-color\': color}" (click)="gotoDetailPage();">\n    <div class="img_area" *ngIf="flag == \'\'">\n        <img src="assets/imgs/other/ads_top.png" alt="" />\n        <img src="assets/imgs/other/ads_new.png" alt="" />\n        <img src="assets/imgs/other/ads_bottom.png" alt="" />\n    </div>\n    <div class="img_area" *ngIf="flag == \'1\'">\n        <img src="http://unak.vip/uplus/qr_code/Template/ads/img/{{top}}" alt="" />\n        <img src="http://unak.vip/uplus/qr_code/Template/ads/img/{{center}}" alt="" *ngIf="slide != \'1\'" />\n        <ion-slides class="top-slider" (ionSlideDidChange)="slideChanged()" *ngIf="center.length > 1">\n            <ion-slide *ngFor="let s_bg of center" [ngStyle]="{\'background-image\': \'url(http://unak.vip/uplus/qr_code/Template/ads/img/\' + s_bg + \')\'}">\n            </ion-slide>\n        </ion-slides>\n        <img src="http://unak.vip/uplus/qr_code/Template/ads/img/{{bottom}}" alt="" />\n    </div>\n</ion-content>'/*ion-inline-end:"F:\OnSite\chol\uplus-app\src\pages\ads\ads.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* NavParams */],
@@ -919,7 +1126,7 @@ var AdsPage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 218:
+/***/ 219:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -966,7 +1173,7 @@ var NewTicketPage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 219:
+/***/ 220:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1087,7 +1294,7 @@ var HelpSupportItemViewPage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 220:
+/***/ 221:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1095,7 +1302,7 @@ var HelpSupportItemViewPage = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_platform_browser__ = __webpack_require__(15);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ads_list_ads_list__ = __webpack_require__(221);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ads_list_ads_list__ = __webpack_require__(111);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1132,7 +1339,7 @@ var AdsDetailPage = /** @class */ (function () {
     AdsDetailPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["S" /* Pipe */])({ name: 'safe' }),
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-ads-detail',template:/*ion-inline-start:"F:\OnSite\chol\uplus-app\src\pages\ads-detail\ads-detail.html"*/'<!--\n  Generated template for the AdsDetailPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n    <ion-navbar>\n        <ion-title>钱途介绍</ion-title>\n        <ion-buttons end (click)="showAdsList();">\n            <button ion-button icon-only>\n        <ion-icon name="desktop"></ion-icon>\n      </button>\n        </ion-buttons>\n    </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n    <!-- <iframe width="100%" height="100%" [src]="uplus_site_url" frameborder="0"></iframe> -->\n    <img *ngFor="let index of adsIdx" src="assets/imgs/ads/{{index}}.png" alt="" style="margin: 10px 0; width: 100%;">\n</ion-content>'/*ion-inline-end:"F:\OnSite\chol\uplus-app\src\pages\ads-detail\ads-detail.html"*/,
+            selector: 'page-ads-detail',template:/*ion-inline-start:"F:\OnSite\chol\uplus-app\src\pages\ads-detail\ads-detail.html"*/'<!--\n  Generated template for the AdsDetailPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n    <ion-navbar>\n        <ion-title>钱途介绍</ion-title>\n        <ion-buttons end (click)="showAdsList();">\n            <button ion-button icon-only>\n                <ion-icon name="desktop"></ion-icon>\n            </button>\n        </ion-buttons>\n    </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n    <!-- <iframe width="100%" height="100%" [src]="uplus_site_url" frameborder="0"></iframe> -->\n    <img *ngFor="let index of adsIdx" src="assets/imgs/ads/{{index}}.png" alt="" style="margin: 10px 0; width: 100%;">\n</ion-content>'/*ion-inline-end:"F:\OnSite\chol\uplus-app\src\pages\ads-detail\ads-detail.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__angular_platform_browser__["c" /* DomSanitizer */]])
     ], AdsDetailPage);
@@ -1140,83 +1347,6 @@ var AdsDetailPage = /** @class */ (function () {
 }());
 
 //# sourceMappingURL=ads-detail.js.map
-
-/***/ }),
-
-/***/ 221:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AdsListPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_http__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ads_item_detail_ads_item_detail__ = __webpack_require__(222);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-
-var AdsListPage = /** @class */ (function () {
-    function AdsListPage(navCtrl, navParams, http, loadingCtrl, alertCtrl) {
-        this.navCtrl = navCtrl;
-        this.navParams = navParams;
-        this.http = http;
-        this.loadingCtrl = loadingCtrl;
-        this.alertCtrl = alertCtrl;
-        this.serverUrl = "http://unak.vip/uplus/Api";
-        this.ads_list = [];
-        this.total = 0;
-    }
-    AdsListPage.prototype.ionViewDidLoad = function () {
-        this.uid = localStorage.getItem('uid');
-    };
-    AdsListPage.prototype.ionViewWillEnter = function () {
-        var _this = this;
-        var postData = {
-            action: 'get',
-            uid: localStorage.getItem("uid"),
-        };
-        var loading = this.loadingCtrl.create();
-        loading.present();
-        this.http.post(this.serverUrl + "/adsmanage.php", JSON.stringify(postData))
-            .map(function (res) { return res.json(); })
-            .subscribe(function (data) {
-            loading.dismiss();
-            _this.ads_list = [];
-            for (var index = 0; index < data.highlight.length; index++) {
-                _this.ads_list.push(data.highlight[index]);
-                _this.total = data.total;
-            }
-        }, function (err) {
-            loading.dismiss();
-        });
-    };
-    AdsListPage.prototype.itemDetail = function (item) {
-        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_3__ads_item_detail_ads_item_detail__["a" /* AdsItemDetailPage */], { item: item });
-    };
-    AdsListPage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-ads-list',template:/*ion-inline-start:"F:\OnSite\chol\uplus-app\src\pages\ads-list\ads-list.html"*/'<!--\n  Generated template for the AdsDetailPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n    <ion-navbar>\n        <ion-title>广告介绍</ion-title>\n    </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n    <img src="assets/imgs/other/setting_BG.jpg" alt="" class="one-way-bg">\n    <ion-list>\n        <ion-grid>\n            <ion-row>\n                <ion-col col-6 size-sm *ngFor="let ads of ads_list" (click)="itemDetail(ads);">\n                    <div>\n                        <img src="assets/imgs/other/default.png" *ngIf="!ads.thumb">\n                        <img src="http://unak.vip/uplus{{ads.thumb}}" *ngIf="ads.thumb">\n                    </div>\n                </ion-col>\n            </ion-row>\n        </ion-grid>\n    </ion-list>\n</ion-content>'/*ion-inline-end:"F:\OnSite\chol\uplus-app\src\pages\ads-list\ads-list.html"*/,
-        }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_2__angular_http__["a" /* Http */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* LoadingController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */]])
-    ], AdsListPage);
-    return AdsListPage;
-}());
-
-//# sourceMappingURL=ads-list.js.map
 
 /***/ }),
 
@@ -1249,16 +1379,23 @@ var AdsItemDetailPage = /** @class */ (function () {
         this.alertCtrl = alertCtrl;
         this.serverUrl = "http://unak.vip/uplus";
         this.aid = "";
+        this.curPos = 0;
     }
     AdsItemDetailPage.prototype.ionViewDidLoad = function () {
         this.uid = localStorage.getItem('uid');
     };
     AdsItemDetailPage.prototype.ionViewWillEnter = function () {
-        var tmpData = this.navParams.get("item");
-        this.video_url = this.serverUrl + tmpData.video;
-        this.aid = tmpData.aid;
+        var _this = this;
+        this.ads_list = this.navParams.get("items");
+        this.curPos = this.navParams.get("index");
+        this.video_url = this.serverUrl + this.ads_list[this.curPos].video;
+        this.aid = this.ads_list[this.curPos].aid;
+        this.vplayer.nativeElement.addEventListener("canplay", function () {
+            _this.vplayer.nativeElement.play();
+        }, true);
     };
     AdsItemDetailPage.prototype.videoEnded = function () {
+        var _this = this;
         console.log('-----video ended-------');
         // ads bonus ---
         var postParam = {
@@ -1273,10 +1410,23 @@ var AdsItemDetailPage = /** @class */ (function () {
             .map(function (res) { return res.json(); })
             .subscribe(function (data) {
             loading.dismiss();
+            //play next video automatically
+            _this.curPos++;
+            if (_this.curPos >= _this.ads_list.length) {
+                _this.curPos = 0;
+            }
+            if (_this.curPos != _this.navParams.get("index")) {
+                _this.video_url = _this.serverUrl + _this.ads_list[_this.curPos].video;
+                _this.aid = _this.ads_list[_this.curPos].aid;
+            }
         }, function (err) {
             loading.dismiss();
         });
     };
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* ViewChild */])('videoPlayer'),
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */])
+    ], AdsItemDetailPage.prototype, "vplayer", void 0);
     AdsItemDetailPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
             selector: 'page-ads-item-detail',template:/*ion-inline-start:"F:\OnSite\chol\uplus-app\src\pages\ads-item-detail\ads-item-detail.html"*/'<!--\n  Generated template for the AdsDetailPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n    <ion-navbar>\n        <ion-title>广告介绍</ion-title>\n    </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n    <img src="assets/imgs/other/setting_BG.jpg" alt="" class="one-way-bg">\n    <ion-list>\n        <ion-item>\n            <video class="ads_video" #videoPlayer playsinline preload="auto" [src]="video_url" controls (ended)="videoEnded();"></video>\n        </ion-item>\n    </ion-list>\n</ion-content>'/*ion-inline-end:"F:\OnSite\chol\uplus-app\src\pages\ads-item-detail\ads-item-detail.html"*/,
@@ -1444,25 +1594,24 @@ var ShopPayScreenPage = /** @class */ (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MyPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__my_contact_list_my_contact_list__ = __webpack_require__(226);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__my_wallet_my_wallet__ = __webpack_require__(230);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__my_info_my_info__ = __webpack_require__(366);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__provider_userinfo_model__ = __webpack_require__(26);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__angular_http__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_rxjs_add_operator_map__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_rxjs_add_operator_map__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__my_level_my_level__ = __webpack_require__(370);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__my_shop_mole_my_shop_mole__ = __webpack_require__(371);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__setting_setting__ = __webpack_require__(373);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__my_info_qr_code_my_info_qr_code__ = __webpack_require__(113);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__components_normall_popover_normall_popover__ = __webpack_require__(109);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__help_support_help_support__ = __webpack_require__(110);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__my_contact_find_my_contact_find__ = __webpack_require__(57);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__my_advertise_my_advertise__ = __webpack_require__(377);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__qr_code_scanner_qr_code_scanner__ = __webpack_require__(58);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__new_version_new_version__ = __webpack_require__(380);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__my_market_info_my_market_info__ = __webpack_require__(381);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__my_charge_my_charge__ = __webpack_require__(114);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__my_wallet_my_wallet__ = __webpack_require__(226);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__my_info_my_info__ = __webpack_require__(362);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__provider_userinfo_model__ = __webpack_require__(26);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_http__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_map__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_map__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__my_level_my_level__ = __webpack_require__(366);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__my_shop_mole_my_shop_mole__ = __webpack_require__(367);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__setting_setting__ = __webpack_require__(369);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__my_info_qr_code_my_info_qr_code__ = __webpack_require__(113);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_normall_popover_normall_popover__ = __webpack_require__(109);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__help_support_help_support__ = __webpack_require__(110);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__my_contact_find_my_contact_find__ = __webpack_require__(57);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__my_advertise_my_advertise__ = __webpack_require__(373);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__qr_code_scanner_qr_code_scanner__ = __webpack_require__(58);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__new_version_new_version__ = __webpack_require__(376);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__my_market_info_my_market_info__ = __webpack_require__(377);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__my_charge_my_charge__ = __webpack_require__(114);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1472,7 +1621,6 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-
 
 
 
@@ -1551,7 +1699,7 @@ var MyPage = /** @class */ (function () {
             .map(function (res) { return res.json(); })
             .subscribe(function (data) {
             loading.dismiss();
-            _this.curUserInfo = new __WEBPACK_IMPORTED_MODULE_5__provider_userinfo_model__["a" /* UserInfoModel */]();
+            _this.curUserInfo = new __WEBPACK_IMPORTED_MODULE_4__provider_userinfo_model__["a" /* UserInfoModel */]();
             _this.curUserInfo = data;
             localStorage.setItem("infoData", JSON.stringify(_this.curUserInfo));
             _this.username = _this.curUserInfo.uid;
@@ -1569,7 +1717,7 @@ var MyPage = /** @class */ (function () {
             this.getUserInfo();
         }
         else {
-            var savedUser = new __WEBPACK_IMPORTED_MODULE_5__provider_userinfo_model__["a" /* UserInfoModel */]();
+            var savedUser = new __WEBPACK_IMPORTED_MODULE_4__provider_userinfo_model__["a" /* UserInfoModel */]();
             savedUser = JSON.parse(tmp);
             this.username = localStorage.getItem("uid");
             if (this.username != savedUser.uid) {
@@ -1583,22 +1731,19 @@ var MyPage = /** @class */ (function () {
         }
     };
     MyPage.prototype.gotoDownload = function () {
-        this.app.getRootNav().push(__WEBPACK_IMPORTED_MODULE_17__new_version_new_version__["a" /* NewVersionPage */]);
+        this.app.getRootNav().push(__WEBPACK_IMPORTED_MODULE_16__new_version_new_version__["a" /* NewVersionPage */]);
     };
     MyPage.prototype.gotoWallet = function () {
-        this.app.getRootNav().push(__WEBPACK_IMPORTED_MODULE_3__my_wallet_my_wallet__["a" /* MyWalletPage */]);
-    };
-    MyPage.prototype.gotoContact = function () {
-        this.app.getRootNav().push(__WEBPACK_IMPORTED_MODULE_2__my_contact_list_my_contact_list__["a" /* MyContactListPage */]);
+        this.app.getRootNav().push(__WEBPACK_IMPORTED_MODULE_2__my_wallet_my_wallet__["a" /* MyWalletPage */]);
     };
     MyPage.prototype.gotoInfo = function () {
-        this.app.getRootNav().push(__WEBPACK_IMPORTED_MODULE_4__my_info_my_info__["a" /* MyInfoPage */]);
+        this.app.getRootNav().push(__WEBPACK_IMPORTED_MODULE_3__my_info_my_info__["a" /* MyInfoPage */]);
     };
     MyPage.prototype.gotoLevel = function () {
-        this.app.getRootNav().push(__WEBPACK_IMPORTED_MODULE_8__my_level_my_level__["a" /* MyLevelPage */]);
+        this.app.getRootNav().push(__WEBPACK_IMPORTED_MODULE_7__my_level_my_level__["a" /* MyLevelPage */]);
     };
     MyPage.prototype.gotoShopMole = function () {
-        this.app.getRootNav().push(__WEBPACK_IMPORTED_MODULE_9__my_shop_mole_my_shop_mole__["a" /* MyShopMolePage */]);
+        this.app.getRootNav().push(__WEBPACK_IMPORTED_MODULE_8__my_shop_mole_my_shop_mole__["a" /* MyShopMolePage */]);
     };
     MyPage.prototype.gotoMarket = function () {
         if (this.curUserInfo.market != '1') {
@@ -1609,20 +1754,20 @@ var MyPage = /** @class */ (function () {
             }).present();
         }
         else {
-            this.app.getRootNav().push(__WEBPACK_IMPORTED_MODULE_18__my_market_info_my_market_info__["a" /* MyMarketInfoPage */]);
+            this.app.getRootNav().push(__WEBPACK_IMPORTED_MODULE_17__my_market_info_my_market_info__["a" /* MyMarketInfoPage */]);
         }
     };
     MyPage.prototype.gotoAds = function () {
-        this.app.getRootNav().push(__WEBPACK_IMPORTED_MODULE_15__my_advertise_my_advertise__["a" /* MyAdvertisePage */]);
+        this.app.getRootNav().push(__WEBPACK_IMPORTED_MODULE_14__my_advertise_my_advertise__["a" /* MyAdvertisePage */]);
     };
     MyPage.prototype.gotoCharge = function () {
-        this.app.getRootNav().push(__WEBPACK_IMPORTED_MODULE_19__my_charge_my_charge__["a" /* MyChargePage */]);
+        this.app.getRootNav().push(__WEBPACK_IMPORTED_MODULE_18__my_charge_my_charge__["a" /* MyChargePage */]);
     };
     MyPage.prototype.gotoSetting = function () {
-        this.app.getRootNav().push(__WEBPACK_IMPORTED_MODULE_10__setting_setting__["a" /* SettingPage */]);
+        this.app.getRootNav().push(__WEBPACK_IMPORTED_MODULE_9__setting_setting__["a" /* SettingPage */]);
     };
     MyPage.prototype.gotoMyQRCode = function () {
-        this.app.getRootNav().push(__WEBPACK_IMPORTED_MODULE_11__my_info_qr_code_my_info_qr_code__["a" /* MyInfoQrCodePage */]);
+        this.app.getRootNav().push(__WEBPACK_IMPORTED_MODULE_10__my_info_qr_code_my_info_qr_code__["a" /* MyInfoQrCodePage */]);
     };
     MyPage.prototype.gotoGame = function () {
         this.alertCtrl.create({
@@ -1633,20 +1778,20 @@ var MyPage = /** @class */ (function () {
     };
     MyPage.prototype.presentPopover = function (myEvent) {
         var _this = this;
-        var popover = this.popoverCtrl.create(__WEBPACK_IMPORTED_MODULE_12__components_normall_popover_normall_popover__["a" /* NormallPopoverComponent */]);
+        var popover = this.popoverCtrl.create(__WEBPACK_IMPORTED_MODULE_11__components_normall_popover_normall_popover__["a" /* NormallPopoverComponent */]);
         popover.present({
             ev: myEvent
         });
         popover.onDidDismiss(function (data) {
             switch (data) {
                 case 'new_contact':
-                    _this.app.getRootNav().push(__WEBPACK_IMPORTED_MODULE_14__my_contact_find_my_contact_find__["a" /* MyContactFindPage */]);
+                    _this.app.getRootNav().push(__WEBPACK_IMPORTED_MODULE_13__my_contact_find_my_contact_find__["a" /* MyContactFindPage */]);
                     break;
                 case 'scan':
-                    _this.app.getRootNav().push(__WEBPACK_IMPORTED_MODULE_16__qr_code_scanner_qr_code_scanner__["a" /* QrCodeScannerPage */]);
+                    _this.app.getRootNav().push(__WEBPACK_IMPORTED_MODULE_15__qr_code_scanner_qr_code_scanner__["a" /* QrCodeScannerPage */]);
                     break;
                 case 'help':
-                    _this.app.getRootNav().push(__WEBPACK_IMPORTED_MODULE_13__help_support_help_support__["a" /* HelpSupportPage */]);
+                    _this.app.getRootNav().push(__WEBPACK_IMPORTED_MODULE_12__help_support_help_support__["a" /* HelpSupportPage */]);
                     break;
                 default:
                     break;
@@ -1655,12 +1800,12 @@ var MyPage = /** @class */ (function () {
     };
     MyPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-my',template:/*ion-inline-start:"F:\OnSite\chol\uplus-app\src\pages\my\my.html"*/'<!--\n  Generated template for the MyPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n    <ion-navbar>\n        <ion-title>我的</ion-title>\n        <ion-buttons end (click)="presentPopover($event);">\n            <button ion-button icon-only>\n                <ion-icon name="add"></ion-icon>\n            </button>\n        </ion-buttons>\n    </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n    <img src="assets/imgs/other/setting_BG.jpg" alt="" class="one-way-bg">\n    <ion-list>\n        <ion-item>\n            <ion-thumbnail item-start (click)="gotoInfo(username);">\n                <img src="assets/imgs/other/default.png" *ngIf="!photo">\n                <img src="{{serverUrl}}/profile_imgs/{{photo}}" *ngIf="photo">\n            </ion-thumbnail>\n            <h2 (click)="gotoInfo(username);">{{realname}}</h2>\n            <p (click)="gotoInfo(username);">会员帐号: {{username}}</p>\n            <button ion-button clear item-end (click)="gotoMyQRCode()">\n              <img src="assets/imgs/other/default_qrcode.png" alt="" class="qr-code">\n            </button>\n        </ion-item>\n    </ion-list>\n    <ion-list>\n        <button ion-item class="download" (click)="gotoDownload();" *ngIf="curVersion!=\'\' && curVersion!=undefined">\n            <ion-icon name="download" item-start color="main"></ion-icon>\n            新版本 {{curVersion}}\n        </button>\n    </ion-list>\n    <ion-list>\n        <button ion-item (click)="gotoWallet();">\n            <ion-icon name="cash" item-start color="main"></ion-icon>\n            钱包\n        </button>\n    </ion-list>\n    <ion-list>\n        <button ion-item class="border-bottom" (click)="gotoLevel();">\n            <ion-icon name="stats" item-start color="main"></ion-icon>\n            等级 : {{levelname}}\n        </button>\n        <!-- <button ion-item class="border-bottom" (click)="gotoAds();">\n            <ion-icon name="logo-youtube" item-start color="main"></ion-icon>\n            我的广告\n        </button> -->\n        <button ion-item class="border-bottom" (click)="gotoCharge();">\n            <ion-icon name="logo-yen" item-start color="main"></ion-icon>\n            支付\n        </button>\n        <button ion-item class="border-bottom" (click)="gotoShopMole();">\n            <ion-icon name="cart" item-start color="main"></ion-icon>\n            我的商家\n        </button>\n        <button ion-item class="border-bottom" (click)="gotoMarket();">\n            <ion-icon name="globe" item-start color="main"></ion-icon>\n            我的交易所\n        </button>\n        <button ion-item class="border-bottom" (click)="gotoContact();">\n            <ion-icon name="contacts" item-start color="main"></ion-icon>\n            我的名片目录\n            <ion-badge color="danger" *ngIf="newChatCount != 0">{{newChatCount}}</ion-badge>\n        </button>\n        <button ion-item (click)="gotoGame();">\n            <ion-icon name="game-controller-b" item-start color="main"></ion-icon>\n            我的游戏\n        </button>\n    </ion-list>\n    <ion-list>\n        <button ion-item (click)="gotoSetting();">\n            <ion-icon name="settings" item-start color="main"></ion-icon>\n            设置\n        </button>\n    </ion-list>\n</ion-content>'/*ion-inline-end:"F:\OnSite\chol\uplus-app\src\pages\my\my.html"*/,
+            selector: 'page-my',template:/*ion-inline-start:"F:\OnSite\chol\uplus-app\src\pages\my\my.html"*/'<!--\n  Generated template for the MyPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n    <ion-navbar>\n        <ion-title>我的</ion-title>\n        <ion-buttons end>\n            <button ion-button icon-only (click)="GotoHelpPage();">\n                <ion-icon name="mail"></ion-icon>\n            </button>\n            <button ion-button icon-only (click)="presentPopover($event);">\n                <ion-icon name="add"></ion-icon>\n            </button>            \n        </ion-buttons>\n    </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n    <img src="assets/imgs/other/setting_BG.jpg" alt="" class="one-way-bg">\n    <ion-list>\n        <ion-item>\n            <ion-thumbnail item-start (click)="gotoInfo(username);">\n                <img src="assets/imgs/other/default.png" *ngIf="!photo">\n                <img src="{{serverUrl}}/profile_imgs/{{photo}}" *ngIf="photo">\n            </ion-thumbnail>\n            <h2 (click)="gotoInfo(username);">{{realname}}</h2>\n            <p (click)="gotoInfo(username);">会员帐号: {{username}}</p>\n            <button ion-button clear item-end (click)="gotoMyQRCode()">\n              <img src="assets/imgs/other/default_qrcode.png" alt="" class="qr-code">\n            </button>\n        </ion-item>\n    </ion-list>\n    <ion-list>\n        <button ion-item class="download" (click)="gotoDownload();" *ngIf="curVersion!=\'\' && curVersion!=undefined">\n            <ion-icon name="download" item-start color="main"></ion-icon>\n            新版本 {{curVersion}}\n        </button>\n    </ion-list>\n    <ion-list>\n        <button ion-item (click)="gotoWallet();">\n            <ion-icon name="cash" item-start ></ion-icon>\n            钱包\n        </button>\n    </ion-list>\n    <ion-list>\n        <button ion-item class="border-bottom" (click)="gotoLevel();">\n            <ion-icon name="stats" item-start></ion-icon>\n            等级 : {{levelname}}\n        </button>\n        <!-- <button ion-item class="border-bottom" (click)="gotoAds();">\n            <ion-icon name="logo-youtube" item-start color="main"></ion-icon>\n            我的广告\n        </button> -->\n        <button ion-item class="border-bottom" (click)="gotoCharge();">\n            <ion-icon name="logo-yen" item-start></ion-icon>\n            支付\n        </button>\n        <button ion-item class="border-bottom" (click)="gotoShopMole();">\n            <ion-icon name="cart" item-start></ion-icon>\n            我的商家\n        </button>\n        <button ion-item class="border-bottom" (click)="gotoMarket();">\n            <ion-icon name="globe" item-start></ion-icon>\n            我的交易所\n        </button>\n        <!--button ion-item class="border-bottom" (click)="gotoContact();">\n            <ion-icon name="contacts" item-start color="main"></ion-icon>\n            我的名片目录\n            <ion-badge color="danger" *ngIf="newChatCount != 0">{{newChatCount}}</ion-badge>\n        </button-->\n        <button ion-item (click)="gotoGame();">\n            <ion-icon name="game-controller-b" item-start></ion-icon>\n            我的游戏\n        </button>\n    </ion-list>\n    <ion-list>\n        <button ion-item (click)="gotoSetting();">\n            <ion-icon name="settings" item-start></ion-icon>\n            设置\n        </button>\n    </ion-list>\n</ion-content>'/*ion-inline-end:"F:\OnSite\chol\uplus-app\src\pages\my\my.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* NavParams */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["c" /* App */],
-            __WEBPACK_IMPORTED_MODULE_6__angular_http__["a" /* Http */],
+            __WEBPACK_IMPORTED_MODULE_5__angular_http__["a" /* Http */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* LoadingController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* PopoverController */]])
@@ -1676,704 +1821,13 @@ var MyPage = /** @class */ (function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MyContactListPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__my_friend_info_my_friend_info__ = __webpack_require__(227);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__my_contact_find_my_contact_find__ = __webpack_require__(57);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_http__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_map__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_map__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ionic_native_call_number__ = __webpack_require__(111);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_contact_popover_contact_popover__ = __webpack_require__(229);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-
-
-
-
-
-/**
- * Generated class for the MyContactListPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-var MyContactListPage = /** @class */ (function () {
-    function MyContactListPage(navCtrl, navParams, loadingCtrl, alertCtrl, http, app, popoverCtrl, callNumber) {
-        this.navCtrl = navCtrl;
-        this.navParams = navParams;
-        this.loadingCtrl = loadingCtrl;
-        this.alertCtrl = alertCtrl;
-        this.http = http;
-        this.app = app;
-        this.popoverCtrl = popoverCtrl;
-        this.callNumber = callNumber;
-        this.serverUrl = "http://unak.vip/uplus/Api/mobile";
-        this.my_contacts = [];
-        this.my_requests = "";
-        this.chatNoti = "";
-        this.notiData = [];
-    }
-    MyContactListPage.prototype.ionViewDidLoad = function () {
-    };
-    MyContactListPage.prototype.ionViewWillEnter = function () {
-        var _this = this;
-        this.my_contacts = [];
-        this.my_requests = [];
-        var loading = this.loadingCtrl.create();
-        loading.present();
-        var postData = {
-            action: 'get',
-            uid: localStorage.getItem('uid')
-        };
-        this.http.post(this.serverUrl + "/contact_list.php", JSON.stringify(postData))
-            .map(function (res) { return res.json(); })
-            .subscribe(function (data) {
-            loading.dismiss();
-            if (data.error == 1) {
-                if (data.data != null) {
-                    _this.my_contacts = data.data;
-                }
-                _this.my_requests = data.request;
-            }
-            else {
-                loading.dismiss();
-                _this.customAlert('警告', '网络失败!');
-            }
-        }, function (err) {
-            loading.dismiss();
-        });
-        this.getChatNotiy();
-        // let __this = this;
-        // this.chatNoti = setInterval(function() {
-        //   __this.getChatNotiy();
-        // }, 1000);
-    };
-    MyContactListPage.prototype.ionViewWillLeave = function () {
-        // clearInterval(this.chatNoti);
-    };
-    MyContactListPage.prototype.getChatNotiy = function () {
-        var _this = this;
-        var postData = {
-            uid: localStorage.getItem('uid')
-        };
-        this.http.post(this.serverUrl + "/chat_notify.php", JSON.stringify(postData))
-            .map(function (res) { return res.json(); })
-            .subscribe(function (data) {
-            _this.notiData = data.list;
-        }, function (err) {
-        });
-    };
-    MyContactListPage.prototype.gotoFriendInfo = function (c_id, nickname) {
-        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_2__my_friend_info_my_friend_info__["a" /* MyFriendInfoPage */], { cID: c_id, nick: nickname });
-    };
-    MyContactListPage.prototype.rejectRequest = function (id) {
-        var _this = this;
-        var postData = {
-            action: 'reject',
-            itemID: id
-        };
-        this.http.post(this.serverUrl + "/contact_list.php", JSON.stringify(postData))
-            .map(function (res) { return res.json(); })
-            .subscribe(function (data) {
-            if (data.error == 1) {
-                _this.ionViewWillEnter();
-            }
-            else {
-                _this.customAlert('警告', '网络失败!');
-            }
-        }, function (err) {
-        });
-    };
-    MyContactListPage.prototype.acceptRequest = function (id) {
-        var _this = this;
-        var postData = {
-            action: 'add',
-            itemID: id
-        };
-        this.http.post(this.serverUrl + "/contact_list.php", JSON.stringify(postData))
-            .map(function (res) { return res.json(); })
-            .subscribe(function (data) {
-            if (data.error == 1) {
-                _this.ionViewWillEnter();
-            }
-            else {
-                _this.customAlert('警告', '网络失败!');
-            }
-        }, function (err) {
-        });
-    };
-    MyContactListPage.prototype.callContact = function (phoneNumber) {
-        this.callNumber.callNumber(phoneNumber, true)
-            .then(function (res) {
-        })
-            .catch(function (err) {
-        });
-    };
-    MyContactListPage.prototype.deleteContact = function (id) {
-        var _this = this;
-        this.alertCtrl.create({
-            title: "通知",
-            message: "确定删除吗？",
-            buttons: [
-                {
-                    text: "是",
-                    handler: function () {
-                        var postData = {
-                            action: 'delete',
-                            itemID: id
-                        };
-                        _this.http.post(_this.serverUrl + "/contact_list.php", JSON.stringify(postData))
-                            .map(function (res) { return res.json(); })
-                            .subscribe(function (data) {
-                            if (data.error == 1) {
-                                _this.ionViewWillEnter();
-                            }
-                            else {
-                                _this.customAlert('警告', '网络失败!');
-                            }
-                        }, function (err) {
-                        });
-                    }
-                },
-                {
-                    text: "不",
-                    handler: function () { }
-                }
-            ]
-        }).present();
-    };
-    MyContactListPage.prototype.customAlert = function (title, message) {
-        this.alertCtrl.create({
-            title: title,
-            message: message,
-            buttons: ["确定"]
-        }).present();
-    };
-    MyContactListPage.prototype.presentPopover = function (myEvent) {
-        var _this = this;
-        var popover = this.popoverCtrl.create(__WEBPACK_IMPORTED_MODULE_7__components_contact_popover_contact_popover__["a" /* ContactPopoverComponent */]);
-        popover.present({
-            ev: myEvent
-        });
-        popover.onDidDismiss(function (data) {
-            switch (data) {
-                case 'new_contact':
-                    _this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_3__my_contact_find_my_contact_find__["a" /* MyContactFindPage */]);
-                    break;
-                case 'single-chat':
-                    _this.customAlert("通知", "暂不支持此功能");
-                    break;
-                case 'group-chat':
-                    _this.customAlert("通知", "暂不支持此功能");
-                    break;
-                default:
-                    break;
-            }
-        });
-    };
-    MyContactListPage.prototype.changeNickname = function (id, nickname) {
-        var _this = this;
-        this.alertCtrl.create({
-            title: "NickName",
-            inputs: [
-                {
-                    name: 'field',
-                    placeholder: "NickName",
-                    type: "text",
-                    value: nickname
-                },
-            ],
-            buttons: [
-                {
-                    text: '取消',
-                    handler: function (data) {
-                    }
-                },
-                {
-                    text: '确定',
-                    handler: function (data) {
-                        var newNick = data.field;
-                        var postData = {
-                            uid: localStorage.getItem('uid'),
-                            cid: id,
-                            nick: newNick,
-                            action: 'nick_change'
-                        };
-                        _this.http.post(_this.serverUrl + "/contact_list.php", JSON.stringify(postData))
-                            .map(function (res) { return res.json(); })
-                            .subscribe(function (data) {
-                            _this.ionViewWillEnter();
-                        }, function (err) {
-                        });
-                    }
-                }
-            ]
-        }).present();
-    };
-    MyContactListPage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-my-contact-list',template:/*ion-inline-start:"F:\OnSite\chol\uplus-app\src\pages\my-contact-list\my-contact-list.html"*/'<ion-header>\n    <ion-navbar>\n        <ion-title>我的名片目录</ion-title>\n        <ion-buttons end (click)="presentPopover($event);">\n            <button ion-button icon-only>\n              <ion-icon name="person-add"></ion-icon>\n            </button>\n        </ion-buttons>\n    </ion-navbar>\n</ion-header>\n\n\n<ion-content padding>\n    <img src="assets/imgs/other/setting_BG.jpg" alt="" class="one-way-bg">\n    <ion-list *ngIf="my_requests.length">\n        <ion-list-header>\n            新名片\n        </ion-list-header>\n        <ion-item-sliding *ngFor="let person of my_requests">\n            <ion-item>\n                <ion-thumbnail item-start>\n                    <img src="assets/imgs/other/default.png" *ngIf="!person.photo">\n                    <img src="{{person.photo}}" *ngIf="person.photo">\n                </ion-thumbnail>\n                <h2>{{person.realname}}</h2>\n                <p>会员帐号： {{person.username}}</p>\n                <button ion-button clear item-end (click)="acceptRequest(person.id);">同意</button>\n            </ion-item>\n            <ion-item-options side="right">\n                <button ion-button color="danger" (click)="rejectRequest(person.id);">\n                    <!-- <ion-icon name="trash"></ion-icon> -->\n                    保留\n                </button>\n            </ion-item-options>\n        </ion-item-sliding>\n    </ion-list>\n\n    <ion-list>\n        <ion-list-header>\n            我的名片\n        </ion-list-header>\n        <ion-item *ngIf="my_contacts.length == 0">\n            <p style="text-align: center;">没有名片</p>\n        </ion-item>\n        <ion-item-sliding *ngFor="let user of my_contacts">\n            <ion-item (click)="gotoFriendInfo(user.username, user.nickname);">\n                <ion-avatar item-start>\n                    <img src="assets/imgs/other/default.png" *ngIf="!user.photo">\n                    <img src="{{serverUrl}}/profile_imgs/{{user.photo}}" *ngIf="user.photo">\n                </ion-avatar>\n                <h2 *ngIf="user.nickname">{{user.nickname}}</h2>\n                <h2 *ngIf="!user.nickname">{{user.realname}}</h2>\n                <h3>会员帐号： {{user.username}}</h3>\n                <ion-badge color="danger" *ngIf="notiData[user.username] != 0">{{notiData[user.username]}}</ion-badge>\n                <!-- <p>I\'ve had a pretty messed up day. If we just...</p> -->\n            </ion-item>\n            <ion-item-options side="right">\n                <button ion-button color="secondary" (click)="changeNickname(user.id, user.nickname);">\n                    <ion-icon name="document"></ion-icon>\n                    昵称输入\n                </button>\n                <button ion-button color="danger" (click)="deleteContact(user.id);">\n                    <ion-icon name="trash"></ion-icon>\n                    删除\n                </button>\n            </ion-item-options>\n        </ion-item-sliding>\n    </ion-list>\n</ion-content>'/*ion-inline-end:"F:\OnSite\chol\uplus-app\src\pages\my-contact-list\my-contact-list.html"*/,
-        }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* LoadingController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */],
-            __WEBPACK_IMPORTED_MODULE_4__angular_http__["a" /* Http */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["c" /* App */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* PopoverController */],
-            __WEBPACK_IMPORTED_MODULE_6__ionic_native_call_number__["a" /* CallNumber */]])
-    ], MyContactListPage);
-    return MyContactListPage;
-}());
-
-//# sourceMappingURL=my-contact-list.js.map
-
-/***/ }),
-
-/***/ 227:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MyFriendInfoPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_http__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_call_number__ = __webpack_require__(111);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__chat_chat__ = __webpack_require__(228);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-
-
-
-/**
- * Generated class for the MyFriendInfoPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-var MyFriendInfoPage = /** @class */ (function () {
-    function MyFriendInfoPage(navCtrl, navParams, http, loadingCtrl, callNumber) {
-        this.navCtrl = navCtrl;
-        this.navParams = navParams;
-        this.http = http;
-        this.loadingCtrl = loadingCtrl;
-        this.callNumber = callNumber;
-        this.serverUrl = "http://unak.vip/uplus/Api/mobile";
-        this.friendData = "";
-        this.photo = "";
-        this.realname = "";
-        this.nickname = "";
-        this.other_cate = [];
-    }
-    MyFriendInfoPage.prototype.ionViewDidLoad = function () {
-    };
-    MyFriendInfoPage.prototype.ionViewWillEnter = function () {
-        var _this = this;
-        var friendID = this.navParams.get('cID');
-        this.nickname = this.navParams.get('nick');
-        var postData = {
-            uid: friendID,
-            action: 'get'
-        };
-        var loading = this.loadingCtrl.create();
-        loading.present();
-        this.http.post(this.serverUrl + "/get_user_mingpian.php", JSON.stringify(postData))
-            .map(function (res) { return res.json(); })
-            .subscribe(function (data) {
-            loading.dismiss();
-            if (data.error == 1) {
-                _this.photo = data.data.photo;
-                _this.realname = data.data.realname;
-                if (data.data.mingpian) {
-                    _this.friendData = data.data.mingpian;
-                    _this.other_cate = _this.friendData.other_cate.split("--");
-                }
-            }
-            else {
-                _this.navCtrl.pop();
-            }
-        }, function (err) {
-            loading.dismiss();
-        });
-    };
-    MyFriendInfoPage.prototype.callFriend = function (phoneNumber) {
-        this.callNumber.callNumber(phoneNumber, true)
-            .then(function (res) {
-        })
-            .catch(function (err) {
-        });
-    };
-    MyFriendInfoPage.prototype.chatWithFriend = function () {
-        var cID = this.friendData.username;
-        var cName = (this.nickname) ? this.nickname : this.realname;
-        var cPhoto = (this.photo) ? this.serverUrl + "/profile_imgs/" + this.photo : "assets/imgs/other/default.png";
-        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_5__chat_chat__["a" /* ChatPage */], { cid: cID, cname: cName, cphoto: cPhoto });
-    };
-    MyFriendInfoPage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-my-friend-info',template:/*ion-inline-start:"F:\OnSite\chol\uplus-app\src\pages\my-friend-info\my-friend-info.html"*/'<!--\n  Generated template for the MyFriendInfoPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n    <ion-navbar>\n        <ion-title></ion-title>\n        <ion-buttons end (click)="chatWithFriend()">\n            <button ion-button icon-only>\n          <ion-icon name="chatbubbles"></ion-icon>\n        </button>\n        </ion-buttons>\n    </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n    <img src="assets/imgs/other/setting_BG.jpg" alt="" class="one-way-bg">\n    <ion-card class="card{{friendData.card_style}}">\n        <div class="cover-layer"></div>\n        <div class="card-top{{friendData.card_style}}"></div>\n        <div class="card-bottom{{friendData.card_style}}"></div>\n        <ion-card-content>\n            <ion-grid>\n                <ion-row>\n                    <ion-col>\n                        <h1>{{friendData.c_name}}</h1>\n                    </ion-col>\n                </ion-row>\n                <ion-row>\n                    <ion-col col-6 class="user-img">\n                        <img src="assets/imgs/other/default.png" *ngIf="!photo">\n                        <img src="{{serverUrl}}/profile_imgs/{{photo}}" *ngIf="photo">\n                        <h2 style="color: #ecdd44 !important; font-weight: 800 !important;" *ngIf="nickname">{{nickname}}</h2>\n                        <h2 style="color: #ecdd44 !important; font-weight: 800 !important;" *ngIf="!nickname">{{realname}}</h2>\n                    </ion-col>\n                    <ion-col col-6>\n                        <h2>{{realname}}</h2>\n                        <h3>{{friendData.job_cate}}</h3>\n                        <button ion-button icon-start small color="light" clear *ngIf="friendData.mobile1" (click)="callFriend(friendData.mobile1)">\n                            <ion-icon name="call"></ion-icon>\n                            {{friendData.mobile1}}\n                        </button>\n                        <button ion-button icon-start small color="light" clear *ngIf="friendData.mobile2" (click)="callFriend(friendData.mobile2)">\n                            <ion-icon name="call"></ion-icon>\n                            {{friendData.mobile2}}\n                        </button>\n                        <button ion-button icon-start small color="light" clear *ngIf="friendData.mobile3" (click)="callFriend(friendData.mobile3)">\n                            <ion-icon name="call"></ion-icon>\n                            {{friendData.mobile3}}\n                        </button>\n                        <button ion-button icon-start small color="light" clear *ngIf="friendData.phone1" (click)="callFriend(friendData.phone1)">\n                            <ion-icon name="phone-portrait"></ion-icon>\n                            {{friendData.phone1}}\n                        </button>\n                        <button ion-button icon-start small color="light" clear *ngIf="friendData.phone2" (click)="callFriend(friendData.phone2)">\n                            <ion-icon name="phone-portrait"></ion-icon>\n                            {{friendData.phone2}}\n                        </button>\n                        <button ion-button icon-start small color="light" clear *ngIf="friendData.phone3" (click)="callFriend(friendData.phone3)">\n                            <ion-icon name="phone-portrait"></ion-icon>\n                            {{friendData.phone3}}\n                        </button>\n                        <!-- <p *ngFor="let cate of other_cate; let nIdx = index"><u>其他社会职务{{nIdx + 1}}:</u><br>{{cate}}</p> -->\n                        <!-- <p *ngIf="friendData.other_cate"><u>其他社会职务:</u></p>\n                        <p *ngIf="friendData.other_cate">{{friendData.other_cate}}</p> -->\n                    </ion-col>\n                </ion-row>\n                <ion-row>\n                    <ion-col>\n                        <p *ngFor="let cate of other_cate; let nIdx = index"><u>其他社会职务{{nIdx + 1}}: </u>{{cate}}</p>\n                    </ion-col>\n                </ion-row>\n                <ion-row>\n                    <ion-col *ngIf="friendData.job_desc">\n                        <p><u>社会贡献:</u></p>\n                        <p>{{friendData.job_desc}}</p>\n                    </ion-col>\n                </ion-row>\n                <ion-row>\n                    <ion-col>\n                        <p *ngIf="friendData.c_address"><u>地址:</u> {{friendData.c_address}}</p>\n                        <p *ngIf="friendData.email"><u>邮箱:</u> {{friendData.email}}</p>\n                        <p *ngIf="friendData.homepage"><u>网址:</u> {{friendData.homepage}}</p>\n                    </ion-col>\n                </ion-row>\n            </ion-grid>\n        </ion-card-content>\n        <!-- <ion-row>\n            <ion-col>\n                <button ion-button icon-start clear small (click)="callFriend(friendData.mobile)">\n                    <ion-icon name="call"></ion-icon>\n                    <div>{{friendData.mobile}}</div>\n                </button>\n            </ion-col>\n        </ion-row> -->\n    </ion-card>\n</ion-content>'/*ion-inline-end:"F:\OnSite\chol\uplus-app\src\pages\my-friend-info\my-friend-info.html"*/,
-        }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_2__angular_http__["a" /* Http */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* LoadingController */],
-            __WEBPACK_IMPORTED_MODULE_4__ionic_native_call_number__["a" /* CallNumber */]])
-    ], MyFriendInfoPage);
-    return MyFriendInfoPage;
-}());
-
-//# sourceMappingURL=my-friend-info.js.map
-
-/***/ }),
-
-/***/ 228:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ChatPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_http__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-
-
-/**
- * Generated class for the ChatPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-var ChatPage = /** @class */ (function () {
-    function ChatPage(navParams, navCtrl, 
-        // private chatService: ChatService,
-        http, events) {
-        this.navCtrl = navCtrl;
-        this.http = http;
-        this.events = events;
-        this.msgList = [];
-        this.editorMsg = '';
-        this.showEmojiPicker = false;
-        this.serverUrl = "http://unak.vip/uplus/Api/mobile";
-        this.runtime = "";
-        // Get the navParams toUserId parameter
-        this.toUser = {
-            id: navParams.get('cid'),
-            name: navParams.get('cname'),
-            avatar: navParams.get('cphoto')
-        };
-        // Get mock user information
-        var userInfo = localStorage.getItem('infoData');
-        if (userInfo) {
-            var userData = JSON.parse(userInfo);
-            var uPhoto = (userData.photo) ? this.serverUrl + "/profile_imgs/" + userData.photo : "assets/imgs/other/default.png";
-            this.user = {
-                id: userData.uid,
-                name: userData.realname,
-                avatar: uPhoto
-            };
-        }
-    }
-    ChatPage.prototype.ionViewWillLeave = function () {
-        // unsubscribe
-        clearInterval(this.runtime);
-        this.events.unsubscribe('chat:received');
-    };
-    ChatPage.prototype.ionViewDidEnter = function () {
-        var _this = this;
-        //get message list
-        this.getMsg();
-        // Subscribe to received  new message events
-        this.events.subscribe('chat:received', function (msg) {
-            _this.pushNewMsg(msg);
-        });
-        var __this = this;
-        this.runtime = setInterval(function () {
-            __this.getNewMessageList();
-        }, 1000);
-    };
-    ChatPage.prototype.onFocus = function () {
-        this.showEmojiPicker = false;
-        this.content.resize();
-        this.scrollToBottom();
-    };
-    ChatPage.prototype.switchEmojiPicker = function () {
-        this.showEmojiPicker = !this.showEmojiPicker;
-        if (!this.showEmojiPicker) {
-            this.focus();
-        }
-        else {
-            this.setTextareaScroll();
-        }
-        this.content.resize();
-        this.scrollToBottom();
-    };
-    ChatPage.prototype.getMsg = function () {
-        var _this = this;
-        var list = [];
-        list = this.getMsgList();
-        if (list.length > 0) {
-            for (var i = 0; i < list.length; i++) {
-                this.msgList.push(list[i]);
-            }
-            this.scrollToBottom();
-        }
-        else {
-            var postData = {
-                userId: this.user.id,
-                toUserId: this.toUser.id
-            };
-            this.http.post(this.serverUrl + "/chat_get_first.php", JSON.stringify(postData))
-                .map(function (res) { return res.json(); })
-                .subscribe(function (data) {
-                var tmp = data.list;
-                for (var n = 0; n < tmp.length; n++) {
-                    var mockMsg = {
-                        messageId: tmp[n].time,
-                        userId: tmp[n].sender,
-                        userName: (tmp[n].sender == _this.user.id) ? _this.user.name : _this.toUser.name,
-                        userAvatar: (tmp[n].sender == _this.user.id) ? _this.user.avatar : _this.toUser.avatar,
-                        toUserId: tmp[n].receiver,
-                        time: tmp[n].time,
-                        message: tmp[n].message,
-                        status: 'success'
-                    };
-                    _this.msgList.push(mockMsg);
-                }
-                _this.scrollToBottom();
-            }, function (err) {
-            });
-        }
-    };
-    /**
-     * @name sendMsg
-     */
-    ChatPage.prototype.sendMsg = function () {
-        if (!this.editorMsg.trim())
-            return;
-        // Mock message
-        var id = Date.now().toString();
-        var newMsg = {
-            messageId: Date.now().toString(),
-            userId: this.user.id,
-            userName: this.user.name,
-            userAvatar: this.user.avatar,
-            toUserId: this.toUser.id,
-            time: Date.now(),
-            message: this.editorMsg,
-            status: 'success'
-        };
-        this.pushNewMsg(newMsg);
-        this.editorMsg = '';
-        if (!this.showEmojiPicker) {
-            this.focus();
-        }
-        this.http.post(this.serverUrl + "/chat_send.php", JSON.stringify(newMsg))
-            .map(function (res) { return res.json(); })
-            .subscribe(function (data) { }, function (err) { });
-        // this.chatService.sendMsg(newMsg)
-        // .then(() => {
-        //   let index = this.getMsgIndexById(id);
-        //   if (index !== -1) {
-        //     this.msgList[index].status = 'success';
-        //   }
-        // })
-    };
-    /**
-     * @name pushNewMsg
-     * @param msg
-     */
-    ChatPage.prototype.pushNewMsg = function (msg) {
-        var userId = this.user.id, toUserId = this.toUser.id;
-        // Verify user relationships
-        if (msg.userId === userId && msg.toUserId === toUserId) {
-            this.msgList.push(msg);
-        }
-        else if (msg.toUserId === userId && msg.userId === toUserId) {
-            this.msgList.push(msg);
-        }
-        localStorage.setItem(this.toUser.id, JSON.stringify(this.msgList));
-        this.scrollToBottom();
-    };
-    ChatPage.prototype.getMsgIndexById = function (id) {
-        return this.msgList.findIndex(function (e) { return e.messageId === id; });
-    };
-    ChatPage.prototype.scrollToBottom = function () {
-        var _this = this;
-        setTimeout(function () {
-            if (_this.content.scrollToBottom) {
-                _this.content.scrollToBottom();
-            }
-        }, 400);
-    };
-    ChatPage.prototype.focus = function () {
-        if (this.messageInput && this.messageInput.nativeElement) {
-            this.messageInput.nativeElement.focus();
-        }
-    };
-    ChatPage.prototype.setTextareaScroll = function () {
-        var textarea = this.messageInput.nativeElement;
-        textarea.scrollTop = textarea.scrollHeight;
-    };
-    ChatPage.prototype.getMsgList = function () {
-        var data = localStorage.getItem(this.toUser.id);
-        var msgList;
-        if (data == "" || data == null || data == undefined) {
-            msgList = [];
-        }
-        else {
-            msgList = JSON.parse(data);
-        }
-        return msgList;
-    };
-    ChatPage.prototype.getNewMessageList = function () {
-        var _this = this;
-        var lastTime = localStorage.getItem(this.toUser.id + "_last");
-        var postData = {
-            'userId': this.user.id,
-            'toUserId': this.toUser.id,
-            'time': lastTime,
-        };
-        this.http.post(this.serverUrl + "/chat_get.php", JSON.stringify(postData))
-            .map(function (res) { return res.json(); })
-            .subscribe(function (data) {
-            var tmp = data.list;
-            for (var n = 0; n < tmp.length; n++) {
-                var mockMsg = {
-                    messageId: tmp[n].time,
-                    userId: _this.toUser.id,
-                    userName: _this.toUser.name,
-                    userAvatar: _this.toUser.avatar,
-                    toUserId: _this.user.id,
-                    time: tmp[n].time,
-                    message: tmp[n].message,
-                    status: 'success'
-                };
-                _this.events.publish('chat:received', mockMsg, Date.now());
-            }
-            if (tmp.length > 0) {
-                localStorage.setItem(_this.toUser.id + "_last", tmp[tmp.length - 1].time);
-            }
-        }, function (err) {
-        });
-    };
-    __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* ViewChild */])(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* Content */]),
-        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* Content */])
-    ], ChatPage.prototype, "content", void 0);
-    __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* ViewChild */])('chat_input'),
-        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */])
-    ], ChatPage.prototype, "messageInput", void 0);
-    ChatPage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-chat',template:/*ion-inline-start:"F:\OnSite\chol\uplus-app\src\pages\chat\chat.html"*/'<ion-header>\n\n    <ion-navbar>\n        <ion-title>{{toUser.name}}</ion-title>\n    </ion-navbar>\n\n</ion-header>\n\n<ion-content>\n\n    <div class="message-wrap">\n\n        <div *ngFor="let msg of msgList" class="message" [class.left]=" msg.userId === toUser.id " [class.right]=" msg.userId === user.id ">\n            <img class="user-img" [src]="msg.userAvatar" alt="" src="">\n            <ion-spinner name="dots" *ngIf="msg.status === \'pending\'"></ion-spinner>\n            <div class="msg-detail">\n                <div class="msg-info">\n                    <p>\n                        {{msg.userName}}&nbsp;&nbsp;&nbsp;\n                        <!-- {{msg.time | relativeTime}} -->\n                    </p>\n                </div>\n                <div class="msg-content">\n                    <span class="triangle"></span>\n                    <p class="line-breaker ">{{msg.message}}</p>\n                </div>\n            </div>\n        </div>\n\n    </div>\n\n</ion-content>\n\n<ion-footer no-border [style.height]="showEmojiPicker ? \'255px\' : \'55px\'">\n    <div class="input-wrap">\n        <button ion-button clear icon-only item-right (click)="switchEmojiPicker()">\n      <ion-icon name="md-happy"></ion-icon>\n    </button>\n        <textarea #chat_input placeholder="Text Input" [(ngModel)]="editorMsg" (keyup.enter)="sendMsg()" (focusin)="onFocus()"></textarea>\n        <button ion-button clear icon-only item-right (click)="sendMsg()">\n      <ion-icon name="ios-send" ios="ios-send" md="md-send"></ion-icon>\n    </button>\n    </div>\n    <emoji-picker [(ngModel)]="editorMsg"></emoji-picker>\n</ion-footer>'/*ion-inline-end:"F:\OnSite\chol\uplus-app\src\pages\chat\chat.html"*/,
-        }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_2__angular_http__["a" /* Http */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* Events */]])
-    ], ChatPage);
-    return ChatPage;
-}());
-
-//# sourceMappingURL=chat.js.map
-
-/***/ }),
-
-/***/ 229:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ContactPopoverComponent; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(4);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-/**
- * Generated class for the ContactPopoverComponent component.
- *
- * See https://angular.io/api/core/Component for more info on Angular
- * Components.
- */
-var ContactPopoverComponent = /** @class */ (function () {
-    function ContactPopoverComponent(viewCtrl) {
-        this.viewCtrl = viewCtrl;
-        console.log('Hello ContactPopoverComponent Component');
-        this.text = 'Hello World';
-    }
-    ContactPopoverComponent.prototype.itemClick = function (item) {
-        this.viewCtrl.dismiss(item);
-    };
-    ContactPopoverComponent = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'contact-popover',template:/*ion-inline-start:"F:\OnSite\chol\uplus-app\src\components\contact-popover\contact-popover.html"*/'<ion-list>\n    <ion-item (click)="itemClick(\'new_contact\');" class="border-bottom">\n        <ion-icon name="person-add" item-start></ion-icon>\n        新名片\n    </ion-item>\n    <ion-item (click)="itemClick(\'single-chat\');" class="border-bottom">\n        <ion-icon name="chatbubbles" item-start></ion-icon>\n        聊天窗口\n    </ion-item>\n    <ion-item (click)="itemClick(\'group-chat\');">\n        <ion-icon name="logo-snapchat" item-start></ion-icon>\n        群聊天\n    </ion-item>\n</ion-list>'/*ion-inline-end:"F:\OnSite\chol\uplus-app\src\components\contact-popover\contact-popover.html"*/
-        }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["s" /* ViewController */]])
-    ], ContactPopoverComponent);
-    return ContactPopoverComponent;
-}());
-
-//# sourceMappingURL=contact-popover.js.map
-
-/***/ }),
-
-/***/ 230:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MyWalletPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__my_wallet_price_my_wallet_price__ = __webpack_require__(231);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__my_wallet_uplus_my_wallet_uplus__ = __webpack_require__(232);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__my_wallet_coin_my_wallet_coin__ = __webpack_require__(234);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__my_wallet_charge_my_wallet_charge__ = __webpack_require__(365);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__my_wallet_price_my_wallet_price__ = __webpack_require__(227);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__my_wallet_uplus_my_wallet_uplus__ = __webpack_require__(228);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__my_wallet_coin_my_wallet_coin__ = __webpack_require__(230);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__my_wallet_charge_my_wallet_charge__ = __webpack_require__(361);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2418,7 +1872,7 @@ var MyWalletPage = /** @class */ (function () {
     ], MyWalletPage.prototype, "tabRef", void 0);
     MyWalletPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-my-wallet',template:/*ion-inline-start:"F:\OnSite\chol\uplus-app\src\pages\my-wallet\my-wallet.html"*/'<ion-tabs #myTabs>\n    <ion-tab tabIcon="logo-bitcoin" tabTitle="钱途加密货币" [root]="tab1"></ion-tab>\n    <ion-tab tabIcon="logo-yen" tabTitle="现金" [root]="tab2"></ion-tab>\n    <ion-tab tabIcon="logo-chrome" tabTitle="钱途" [root]="tab3"></ion-tab>\n    <!-- <ion-tab tabIcon="cart" tabTitle="商家现金" [root]="tab4" *ngIf="rank >= 5"></ion-tab> -->\n    <ion-tab tabIcon="sync" tabTitle="充值目录" [root]="tab4"></ion-tab>\n</ion-tabs>'/*ion-inline-end:"F:\OnSite\chol\uplus-app\src\pages\my-wallet\my-wallet.html"*/,
+            selector: 'page-my-wallet',template:/*ion-inline-start:"F:\OnSite\chol\uplus-app\src\pages\my-wallet\my-wallet.html"*/'<ion-tabs #myTabs>\n    <ion-tab tabIcon="logo-bitcoin" tabTitle="广告豆" [root]="tab1"></ion-tab>    \n    <ion-tab tabIcon="logo-yen" tabTitle="金豆" [root]="tab2"></ion-tab>\n    <ion-tab tabIcon="logo-chrome" tabTitle="现金" [root]="tab3"></ion-tab>    \n    <!-- <ion-tab tabIcon="cart" tabTitle="商家现金" [root]="tab4" *ngIf="rank >= 5"></ion-tab> -->\n    <ion-tab tabIcon="sync" tabTitle="充值目录" [root]="tab4"></ion-tab>\n</ion-tabs>'/*ion-inline-end:"F:\OnSite\chol\uplus-app\src\pages\my-wallet\my-wallet.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* NavParams */]])
     ], MyWalletPage);
@@ -2429,7 +1883,7 @@ var MyWalletPage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 231:
+/***/ 227:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2553,7 +2007,7 @@ var MyWalletPricePage = /** @class */ (function () {
     };
     MyWalletPricePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-my-wallet-price',template:/*ion-inline-start:"F:\OnSite\chol\uplus-app\src\pages\my-wallet-price\my-wallet-price.html"*/'<!--\n  Generated template for the MyWalletPricePage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n    <ion-navbar>\n        <ion-buttons start class="back-button-custom">\n            <button ion-button icon-only (click)="gotoBack()">\n              <ion-icon name="arrow-back"></ion-icon>\n            </button>\n        </ion-buttons>\n        <ion-title>现金包</ion-title>\n        <ion-buttons end>\n            <button ion-button icon-only (click)="gotoOutPut()">\n                <ion-icon name="add"></ion-icon>\n            </button>\n        </ion-buttons>\n    </ion-navbar>\n</ion-header>\n\n\n<ion-content padding>\n    <img src="assets/imgs/other/setting_BG.jpg" alt="" class="one-way-bg">\n    <ion-item class="value-area">\n        <p>现金 : ¥{{n_price}}</p>\n        <!-- <p style="font-size: 18px; color:#848484;">(转换加密货币中 : ¥{{price}})</p> -->\n        <p>已提现 : ¥{{out_price}}</p>\n    </ion-item>\n    <ion-list>\n        <ion-item *ngFor="let item of historyData">\n            <ion-label class="value-item">{{item.state}} {{item.price}}</ion-label>\n            <ion-label class="value-item-time">{{item.date}}<br>{{item.kind}}</ion-label>\n        </ion-item>\n    </ion-list>\n</ion-content>'/*ion-inline-end:"F:\OnSite\chol\uplus-app\src\pages\my-wallet-price\my-wallet-price.html"*/,
+            selector: 'page-my-wallet-price',template:/*ion-inline-start:"F:\OnSite\chol\uplus-app\src\pages\my-wallet-price\my-wallet-price.html"*/'<!--\n  Generated template for the MyWalletPricePage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n    <ion-navbar>\n        <ion-buttons start class="back-button-custom">\n            <button ion-button icon-only (click)="gotoBack()">\n              <ion-icon name="arrow-back"></ion-icon>\n            </button>\n        </ion-buttons>\n        <ion-title>金豆</ion-title>\n        <ion-buttons end>\n            <button ion-button icon-only (click)="gotoOutPut()">\n                <ion-icon name="add"></ion-icon>\n            </button>\n        </ion-buttons>\n    </ion-navbar>\n</ion-header>\n\n\n<ion-content padding>\n    <img src="assets/imgs/other/setting_BG.jpg" alt="" class="one-way-bg">\n    <ion-item class="value-area">\n        <p>现金 : ¥{{n_price}}</p>\n        <!-- <p style="font-size: 18px; color:#848484;">(转换加密货币中 : ¥{{price}})</p> -->\n        <p>已提现 : ¥{{out_price}}</p>\n    </ion-item>\n    <ion-list>\n        <ion-item *ngFor="let item of historyData">\n            <ion-label class="value-item">{{item.state}} {{item.price}}</ion-label>\n            <ion-label class="value-item-time">{{item.date}}<br>{{item.kind}}</ion-label>\n        </ion-item>\n    </ion-list>\n</ion-content>'/*ion-inline-end:"F:\OnSite\chol\uplus-app\src\pages\my-wallet-price\my-wallet-price.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* NavParams */],
@@ -2569,7 +2023,7 @@ var MyWalletPricePage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 232:
+/***/ 228:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2580,7 +2034,7 @@ var MyWalletPricePage = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_http__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_map__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_map__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__my_wallet_uplus_out_my_wallet_uplus_out__ = __webpack_require__(233);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__my_wallet_uplus_out_my_wallet_uplus_out__ = __webpack_require__(229);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2695,7 +2149,7 @@ var MyWalletUplusPage = /** @class */ (function () {
     };
     MyWalletUplusPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-my-wallet-uplus',template:/*ion-inline-start:"F:\OnSite\chol\uplus-app\src\pages\my-wallet-uplus\my-wallet-uplus.html"*/'<!--\n  Generated template for the MyWalletUplusPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n    <ion-navbar>\n        <ion-buttons start class="back-button-custom">\n            <button ion-button icon-only (click)="gotoBack()">\n                <ion-icon name="arrow-back"></ion-icon>\n            </button>\n        </ion-buttons>\n        <ion-title>钱途包</ion-title>\n        <!-- <ion-buttons end>\n            <button ion-button icon-only (click)="gotoOutPut()">\n                <ion-icon name="add"></ion-icon>\n            </button>\n        </ion-buttons> -->\n    </ion-navbar>\n</ion-header>\n\n\n<ion-content padding>\n    <img src="assets/imgs/other/setting_BG.jpg" alt="" class="one-way-bg">\n    <ion-item class="value-area">\n        <!-- <p *ngIf="uplus != \'0.00\'">钱途 : {{uplus}}</p> -->\n        <p>POINT : {{n_uplus}}</p>\n    </ion-item>\n    <ion-list>\n        <ion-item *ngFor="let item of historyData">\n            <ion-label class="value-item">{{item.state}} {{item.uplus}}</ion-label>\n            <ion-label class="value-item-time">{{item.date}}<br>{{item.kind}}</ion-label>\n        </ion-item>\n    </ion-list>\n</ion-content>'/*ion-inline-end:"F:\OnSite\chol\uplus-app\src\pages\my-wallet-uplus\my-wallet-uplus.html"*/,
+            selector: 'page-my-wallet-uplus',template:/*ion-inline-start:"F:\OnSite\chol\uplus-app\src\pages\my-wallet-uplus\my-wallet-uplus.html"*/'<!--\n  Generated template for the MyWalletUplusPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n    <ion-navbar>\n        <ion-buttons start class="back-button-custom">\n            <button ion-button icon-only (click)="gotoBack()">\n                <ion-icon name="arrow-back"></ion-icon>\n            </button>\n        </ion-buttons>\n        <ion-title>现金包</ion-title>\n        <!-- <ion-buttons end>\n            <button ion-button icon-only (click)="gotoOutPut()">\n                <ion-icon name="add"></ion-icon>\n            </button>\n        </ion-buttons> -->\n    </ion-navbar>\n</ion-header>\n\n\n<ion-content padding>\n    <img src="assets/imgs/other/setting_BG.jpg" alt="" class="one-way-bg">\n    <ion-item class="value-area">\n        <!-- <p *ngIf="uplus != \'0.00\'">钱途 : {{uplus}}</p> -->\n        <p>POINT : {{n_uplus}}</p>\n    </ion-item>\n    <ion-list>\n        <ion-item *ngFor="let item of historyData">\n            <ion-label class="value-item">{{item.state}} {{item.uplus}}</ion-label>\n            <ion-label class="value-item-time">{{item.date}}<br>{{item.kind}}</ion-label>\n        </ion-item>\n    </ion-list>\n</ion-content>'/*ion-inline-end:"F:\OnSite\chol\uplus-app\src\pages\my-wallet-uplus\my-wallet-uplus.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* NavParams */],
@@ -2711,7 +2165,7 @@ var MyWalletUplusPage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 233:
+/***/ 229:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2815,7 +2269,7 @@ var MyWalletUplusOutPage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 234:
+/***/ 230:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2823,8 +2277,8 @@ var MyWalletUplusOutPage = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__qr_code_scanner_qr_code_scanner__ = __webpack_require__(58);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__uplus_sell_board_uplus_sell_board__ = __webpack_require__(235);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__my_wallet_coin_out_my_wallet_coin_out__ = __webpack_require__(364);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__uplus_sell_board_uplus_sell_board__ = __webpack_require__(231);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__my_wallet_coin_out_my_wallet_coin_out__ = __webpack_require__(360);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2917,7 +2371,7 @@ var MyWalletCoinPage = /** @class */ (function () {
     ], MyWalletCoinPage.prototype, "slides", void 0);
     MyWalletCoinPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-my-wallet-coin',template:/*ion-inline-start:"F:\OnSite\chol\uplus-app\src\pages\my-wallet-coin\my-wallet-coin.html"*/'<!--\n  Generated template for the MyWalletCoinPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n    <ion-navbar>\n        <ion-buttons start class="back-button-custom">\n            <button ion-button icon-only (click)="gotoBack()">\n              <ion-icon name="arrow-back"></ion-icon>\n            </button>\n        </ion-buttons>\n        <ion-title>钱途加密货币</ion-title>\n        <ion-buttons end>\n            <button ion-button icon-only (click)="gotoHistory()">\n                <ion-icon name="add"></ion-icon>\n            </button>\n        </ion-buttons>\n    </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n    <div class="coin-value-area">\n        <div class="coin-bg"></div>\n        <div class="coin-info" (click)="gotoHistory()">\n            <img src="assets/imgs/other/default.png" *ngIf="!photo">\n            <img src="{{serverUrl}}/profile_imgs/{{photo}}" *ngIf="photo">\n            <p>钱途加密货币</p>\n            <p>{{e_coin}}个</p>\n        </div>\n        <div class="scan-img-area">\n            <img src="assets/imgs/scan.png" alt="" (click)="scanCode();">\n        </div>\n    </div>\n    <ion-slides class="top-slider" (ionSlideDidChange)="slideChanged()" *ngIf="slides_bg.length > 0">\n        <ion-slide *ngFor="let s_bg of slides_bg" [ngStyle]="{\'background-image\': \'url(assets/imgs/coin/c_b_\' + s_bg.id + \'.jpg)\'}">\n        </ion-slide>\n    </ion-slides>\n    <ion-grid>\n        <img src="assets/imgs/other/setting_BG.jpg" alt="" class="one-way-bg">\n\n        <ion-row>\n            <ion-col>\n                <button ion-button class="text-on-bottom" (click)="alertWarning();">\n                    <img src="assets/imgs/coin/sell.png" alt="">\n                    <p>卖出</p>\n                </button>\n            </ion-col>\n            <ion-col>\n                <button ion-button class="text-on-bottom" (click)="alertWarning();">\n                    <img src="assets/imgs/coin/digital.png" alt="">\n                    <p>数字资产</p>\n                </button>\n            </ion-col>\n            <ion-col>\n                <button ion-button class="text-on-bottom" (click)="gotoSellBoard();">\n                    <img src="assets/imgs/coin/shop.png" alt="">\n                    <p style="color: red;">积分交易所</p>\n                </button>\n            </ion-col>\n        </ion-row>\n        <ion-row>\n            <ion-col>\n                <button ion-button class="text-on-bottom" (click)="alertWarning();">\n                    <img src="assets/imgs/coin/tranfer_out.png" alt="">\n                    <p>转出</p>\n                </button>\n            </ion-col>\n            <ion-col>\n                <button ion-button class="text-on-bottom" (click)="alertWarning();">\n                    <img src="assets/imgs/coin/transfer_in.png" alt="">\n                    <p>转入</p>\n                </button>\n            </ion-col>\n            <ion-col>\n                <button ion-button class="text-on-bottom" (click)="alertWarning();">\n                    <img src="assets/imgs/coin/buy.png" alt="">\n                    <p>买入</p>\n                </button>\n            </ion-col>\n        </ion-row>\n    </ion-grid>\n</ion-content>'/*ion-inline-end:"F:\OnSite\chol\uplus-app\src\pages\my-wallet-coin\my-wallet-coin.html"*/,
+            selector: 'page-my-wallet-coin',template:/*ion-inline-start:"F:\OnSite\chol\uplus-app\src\pages\my-wallet-coin\my-wallet-coin.html"*/'<!--\n  Generated template for the MyWalletCoinPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n    <ion-navbar>\n        <ion-buttons start class="back-button-custom">\n            <button ion-button icon-only (click)="gotoBack()">\n              <ion-icon name="arrow-back"></ion-icon>\n            </button>\n        </ion-buttons>\n        <ion-title>广告豆</ion-title>\n        <ion-buttons end>\n            <button ion-button icon-only (click)="gotoHistory()">\n                <ion-icon name="add"></ion-icon>\n            </button>\n        </ion-buttons>\n    </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n    <div class="coin-value-area">\n        <div class="coin-bg"></div>\n        <div class="coin-info" (click)="gotoHistory()">\n            <img src="assets/imgs/other/default.png" *ngIf="!photo">\n            <img src="{{serverUrl}}/profile_imgs/{{photo}}" *ngIf="photo">\n            <p>广告豆</p>\n            <p>{{e_coin}}个</p>\n        </div>\n        <div class="scan-img-area">\n            <img src="assets/imgs/scan.png" alt="" (click)="scanCode();">\n        </div>\n    </div>\n    <ion-slides class="top-slider" (ionSlideDidChange)="slideChanged()" *ngIf="slides_bg.length > 0">\n        <ion-slide *ngFor="let s_bg of slides_bg" [ngStyle]="{\'background-image\': \'url(assets/imgs/coin/c_b_\' + s_bg.id + \'.jpg)\'}">\n        </ion-slide>\n    </ion-slides>\n    <ion-grid>\n        <img src="assets/imgs/other/setting_BG.jpg" alt="" class="one-way-bg">\n\n        <ion-row>\n            <ion-col>\n                <button ion-button class="text-on-bottom" (click)="alertWarning();">\n                    <img src="assets/imgs/coin/sell.png" alt="">\n                    <p>卖出</p>\n                </button>\n            </ion-col>\n            <ion-col>\n                <button ion-button class="text-on-bottom" (click)="alertWarning();">\n                    <img src="assets/imgs/coin/digital.png" alt="">\n                    <p>数字资产</p>\n                </button>\n            </ion-col>\n            <ion-col>\n                <button ion-button class="text-on-bottom" (click)="gotoSellBoard();">\n                    <img src="assets/imgs/coin/shop.png" alt="">\n                    <p style="color: red;">积分交易所</p>\n                </button>\n            </ion-col>\n        </ion-row>\n        <ion-row>\n            <ion-col>\n                <button ion-button class="text-on-bottom" (click)="alertWarning();">\n                    <img src="assets/imgs/coin/tranfer_out.png" alt="">\n                    <p>转出</p>\n                </button>\n            </ion-col>\n            <ion-col>\n                <button ion-button class="text-on-bottom" (click)="alertWarning();">\n                    <img src="assets/imgs/coin/transfer_in.png" alt="">\n                    <p>转入</p>\n                </button>\n            </ion-col>\n            <ion-col>\n                <button ion-button class="text-on-bottom" (click)="alertWarning();">\n                    <img src="assets/imgs/coin/buy.png" alt="">\n                    <p>买入</p>\n                </button>\n            </ion-col>\n        </ion-row>\n    </ion-grid>\n</ion-content>'/*ion-inline-end:"F:\OnSite\chol\uplus-app\src\pages\my-wallet-coin\my-wallet-coin.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* NavParams */],
@@ -2931,7 +2385,7 @@ var MyWalletCoinPage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 235:
+/***/ 231:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2942,7 +2396,7 @@ var MyWalletCoinPage = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__provider_userinfo_model__ = __webpack_require__(26);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__uplus_my_board_uplus_my_board__ = __webpack_require__(236);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__uplus_my_board_uplus_my_board__ = __webpack_require__(232);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -3069,7 +2523,7 @@ var UplusSellBoardPage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 236:
+/***/ 232:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3326,7 +2780,7 @@ var UserInfoModel = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 364:
+/***/ 360:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3458,7 +2912,7 @@ var MyWalletCoinOutPage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 365:
+/***/ 361:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3593,7 +3047,7 @@ var MyWalletChargePage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 366:
+/***/ 362:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3601,11 +3055,11 @@ var MyWalletChargePage = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__my_info_qr_code_my_info_qr_code__ = __webpack_require__(113);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__my_info_more_my_info_more__ = __webpack_require__(367);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_file__ = __webpack_require__(212);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_transfer__ = __webpack_require__(213);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ionic_native_file_path__ = __webpack_require__(214);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__ionic_native_camera__ = __webpack_require__(215);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__my_info_more_my_info_more__ = __webpack_require__(363);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_file__ = __webpack_require__(213);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_transfer__ = __webpack_require__(214);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ionic_native_file_path__ = __webpack_require__(215);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__ionic_native_camera__ = __webpack_require__(216);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__angular_http__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_rxjs_add_operator_map__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9_rxjs_add_operator_map__);
@@ -3875,7 +3329,7 @@ var MyInfoPage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 367:
+/***/ 363:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3886,7 +3340,7 @@ var MyInfoPage = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__provider_userinfo_model__ = __webpack_require__(26);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__my_ming_pian_my_ming_pian__ = __webpack_require__(368);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__my_ming_pian_my_ming_pian__ = __webpack_require__(364);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -4086,7 +3540,7 @@ var MyInfoMorePage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 368:
+/***/ 364:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -4094,7 +3548,7 @@ var MyInfoMorePage = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_http__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__my_info_ming_pian_my_info_ming_pian__ = __webpack_require__(369);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__my_info_ming_pian_my_info_ming_pian__ = __webpack_require__(365);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -4188,7 +3642,7 @@ var MyMingPianPage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 369:
+/***/ 365:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -4486,7 +3940,7 @@ var MyInfoMingPianPage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 370:
+/***/ 366:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -4533,7 +3987,7 @@ var MyLevelPage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 371:
+/***/ 367:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -4611,7 +4065,7 @@ var MyShopMolePage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 372:
+/***/ 368:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -4670,21 +4124,21 @@ var MyChargeOptionPage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 373:
+/***/ 369:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SettingPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__setting_change_password_setting_change_password__ = __webpack_require__(374);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__setting_pay_option_setting_pay_option__ = __webpack_require__(375);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__setting_change_password_setting_change_password__ = __webpack_require__(370);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__setting_pay_option_setting_pay_option__ = __webpack_require__(371);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__login_login__ = __webpack_require__(56);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_http__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_map__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_map__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__providers_save_user_name_save_user_name__ = __webpack_require__(115);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__setting_change_pay_password_setting_change_pay_password__ = __webpack_require__(376);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__setting_change_pay_password_setting_change_pay_password__ = __webpack_require__(372);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -4775,7 +4229,7 @@ var SettingPage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 374:
+/***/ 370:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -4897,7 +4351,7 @@ var SettingChangePasswordPage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 375:
+/***/ 371:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -4996,7 +4450,7 @@ var SettingPayOptionPage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 376:
+/***/ 372:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -5118,18 +4572,18 @@ var SettingChangePayPasswordPage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 377:
+/***/ 373:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MyAdvertisePage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__my_ads_add_my_ads_add__ = __webpack_require__(378);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__my_ads_add_my_ads_add__ = __webpack_require__(374);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_http__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_map__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_map__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__my_ads_item_view_my_ads_item_view__ = __webpack_require__(379);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__my_ads_item_view_my_ads_item_view__ = __webpack_require__(375);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -5270,7 +4724,7 @@ var MyAdvertisePage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 378:
+/***/ 374:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -5317,7 +4771,7 @@ var MyAdsAddPage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 379:
+/***/ 375:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -5413,7 +4867,7 @@ var MyAdsItemViewPage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 380:
+/***/ 376:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -5459,7 +4913,7 @@ var NewVersionPage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 381:
+/***/ 377:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -5469,7 +4923,7 @@ var NewVersionPage = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_http__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__uplus_history_board_uplus_history_board__ = __webpack_require__(382);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__uplus_history_board_uplus_history_board__ = __webpack_require__(378);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -5572,7 +5026,7 @@ var MyMarketInfoPage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 382:
+/***/ 378:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -5706,14 +5160,14 @@ var UplusHistoryBoardPage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 383:
+/***/ 379:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ShopPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__shop_mole_item_view_shop_mole_item_view__ = __webpack_require__(384);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__shop_mole_item_view_shop_mole_item_view__ = __webpack_require__(380);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_http__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_map__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_map__);
@@ -6029,7 +5483,7 @@ var ShopPage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 384:
+/***/ 380:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -6132,6 +5586,697 @@ var ShopMoleItemViewPage = /** @class */ (function () {
 }());
 
 //# sourceMappingURL=shop-mole-item-view.js.map
+
+/***/ }),
+
+/***/ 381:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MyContactListPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__my_friend_info_my_friend_info__ = __webpack_require__(382);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__my_contact_find_my_contact_find__ = __webpack_require__(57);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_http__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_map__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_map__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ionic_native_call_number__ = __webpack_require__(116);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_contact_popover_contact_popover__ = __webpack_require__(384);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+
+
+
+/**
+ * Generated class for the MyContactListPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+var MyContactListPage = /** @class */ (function () {
+    function MyContactListPage(navCtrl, navParams, loadingCtrl, alertCtrl, http, app, popoverCtrl, callNumber) {
+        this.navCtrl = navCtrl;
+        this.navParams = navParams;
+        this.loadingCtrl = loadingCtrl;
+        this.alertCtrl = alertCtrl;
+        this.http = http;
+        this.app = app;
+        this.popoverCtrl = popoverCtrl;
+        this.callNumber = callNumber;
+        this.serverUrl = "http://unak.vip/uplus/Api/mobile";
+        this.my_contacts = [];
+        this.my_requests = "";
+        this.chatNoti = "";
+        this.notiData = [];
+    }
+    MyContactListPage.prototype.ionViewDidLoad = function () {
+    };
+    MyContactListPage.prototype.ionViewWillEnter = function () {
+        var _this = this;
+        this.my_contacts = [];
+        this.my_requests = [];
+        var loading = this.loadingCtrl.create();
+        loading.present();
+        var postData = {
+            action: 'get',
+            uid: localStorage.getItem('uid')
+        };
+        this.http.post(this.serverUrl + "/contact_list.php", JSON.stringify(postData))
+            .map(function (res) { return res.json(); })
+            .subscribe(function (data) {
+            loading.dismiss();
+            if (data.error == 1) {
+                if (data.data != null) {
+                    _this.my_contacts = data.data;
+                }
+                _this.my_requests = data.request;
+            }
+            else {
+                loading.dismiss();
+                _this.customAlert('警告', '网络失败!');
+            }
+        }, function (err) {
+            loading.dismiss();
+        });
+        this.getChatNotiy();
+        // let __this = this;
+        // this.chatNoti = setInterval(function() {
+        //   __this.getChatNotiy();
+        // }, 1000);
+    };
+    MyContactListPage.prototype.ionViewWillLeave = function () {
+        // clearInterval(this.chatNoti);
+    };
+    MyContactListPage.prototype.getChatNotiy = function () {
+        var _this = this;
+        var postData = {
+            uid: localStorage.getItem('uid')
+        };
+        this.http.post(this.serverUrl + "/chat_notify.php", JSON.stringify(postData))
+            .map(function (res) { return res.json(); })
+            .subscribe(function (data) {
+            _this.notiData = data.list;
+        }, function (err) {
+        });
+    };
+    MyContactListPage.prototype.gotoFriendInfo = function (c_id, nickname) {
+        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_2__my_friend_info_my_friend_info__["a" /* MyFriendInfoPage */], { cID: c_id, nick: nickname });
+    };
+    MyContactListPage.prototype.rejectRequest = function (id) {
+        var _this = this;
+        var postData = {
+            action: 'reject',
+            itemID: id
+        };
+        this.http.post(this.serverUrl + "/contact_list.php", JSON.stringify(postData))
+            .map(function (res) { return res.json(); })
+            .subscribe(function (data) {
+            if (data.error == 1) {
+                _this.ionViewWillEnter();
+            }
+            else {
+                _this.customAlert('警告', '网络失败!');
+            }
+        }, function (err) {
+        });
+    };
+    MyContactListPage.prototype.acceptRequest = function (id) {
+        var _this = this;
+        var postData = {
+            action: 'add',
+            itemID: id
+        };
+        this.http.post(this.serverUrl + "/contact_list.php", JSON.stringify(postData))
+            .map(function (res) { return res.json(); })
+            .subscribe(function (data) {
+            if (data.error == 1) {
+                _this.ionViewWillEnter();
+            }
+            else {
+                _this.customAlert('警告', '网络失败!');
+            }
+        }, function (err) {
+        });
+    };
+    MyContactListPage.prototype.callContact = function (phoneNumber) {
+        this.callNumber.callNumber(phoneNumber, true)
+            .then(function (res) {
+        })
+            .catch(function (err) {
+        });
+    };
+    MyContactListPage.prototype.deleteContact = function (id) {
+        var _this = this;
+        this.alertCtrl.create({
+            title: "通知",
+            message: "确定删除吗？",
+            buttons: [
+                {
+                    text: "是",
+                    handler: function () {
+                        var postData = {
+                            action: 'delete',
+                            itemID: id
+                        };
+                        _this.http.post(_this.serverUrl + "/contact_list.php", JSON.stringify(postData))
+                            .map(function (res) { return res.json(); })
+                            .subscribe(function (data) {
+                            if (data.error == 1) {
+                                _this.ionViewWillEnter();
+                            }
+                            else {
+                                _this.customAlert('警告', '网络失败!');
+                            }
+                        }, function (err) {
+                        });
+                    }
+                },
+                {
+                    text: "不",
+                    handler: function () { }
+                }
+            ]
+        }).present();
+    };
+    MyContactListPage.prototype.customAlert = function (title, message) {
+        this.alertCtrl.create({
+            title: title,
+            message: message,
+            buttons: ["确定"]
+        }).present();
+    };
+    MyContactListPage.prototype.presentPopover = function (myEvent) {
+        var _this = this;
+        var popover = this.popoverCtrl.create(__WEBPACK_IMPORTED_MODULE_7__components_contact_popover_contact_popover__["a" /* ContactPopoverComponent */]);
+        popover.present({
+            ev: myEvent
+        });
+        popover.onDidDismiss(function (data) {
+            switch (data) {
+                case 'new_contact':
+                    _this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_3__my_contact_find_my_contact_find__["a" /* MyContactFindPage */]);
+                    break;
+                case 'single-chat':
+                    _this.customAlert("通知", "暂不支持此功能");
+                    break;
+                case 'group-chat':
+                    _this.customAlert("通知", "暂不支持此功能");
+                    break;
+                default:
+                    break;
+            }
+        });
+    };
+    MyContactListPage.prototype.changeNickname = function (id, nickname) {
+        var _this = this;
+        this.alertCtrl.create({
+            title: "NickName",
+            inputs: [
+                {
+                    name: 'field',
+                    placeholder: "NickName",
+                    type: "text",
+                    value: nickname
+                },
+            ],
+            buttons: [
+                {
+                    text: '取消',
+                    handler: function (data) {
+                    }
+                },
+                {
+                    text: '确定',
+                    handler: function (data) {
+                        var newNick = data.field;
+                        var postData = {
+                            uid: localStorage.getItem('uid'),
+                            cid: id,
+                            nick: newNick,
+                            action: 'nick_change'
+                        };
+                        _this.http.post(_this.serverUrl + "/contact_list.php", JSON.stringify(postData))
+                            .map(function (res) { return res.json(); })
+                            .subscribe(function (data) {
+                            _this.ionViewWillEnter();
+                        }, function (err) {
+                        });
+                    }
+                }
+            ]
+        }).present();
+    };
+    MyContactListPage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
+            selector: 'page-my-contact-list',template:/*ion-inline-start:"F:\OnSite\chol\uplus-app\src\pages\my-contact-list\my-contact-list.html"*/'<ion-header>\n    <ion-navbar>\n        <ion-title>我的名片目录</ion-title>\n        <ion-buttons end (click)="presentPopover($event);">\n            <button ion-button icon-only>\n              <ion-icon name="person-add"></ion-icon>\n            </button>\n        </ion-buttons>\n    </ion-navbar>\n</ion-header>\n\n\n<ion-content padding>\n    <img src="assets/imgs/other/setting_BG.jpg" alt="" class="one-way-bg">\n    <ion-list *ngIf="my_requests.length">\n        <ion-list-header>\n            新名片\n        </ion-list-header>\n        <ion-item-sliding *ngFor="let person of my_requests">\n            <ion-item>\n                <ion-thumbnail item-start>\n                    <img src="assets/imgs/other/default.png" *ngIf="!person.photo">\n                    <img src="{{person.photo}}" *ngIf="person.photo">\n                </ion-thumbnail>\n                <h2>{{person.realname}}</h2>\n                <p>会员帐号： {{person.username}}</p>\n                <button ion-button clear item-end (click)="acceptRequest(person.id);">同意</button>\n            </ion-item>\n            <ion-item-options side="right">\n                <button ion-button color="danger" (click)="rejectRequest(person.id);">\n                    <!-- <ion-icon name="trash"></ion-icon> -->\n                    保留\n                </button>\n            </ion-item-options>\n        </ion-item-sliding>\n    </ion-list>\n\n    <ion-list>\n        <ion-list-header>\n            我的名片\n        </ion-list-header>\n        <ion-item *ngIf="my_contacts.length == 0">\n            <p style="text-align: center;">没有名片</p>\n        </ion-item>\n        <ion-item-sliding *ngFor="let user of my_contacts">\n            <ion-item (click)="gotoFriendInfo(user.username, user.nickname);">\n                <ion-avatar item-start>\n                    <img src="assets/imgs/other/default.png" *ngIf="!user.photo">\n                    <img src="{{serverUrl}}/profile_imgs/{{user.photo}}" *ngIf="user.photo">\n                </ion-avatar>\n                <h2 *ngIf="user.nickname">{{user.nickname}}</h2>\n                <h2 *ngIf="!user.nickname">{{user.realname}}</h2>\n                <h3>会员帐号： {{user.username}}</h3>\n                <ion-badge color="danger" *ngIf="notiData[user.username] != 0">{{notiData[user.username]}}</ion-badge>\n                <!-- <p>I\'ve had a pretty messed up day. If we just...</p> -->\n            </ion-item>\n            <ion-item-options side="right">\n                <button ion-button color="secondary" (click)="changeNickname(user.id, user.nickname);">\n                    <ion-icon name="document"></ion-icon>\n                    昵称输入\n                </button>\n                <button ion-button color="danger" (click)="deleteContact(user.id);">\n                    <ion-icon name="trash"></ion-icon>\n                    删除\n                </button>\n            </ion-item-options>\n        </ion-item-sliding>\n    </ion-list>\n</ion-content>'/*ion-inline-end:"F:\OnSite\chol\uplus-app\src\pages\my-contact-list\my-contact-list.html"*/,
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* NavParams */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* LoadingController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */],
+            __WEBPACK_IMPORTED_MODULE_4__angular_http__["a" /* Http */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["c" /* App */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* PopoverController */],
+            __WEBPACK_IMPORTED_MODULE_6__ionic_native_call_number__["a" /* CallNumber */]])
+    ], MyContactListPage);
+    return MyContactListPage;
+}());
+
+//# sourceMappingURL=my-contact-list.js.map
+
+/***/ }),
+
+/***/ 382:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MyFriendInfoPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_http__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_call_number__ = __webpack_require__(116);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__chat_chat__ = __webpack_require__(383);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+
+/**
+ * Generated class for the MyFriendInfoPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+var MyFriendInfoPage = /** @class */ (function () {
+    function MyFriendInfoPage(navCtrl, navParams, http, loadingCtrl, callNumber) {
+        this.navCtrl = navCtrl;
+        this.navParams = navParams;
+        this.http = http;
+        this.loadingCtrl = loadingCtrl;
+        this.callNumber = callNumber;
+        this.serverUrl = "http://unak.vip/uplus/Api/mobile";
+        this.friendData = "";
+        this.photo = "";
+        this.realname = "";
+        this.nickname = "";
+        this.other_cate = [];
+    }
+    MyFriendInfoPage.prototype.ionViewDidLoad = function () {
+    };
+    MyFriendInfoPage.prototype.ionViewWillEnter = function () {
+        var _this = this;
+        var friendID = this.navParams.get('cID');
+        this.nickname = this.navParams.get('nick');
+        var postData = {
+            uid: friendID,
+            action: 'get'
+        };
+        var loading = this.loadingCtrl.create();
+        loading.present();
+        this.http.post(this.serverUrl + "/get_user_mingpian.php", JSON.stringify(postData))
+            .map(function (res) { return res.json(); })
+            .subscribe(function (data) {
+            loading.dismiss();
+            if (data.error == 1) {
+                _this.photo = data.data.photo;
+                _this.realname = data.data.realname;
+                if (data.data.mingpian) {
+                    _this.friendData = data.data.mingpian;
+                    _this.other_cate = _this.friendData.other_cate.split("--");
+                }
+            }
+            else {
+                _this.navCtrl.pop();
+            }
+        }, function (err) {
+            loading.dismiss();
+        });
+    };
+    MyFriendInfoPage.prototype.callFriend = function (phoneNumber) {
+        this.callNumber.callNumber(phoneNumber, true)
+            .then(function (res) {
+        })
+            .catch(function (err) {
+        });
+    };
+    MyFriendInfoPage.prototype.chatWithFriend = function () {
+        var cID = this.friendData.username;
+        var cName = (this.nickname) ? this.nickname : this.realname;
+        var cPhoto = (this.photo) ? this.serverUrl + "/profile_imgs/" + this.photo : "assets/imgs/other/default.png";
+        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_5__chat_chat__["a" /* ChatPage */], { cid: cID, cname: cName, cphoto: cPhoto });
+    };
+    MyFriendInfoPage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
+            selector: 'page-my-friend-info',template:/*ion-inline-start:"F:\OnSite\chol\uplus-app\src\pages\my-friend-info\my-friend-info.html"*/'<!--\n  Generated template for the MyFriendInfoPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n    <ion-navbar>\n        <ion-title></ion-title>\n        <ion-buttons end (click)="chatWithFriend()">\n            <button ion-button icon-only>\n          <ion-icon name="chatbubbles"></ion-icon>\n        </button>\n        </ion-buttons>\n    </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n    <img src="assets/imgs/other/setting_BG.jpg" alt="" class="one-way-bg">\n    <ion-card class="card{{friendData.card_style}}">\n        <div class="cover-layer"></div>\n        <div class="card-top{{friendData.card_style}}"></div>\n        <div class="card-bottom{{friendData.card_style}}"></div>\n        <ion-card-content>\n            <ion-grid>\n                <ion-row>\n                    <ion-col>\n                        <h1>{{friendData.c_name}}</h1>\n                    </ion-col>\n                </ion-row>\n                <ion-row>\n                    <ion-col col-6 class="user-img">\n                        <img src="assets/imgs/other/default.png" *ngIf="!photo">\n                        <img src="{{serverUrl}}/profile_imgs/{{photo}}" *ngIf="photo">\n                        <h2 style="color: #ecdd44 !important; font-weight: 800 !important;" *ngIf="nickname">{{nickname}}</h2>\n                        <h2 style="color: #ecdd44 !important; font-weight: 800 !important;" *ngIf="!nickname">{{realname}}</h2>\n                    </ion-col>\n                    <ion-col col-6>\n                        <h2>{{realname}}</h2>\n                        <h3>{{friendData.job_cate}}</h3>\n                        <button ion-button icon-start small color="light" clear *ngIf="friendData.mobile1" (click)="callFriend(friendData.mobile1)">\n                            <ion-icon name="call"></ion-icon>\n                            {{friendData.mobile1}}\n                        </button>\n                        <button ion-button icon-start small color="light" clear *ngIf="friendData.mobile2" (click)="callFriend(friendData.mobile2)">\n                            <ion-icon name="call"></ion-icon>\n                            {{friendData.mobile2}}\n                        </button>\n                        <button ion-button icon-start small color="light" clear *ngIf="friendData.mobile3" (click)="callFriend(friendData.mobile3)">\n                            <ion-icon name="call"></ion-icon>\n                            {{friendData.mobile3}}\n                        </button>\n                        <button ion-button icon-start small color="light" clear *ngIf="friendData.phone1" (click)="callFriend(friendData.phone1)">\n                            <ion-icon name="phone-portrait"></ion-icon>\n                            {{friendData.phone1}}\n                        </button>\n                        <button ion-button icon-start small color="light" clear *ngIf="friendData.phone2" (click)="callFriend(friendData.phone2)">\n                            <ion-icon name="phone-portrait"></ion-icon>\n                            {{friendData.phone2}}\n                        </button>\n                        <button ion-button icon-start small color="light" clear *ngIf="friendData.phone3" (click)="callFriend(friendData.phone3)">\n                            <ion-icon name="phone-portrait"></ion-icon>\n                            {{friendData.phone3}}\n                        </button>\n                        <!-- <p *ngFor="let cate of other_cate; let nIdx = index"><u>其他社会职务{{nIdx + 1}}:</u><br>{{cate}}</p> -->\n                        <!-- <p *ngIf="friendData.other_cate"><u>其他社会职务:</u></p>\n                        <p *ngIf="friendData.other_cate">{{friendData.other_cate}}</p> -->\n                    </ion-col>\n                </ion-row>\n                <ion-row>\n                    <ion-col>\n                        <p *ngFor="let cate of other_cate; let nIdx = index"><u>其他社会职务{{nIdx + 1}}: </u>{{cate}}</p>\n                    </ion-col>\n                </ion-row>\n                <ion-row>\n                    <ion-col *ngIf="friendData.job_desc">\n                        <p><u>社会贡献:</u></p>\n                        <p>{{friendData.job_desc}}</p>\n                    </ion-col>\n                </ion-row>\n                <ion-row>\n                    <ion-col>\n                        <p *ngIf="friendData.c_address"><u>地址:</u> {{friendData.c_address}}</p>\n                        <p *ngIf="friendData.email"><u>邮箱:</u> {{friendData.email}}</p>\n                        <p *ngIf="friendData.homepage"><u>网址:</u> {{friendData.homepage}}</p>\n                    </ion-col>\n                </ion-row>\n            </ion-grid>\n        </ion-card-content>\n        <!-- <ion-row>\n            <ion-col>\n                <button ion-button icon-start clear small (click)="callFriend(friendData.mobile)">\n                    <ion-icon name="call"></ion-icon>\n                    <div>{{friendData.mobile}}</div>\n                </button>\n            </ion-col>\n        </ion-row> -->\n    </ion-card>\n</ion-content>'/*ion-inline-end:"F:\OnSite\chol\uplus-app\src\pages\my-friend-info\my-friend-info.html"*/,
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* NavParams */],
+            __WEBPACK_IMPORTED_MODULE_2__angular_http__["a" /* Http */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* LoadingController */],
+            __WEBPACK_IMPORTED_MODULE_4__ionic_native_call_number__["a" /* CallNumber */]])
+    ], MyFriendInfoPage);
+    return MyFriendInfoPage;
+}());
+
+//# sourceMappingURL=my-friend-info.js.map
+
+/***/ }),
+
+/***/ 383:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ChatPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_http__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+/**
+ * Generated class for the ChatPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+var ChatPage = /** @class */ (function () {
+    function ChatPage(navParams, navCtrl, 
+        // private chatService: ChatService,
+        http, events) {
+        this.navCtrl = navCtrl;
+        this.http = http;
+        this.events = events;
+        this.msgList = [];
+        this.editorMsg = '';
+        this.showEmojiPicker = false;
+        this.serverUrl = "http://unak.vip/uplus/Api/mobile";
+        this.runtime = "";
+        // Get the navParams toUserId parameter
+        this.toUser = {
+            id: navParams.get('cid'),
+            name: navParams.get('cname'),
+            avatar: navParams.get('cphoto')
+        };
+        // Get mock user information
+        var userInfo = localStorage.getItem('infoData');
+        if (userInfo) {
+            var userData = JSON.parse(userInfo);
+            var uPhoto = (userData.photo) ? this.serverUrl + "/profile_imgs/" + userData.photo : "assets/imgs/other/default.png";
+            this.user = {
+                id: userData.uid,
+                name: userData.realname,
+                avatar: uPhoto
+            };
+        }
+    }
+    ChatPage.prototype.ionViewWillLeave = function () {
+        // unsubscribe
+        clearInterval(this.runtime);
+        this.events.unsubscribe('chat:received');
+    };
+    ChatPage.prototype.ionViewDidEnter = function () {
+        var _this = this;
+        //get message list
+        this.getMsg();
+        // Subscribe to received  new message events
+        this.events.subscribe('chat:received', function (msg) {
+            _this.pushNewMsg(msg);
+        });
+        var __this = this;
+        this.runtime = setInterval(function () {
+            __this.getNewMessageList();
+        }, 1000);
+    };
+    ChatPage.prototype.onFocus = function () {
+        this.showEmojiPicker = false;
+        this.content.resize();
+        this.scrollToBottom();
+    };
+    ChatPage.prototype.switchEmojiPicker = function () {
+        this.showEmojiPicker = !this.showEmojiPicker;
+        if (!this.showEmojiPicker) {
+            this.focus();
+        }
+        else {
+            this.setTextareaScroll();
+        }
+        this.content.resize();
+        this.scrollToBottom();
+    };
+    ChatPage.prototype.getMsg = function () {
+        var _this = this;
+        var list = [];
+        list = this.getMsgList();
+        if (list.length > 0) {
+            for (var i = 0; i < list.length; i++) {
+                this.msgList.push(list[i]);
+            }
+            this.scrollToBottom();
+        }
+        else {
+            var postData = {
+                userId: this.user.id,
+                toUserId: this.toUser.id
+            };
+            this.http.post(this.serverUrl + "/chat_get_first.php", JSON.stringify(postData))
+                .map(function (res) { return res.json(); })
+                .subscribe(function (data) {
+                var tmp = data.list;
+                for (var n = 0; n < tmp.length; n++) {
+                    var mockMsg = {
+                        messageId: tmp[n].time,
+                        userId: tmp[n].sender,
+                        userName: (tmp[n].sender == _this.user.id) ? _this.user.name : _this.toUser.name,
+                        userAvatar: (tmp[n].sender == _this.user.id) ? _this.user.avatar : _this.toUser.avatar,
+                        toUserId: tmp[n].receiver,
+                        time: tmp[n].time,
+                        message: tmp[n].message,
+                        status: 'success'
+                    };
+                    _this.msgList.push(mockMsg);
+                }
+                _this.scrollToBottom();
+            }, function (err) {
+            });
+        }
+    };
+    /**
+     * @name sendMsg
+     */
+    ChatPage.prototype.sendMsg = function () {
+        if (!this.editorMsg.trim())
+            return;
+        // Mock message
+        var id = Date.now().toString();
+        var newMsg = {
+            messageId: Date.now().toString(),
+            userId: this.user.id,
+            userName: this.user.name,
+            userAvatar: this.user.avatar,
+            toUserId: this.toUser.id,
+            time: Date.now(),
+            message: this.editorMsg,
+            status: 'success'
+        };
+        this.pushNewMsg(newMsg);
+        this.editorMsg = '';
+        if (!this.showEmojiPicker) {
+            this.focus();
+        }
+        this.http.post(this.serverUrl + "/chat_send.php", JSON.stringify(newMsg))
+            .map(function (res) { return res.json(); })
+            .subscribe(function (data) { }, function (err) { });
+        // this.chatService.sendMsg(newMsg)
+        // .then(() => {
+        //   let index = this.getMsgIndexById(id);
+        //   if (index !== -1) {
+        //     this.msgList[index].status = 'success';
+        //   }
+        // })
+    };
+    /**
+     * @name pushNewMsg
+     * @param msg
+     */
+    ChatPage.prototype.pushNewMsg = function (msg) {
+        var userId = this.user.id, toUserId = this.toUser.id;
+        // Verify user relationships
+        if (msg.userId === userId && msg.toUserId === toUserId) {
+            this.msgList.push(msg);
+        }
+        else if (msg.toUserId === userId && msg.userId === toUserId) {
+            this.msgList.push(msg);
+        }
+        localStorage.setItem(this.toUser.id, JSON.stringify(this.msgList));
+        this.scrollToBottom();
+    };
+    ChatPage.prototype.getMsgIndexById = function (id) {
+        return this.msgList.findIndex(function (e) { return e.messageId === id; });
+    };
+    ChatPage.prototype.scrollToBottom = function () {
+        var _this = this;
+        setTimeout(function () {
+            if (_this.content.scrollToBottom) {
+                _this.content.scrollToBottom();
+            }
+        }, 400);
+    };
+    ChatPage.prototype.focus = function () {
+        if (this.messageInput && this.messageInput.nativeElement) {
+            this.messageInput.nativeElement.focus();
+        }
+    };
+    ChatPage.prototype.setTextareaScroll = function () {
+        var textarea = this.messageInput.nativeElement;
+        textarea.scrollTop = textarea.scrollHeight;
+    };
+    ChatPage.prototype.getMsgList = function () {
+        var data = localStorage.getItem(this.toUser.id);
+        var msgList;
+        if (data == "" || data == null || data == undefined) {
+            msgList = [];
+        }
+        else {
+            msgList = JSON.parse(data);
+        }
+        return msgList;
+    };
+    ChatPage.prototype.getNewMessageList = function () {
+        var _this = this;
+        var lastTime = localStorage.getItem(this.toUser.id + "_last");
+        var postData = {
+            'userId': this.user.id,
+            'toUserId': this.toUser.id,
+            'time': lastTime,
+        };
+        this.http.post(this.serverUrl + "/chat_get.php", JSON.stringify(postData))
+            .map(function (res) { return res.json(); })
+            .subscribe(function (data) {
+            var tmp = data.list;
+            for (var n = 0; n < tmp.length; n++) {
+                var mockMsg = {
+                    messageId: tmp[n].time,
+                    userId: _this.toUser.id,
+                    userName: _this.toUser.name,
+                    userAvatar: _this.toUser.avatar,
+                    toUserId: _this.user.id,
+                    time: tmp[n].time,
+                    message: tmp[n].message,
+                    status: 'success'
+                };
+                _this.events.publish('chat:received', mockMsg, Date.now());
+            }
+            if (tmp.length > 0) {
+                localStorage.setItem(_this.toUser.id + "_last", tmp[tmp.length - 1].time);
+            }
+        }, function (err) {
+        });
+    };
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* ViewChild */])(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* Content */]),
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* Content */])
+    ], ChatPage.prototype, "content", void 0);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* ViewChild */])('chat_input'),
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["t" /* ElementRef */])
+    ], ChatPage.prototype, "messageInput", void 0);
+    ChatPage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
+            selector: 'page-chat',template:/*ion-inline-start:"F:\OnSite\chol\uplus-app\src\pages\chat\chat.html"*/'<ion-header>\n\n    <ion-navbar>\n        <ion-title>{{toUser.name}}</ion-title>\n    </ion-navbar>\n\n</ion-header>\n\n<ion-content>\n\n    <div class="message-wrap">\n\n        <div *ngFor="let msg of msgList" class="message" [class.left]=" msg.userId === toUser.id " [class.right]=" msg.userId === user.id ">\n            <img class="user-img" [src]="msg.userAvatar" alt="" src="">\n            <ion-spinner name="dots" *ngIf="msg.status === \'pending\'"></ion-spinner>\n            <div class="msg-detail">\n                <div class="msg-info">\n                    <p>\n                        {{msg.userName}}&nbsp;&nbsp;&nbsp;\n                        <!-- {{msg.time | relativeTime}} -->\n                    </p>\n                </div>\n                <div class="msg-content">\n                    <span class="triangle"></span>\n                    <p class="line-breaker ">{{msg.message}}</p>\n                </div>\n            </div>\n        </div>\n\n    </div>\n\n</ion-content>\n\n<ion-footer no-border [style.height]="showEmojiPicker ? \'255px\' : \'55px\'">\n    <div class="input-wrap">\n        <button ion-button clear icon-only item-right (click)="switchEmojiPicker()">\n      <ion-icon name="md-happy"></ion-icon>\n    </button>\n        <textarea #chat_input placeholder="Text Input" [(ngModel)]="editorMsg" (keyup.enter)="sendMsg()" (focusin)="onFocus()"></textarea>\n        <button ion-button clear icon-only item-right (click)="sendMsg()">\n      <ion-icon name="ios-send" ios="ios-send" md="md-send"></ion-icon>\n    </button>\n    </div>\n    <emoji-picker [(ngModel)]="editorMsg"></emoji-picker>\n</ion-footer>'/*ion-inline-end:"F:\OnSite\chol\uplus-app\src\pages\chat\chat.html"*/,
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* NavParams */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_2__angular_http__["a" /* Http */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* Events */]])
+    ], ChatPage);
+    return ChatPage;
+}());
+
+//# sourceMappingURL=chat.js.map
+
+/***/ }),
+
+/***/ 384:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ContactPopoverComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(4);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+/**
+ * Generated class for the ContactPopoverComponent component.
+ *
+ * See https://angular.io/api/core/Component for more info on Angular
+ * Components.
+ */
+var ContactPopoverComponent = /** @class */ (function () {
+    function ContactPopoverComponent(viewCtrl) {
+        this.viewCtrl = viewCtrl;
+        console.log('Hello ContactPopoverComponent Component');
+        this.text = 'Hello World';
+    }
+    ContactPopoverComponent.prototype.itemClick = function (item) {
+        this.viewCtrl.dismiss(item);
+    };
+    ContactPopoverComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
+            selector: 'contact-popover',template:/*ion-inline-start:"F:\OnSite\chol\uplus-app\src\components\contact-popover\contact-popover.html"*/'<ion-list>\n    <ion-item (click)="itemClick(\'new_contact\');" class="border-bottom">\n        <ion-icon name="person-add" item-start></ion-icon>\n        新名片\n    </ion-item>\n    <ion-item (click)="itemClick(\'single-chat\');" class="border-bottom">\n        <ion-icon name="chatbubbles" item-start></ion-icon>\n        聊天窗口\n    </ion-item>\n    <ion-item (click)="itemClick(\'group-chat\');">\n        <ion-icon name="logo-snapchat" item-start></ion-icon>\n        群聊天\n    </ion-item>\n</ion-list>'/*ion-inline-end:"F:\OnSite\chol\uplus-app\src\components\contact-popover\contact-popover.html"*/
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["s" /* ViewController */]])
+    ], ContactPopoverComponent);
+    return ContactPopoverComponent;
+}());
+
+//# sourceMappingURL=contact-popover.js.map
 
 /***/ }),
 
@@ -6416,77 +6561,77 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__ = __webpack_require__(15);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(208);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_status_bar__ = __webpack_require__(210);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(209);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_status_bar__ = __webpack_require__(211);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_http__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ionic_native_shake__ = __webpack_require__(211);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ionic_native_shake__ = __webpack_require__(212);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__ionic_native_in_app_browser__ = __webpack_require__(459);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__ionic_native_file__ = __webpack_require__(212);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__ionic_native_transfer__ = __webpack_require__(213);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__ionic_native_file_path__ = __webpack_require__(214);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__ionic_native_camera__ = __webpack_require__(215);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__ionic_native_file__ = __webpack_require__(213);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__ionic_native_transfer__ = __webpack_require__(214);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__ionic_native_file_path__ = __webpack_require__(215);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__ionic_native_camera__ = __webpack_require__(216);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__app_component__ = __webpack_require__(460);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__pages_login_login__ = __webpack_require__(56);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__pages_home_home__ = __webpack_require__(216);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__pages_ads_ads__ = __webpack_require__(217);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__pages_ads_detail_ads_detail__ = __webpack_require__(220);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__pages_home_home__ = __webpack_require__(217);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__pages_ads_ads__ = __webpack_require__(218);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__pages_ads_detail_ads_detail__ = __webpack_require__(221);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__pages_my_my__ = __webpack_require__(225);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__pages_my_info_my_info__ = __webpack_require__(366);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__pages_my_level_my_level__ = __webpack_require__(370);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__pages_my_advertise_my_advertise__ = __webpack_require__(377);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__pages_my_ads_add_my_ads_add__ = __webpack_require__(378);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__pages_my_ads_item_view_my_ads_item_view__ = __webpack_require__(379);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__pages_my_shop_mole_my_shop_mole__ = __webpack_require__(371);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__pages_my_contact_list_my_contact_list__ = __webpack_require__(226);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__pages_my_friend_info_my_friend_info__ = __webpack_require__(227);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__pages_my_info_my_info__ = __webpack_require__(362);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__pages_my_level_my_level__ = __webpack_require__(366);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__pages_my_advertise_my_advertise__ = __webpack_require__(373);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__pages_my_ads_add_my_ads_add__ = __webpack_require__(374);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__pages_my_ads_item_view_my_ads_item_view__ = __webpack_require__(375);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__pages_my_shop_mole_my_shop_mole__ = __webpack_require__(367);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__pages_my_contact_list_my_contact_list__ = __webpack_require__(381);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__pages_my_friend_info_my_friend_info__ = __webpack_require__(382);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__pages_my_contact_find_my_contact_find__ = __webpack_require__(57);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__pages_my_info_ming_pian_my_info_ming_pian__ = __webpack_require__(369);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__pages_my_ming_pian_my_ming_pian__ = __webpack_require__(368);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__pages_my_wallet_my_wallet__ = __webpack_require__(230);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__pages_my_wallet_coin_my_wallet_coin__ = __webpack_require__(234);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__pages_my_wallet_price_my_wallet_price__ = __webpack_require__(231);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__pages_my_wallet_uplus_my_wallet_uplus__ = __webpack_require__(232);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__pages_my_info_ming_pian_my_info_ming_pian__ = __webpack_require__(365);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__pages_my_ming_pian_my_ming_pian__ = __webpack_require__(364);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__pages_my_wallet_my_wallet__ = __webpack_require__(226);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__pages_my_wallet_coin_my_wallet_coin__ = __webpack_require__(230);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__pages_my_wallet_price_my_wallet_price__ = __webpack_require__(227);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__pages_my_wallet_uplus_my_wallet_uplus__ = __webpack_require__(228);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__pages_my_wallet_shop_my_wallet_shop__ = __webpack_require__(464);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_34__pages_my_wallet_outpu_my_wallet_outpu__ = __webpack_require__(112);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_35__pages_my_wallet_uplus_out_my_wallet_uplus_out__ = __webpack_require__(233);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_35__pages_my_wallet_uplus_out_my_wallet_uplus_out__ = __webpack_require__(229);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_36__pages_my_charge_my_charge__ = __webpack_require__(114);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_37__pages_my_charge_option_my_charge_option__ = __webpack_require__(372);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_38__pages_my_wallet_charge_my_wallet_charge__ = __webpack_require__(365);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_39__pages_shop_shop__ = __webpack_require__(383);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_40__pages_shop_mole_item_view_shop_mole_item_view__ = __webpack_require__(384);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_37__pages_my_charge_option_my_charge_option__ = __webpack_require__(368);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_38__pages_my_wallet_charge_my_wallet_charge__ = __webpack_require__(361);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_39__pages_shop_shop__ = __webpack_require__(379);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_40__pages_shop_mole_item_view_shop_mole_item_view__ = __webpack_require__(380);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_41__pages_shop_pay_screen_shop_pay_screen__ = __webpack_require__(224);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_42__pages_setting_setting__ = __webpack_require__(373);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_43__pages_setting_change_password_setting_change_password__ = __webpack_require__(374);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_44__pages_setting_change_pay_password_setting_change_pay_password__ = __webpack_require__(376);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_45__pages_setting_pay_option_setting_pay_option__ = __webpack_require__(375);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_46__pages_my_info_more_my_info_more__ = __webpack_require__(367);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_42__pages_setting_setting__ = __webpack_require__(369);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_43__pages_setting_change_password_setting_change_password__ = __webpack_require__(370);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_44__pages_setting_change_pay_password_setting_change_pay_password__ = __webpack_require__(372);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_45__pages_setting_pay_option_setting_pay_option__ = __webpack_require__(371);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_46__pages_my_info_more_my_info_more__ = __webpack_require__(363);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_47__pages_my_info_qr_code_my_info_qr_code__ = __webpack_require__(113);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_48__pages_help_support_help_support__ = __webpack_require__(110);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_49__pages_new_ticket_new_ticket__ = __webpack_require__(218);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_50__pages_help_support_item_view_help_support_item_view__ = __webpack_require__(219);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_49__pages_new_ticket_new_ticket__ = __webpack_require__(219);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_50__pages_help_support_item_view_help_support_item_view__ = __webpack_require__(220);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_51__components_normall_popover_normall_popover__ = __webpack_require__(109);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_52__components_contact_popover_contact_popover__ = __webpack_require__(229);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_52__components_contact_popover_contact_popover__ = __webpack_require__(384);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_53__providers_save_user_name_save_user_name__ = __webpack_require__(115);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_54__ionic_native_call_number__ = __webpack_require__(111);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_54__ionic_native_call_number__ = __webpack_require__(116);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_55_angular2_baidu_map__ = __webpack_require__(465);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_56__ionic_native_barcode_scanner__ = __webpack_require__(223);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_57__pages_qr_code_scanner_qr_code_scanner__ = __webpack_require__(58);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_58__pages_forgot_password_forgot_password__ = __webpack_require__(385);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_59__pages_forgot_password_change_forgot_password_change__ = __webpack_require__(386);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_60__pages_uplus_sell_board_uplus_sell_board__ = __webpack_require__(235);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_61__pages_uplus_my_board_uplus_my_board__ = __webpack_require__(236);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_62__pages_chat_chat__ = __webpack_require__(228);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_60__pages_uplus_sell_board_uplus_sell_board__ = __webpack_require__(231);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_61__pages_uplus_my_board_uplus_my_board__ = __webpack_require__(232);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_62__pages_chat_chat__ = __webpack_require__(383);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_63__providers_emoji__ = __webpack_require__(387);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_64__providers_chat_service__ = __webpack_require__(466);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_65__components_emoji_picker_emoji_picker_module__ = __webpack_require__(472);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_66__angular_common_http__ = __webpack_require__(388);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_67__pipes_relative_time__ = __webpack_require__(474);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_68__pages_new_version_new_version__ = __webpack_require__(380);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_69__pages_ads_list_ads_list__ = __webpack_require__(221);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_68__pages_new_version_new_version__ = __webpack_require__(376);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_69__pages_ads_list_ads_list__ = __webpack_require__(111);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_70__pages_ads_item_detail_ads_item_detail__ = __webpack_require__(222);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_71__pages_my_wallet_coin_out_my_wallet_coin_out__ = __webpack_require__(364);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_72__pages_my_market_info_my_market_info__ = __webpack_require__(381);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_73__pages_uplus_history_board_uplus_history_board__ = __webpack_require__(382);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_71__pages_my_wallet_coin_out_my_wallet_coin_out__ = __webpack_require__(360);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_72__pages_my_market_info_my_market_info__ = __webpack_require__(377);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_73__pages_uplus_history_board_uplus_history_board__ = __webpack_require__(378);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -6726,8 +6871,8 @@ var AppModule = /** @class */ (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MyApp; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__ = __webpack_require__(210);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(208);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__ = __webpack_require__(211);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(209);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_login_login__ = __webpack_require__(56);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -6823,260 +6968,260 @@ var MyApp = /** @class */ (function () {
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
-	"./af": 237,
-	"./af.js": 237,
-	"./ar": 238,
-	"./ar-dz": 239,
-	"./ar-dz.js": 239,
-	"./ar-kw": 240,
-	"./ar-kw.js": 240,
-	"./ar-ly": 241,
-	"./ar-ly.js": 241,
-	"./ar-ma": 242,
-	"./ar-ma.js": 242,
-	"./ar-sa": 243,
-	"./ar-sa.js": 243,
-	"./ar-tn": 244,
-	"./ar-tn.js": 244,
-	"./ar.js": 238,
-	"./az": 245,
-	"./az.js": 245,
-	"./be": 246,
-	"./be.js": 246,
-	"./bg": 247,
-	"./bg.js": 247,
-	"./bm": 248,
-	"./bm.js": 248,
-	"./bn": 249,
-	"./bn.js": 249,
-	"./bo": 250,
-	"./bo.js": 250,
-	"./br": 251,
-	"./br.js": 251,
-	"./bs": 252,
-	"./bs.js": 252,
-	"./ca": 253,
-	"./ca.js": 253,
-	"./cs": 254,
-	"./cs.js": 254,
-	"./cv": 255,
-	"./cv.js": 255,
-	"./cy": 256,
-	"./cy.js": 256,
-	"./da": 257,
-	"./da.js": 257,
-	"./de": 258,
-	"./de-at": 259,
-	"./de-at.js": 259,
-	"./de-ch": 260,
-	"./de-ch.js": 260,
-	"./de.js": 258,
-	"./dv": 261,
-	"./dv.js": 261,
-	"./el": 262,
-	"./el.js": 262,
-	"./en-SG": 263,
-	"./en-SG.js": 263,
-	"./en-au": 264,
-	"./en-au.js": 264,
-	"./en-ca": 265,
-	"./en-ca.js": 265,
-	"./en-gb": 266,
-	"./en-gb.js": 266,
-	"./en-ie": 267,
-	"./en-ie.js": 267,
-	"./en-il": 268,
-	"./en-il.js": 268,
-	"./en-nz": 269,
-	"./en-nz.js": 269,
-	"./eo": 270,
-	"./eo.js": 270,
-	"./es": 271,
-	"./es-do": 272,
-	"./es-do.js": 272,
-	"./es-us": 273,
-	"./es-us.js": 273,
-	"./es.js": 271,
-	"./et": 274,
-	"./et.js": 274,
-	"./eu": 275,
-	"./eu.js": 275,
-	"./fa": 276,
-	"./fa.js": 276,
-	"./fi": 277,
-	"./fi.js": 277,
-	"./fo": 278,
-	"./fo.js": 278,
-	"./fr": 279,
-	"./fr-ca": 280,
-	"./fr-ca.js": 280,
-	"./fr-ch": 281,
-	"./fr-ch.js": 281,
-	"./fr.js": 279,
-	"./fy": 282,
-	"./fy.js": 282,
-	"./ga": 283,
-	"./ga.js": 283,
-	"./gd": 284,
-	"./gd.js": 284,
-	"./gl": 285,
-	"./gl.js": 285,
-	"./gom-latn": 286,
-	"./gom-latn.js": 286,
-	"./gu": 287,
-	"./gu.js": 287,
-	"./he": 288,
-	"./he.js": 288,
-	"./hi": 289,
-	"./hi.js": 289,
-	"./hr": 290,
-	"./hr.js": 290,
-	"./hu": 291,
-	"./hu.js": 291,
-	"./hy-am": 292,
-	"./hy-am.js": 292,
-	"./id": 293,
-	"./id.js": 293,
-	"./is": 294,
-	"./is.js": 294,
-	"./it": 295,
-	"./it-ch": 296,
-	"./it-ch.js": 296,
-	"./it.js": 295,
-	"./ja": 297,
-	"./ja.js": 297,
-	"./jv": 298,
-	"./jv.js": 298,
-	"./ka": 299,
-	"./ka.js": 299,
-	"./kk": 300,
-	"./kk.js": 300,
-	"./km": 301,
-	"./km.js": 301,
-	"./kn": 302,
-	"./kn.js": 302,
-	"./ko": 303,
-	"./ko.js": 303,
-	"./ku": 304,
-	"./ku.js": 304,
-	"./ky": 305,
-	"./ky.js": 305,
-	"./lb": 306,
-	"./lb.js": 306,
-	"./lo": 307,
-	"./lo.js": 307,
-	"./lt": 308,
-	"./lt.js": 308,
-	"./lv": 309,
-	"./lv.js": 309,
-	"./me": 310,
-	"./me.js": 310,
-	"./mi": 311,
-	"./mi.js": 311,
-	"./mk": 312,
-	"./mk.js": 312,
-	"./ml": 313,
-	"./ml.js": 313,
-	"./mn": 314,
-	"./mn.js": 314,
-	"./mr": 315,
-	"./mr.js": 315,
-	"./ms": 316,
-	"./ms-my": 317,
-	"./ms-my.js": 317,
-	"./ms.js": 316,
-	"./mt": 318,
-	"./mt.js": 318,
-	"./my": 319,
-	"./my.js": 319,
-	"./nb": 320,
-	"./nb.js": 320,
-	"./ne": 321,
-	"./ne.js": 321,
-	"./nl": 322,
-	"./nl-be": 323,
-	"./nl-be.js": 323,
-	"./nl.js": 322,
-	"./nn": 324,
-	"./nn.js": 324,
-	"./pa-in": 325,
-	"./pa-in.js": 325,
-	"./pl": 326,
-	"./pl.js": 326,
-	"./pt": 327,
-	"./pt-br": 328,
-	"./pt-br.js": 328,
-	"./pt.js": 327,
-	"./ro": 329,
-	"./ro.js": 329,
-	"./ru": 330,
-	"./ru.js": 330,
-	"./sd": 331,
-	"./sd.js": 331,
-	"./se": 332,
-	"./se.js": 332,
-	"./si": 333,
-	"./si.js": 333,
-	"./sk": 334,
-	"./sk.js": 334,
-	"./sl": 335,
-	"./sl.js": 335,
-	"./sq": 336,
-	"./sq.js": 336,
-	"./sr": 337,
-	"./sr-cyrl": 338,
-	"./sr-cyrl.js": 338,
-	"./sr.js": 337,
-	"./ss": 339,
-	"./ss.js": 339,
-	"./sv": 340,
-	"./sv.js": 340,
-	"./sw": 341,
-	"./sw.js": 341,
-	"./ta": 342,
-	"./ta.js": 342,
-	"./te": 343,
-	"./te.js": 343,
-	"./tet": 344,
-	"./tet.js": 344,
-	"./tg": 345,
-	"./tg.js": 345,
-	"./th": 346,
-	"./th.js": 346,
-	"./tl-ph": 347,
-	"./tl-ph.js": 347,
-	"./tlh": 348,
-	"./tlh.js": 348,
-	"./tr": 349,
-	"./tr.js": 349,
-	"./tzl": 350,
-	"./tzl.js": 350,
-	"./tzm": 351,
-	"./tzm-latn": 352,
-	"./tzm-latn.js": 352,
-	"./tzm.js": 351,
-	"./ug-cn": 353,
-	"./ug-cn.js": 353,
-	"./uk": 354,
-	"./uk.js": 354,
-	"./ur": 355,
-	"./ur.js": 355,
-	"./uz": 356,
-	"./uz-latn": 357,
-	"./uz-latn.js": 357,
-	"./uz.js": 356,
-	"./vi": 358,
-	"./vi.js": 358,
-	"./x-pseudo": 359,
-	"./x-pseudo.js": 359,
-	"./yo": 360,
-	"./yo.js": 360,
-	"./zh-cn": 361,
-	"./zh-cn.js": 361,
-	"./zh-hk": 362,
-	"./zh-hk.js": 362,
-	"./zh-tw": 363,
-	"./zh-tw.js": 363
+	"./af": 233,
+	"./af.js": 233,
+	"./ar": 234,
+	"./ar-dz": 235,
+	"./ar-dz.js": 235,
+	"./ar-kw": 236,
+	"./ar-kw.js": 236,
+	"./ar-ly": 237,
+	"./ar-ly.js": 237,
+	"./ar-ma": 238,
+	"./ar-ma.js": 238,
+	"./ar-sa": 239,
+	"./ar-sa.js": 239,
+	"./ar-tn": 240,
+	"./ar-tn.js": 240,
+	"./ar.js": 234,
+	"./az": 241,
+	"./az.js": 241,
+	"./be": 242,
+	"./be.js": 242,
+	"./bg": 243,
+	"./bg.js": 243,
+	"./bm": 244,
+	"./bm.js": 244,
+	"./bn": 245,
+	"./bn.js": 245,
+	"./bo": 246,
+	"./bo.js": 246,
+	"./br": 247,
+	"./br.js": 247,
+	"./bs": 248,
+	"./bs.js": 248,
+	"./ca": 249,
+	"./ca.js": 249,
+	"./cs": 250,
+	"./cs.js": 250,
+	"./cv": 251,
+	"./cv.js": 251,
+	"./cy": 252,
+	"./cy.js": 252,
+	"./da": 253,
+	"./da.js": 253,
+	"./de": 254,
+	"./de-at": 255,
+	"./de-at.js": 255,
+	"./de-ch": 256,
+	"./de-ch.js": 256,
+	"./de.js": 254,
+	"./dv": 257,
+	"./dv.js": 257,
+	"./el": 258,
+	"./el.js": 258,
+	"./en-SG": 259,
+	"./en-SG.js": 259,
+	"./en-au": 260,
+	"./en-au.js": 260,
+	"./en-ca": 261,
+	"./en-ca.js": 261,
+	"./en-gb": 262,
+	"./en-gb.js": 262,
+	"./en-ie": 263,
+	"./en-ie.js": 263,
+	"./en-il": 264,
+	"./en-il.js": 264,
+	"./en-nz": 265,
+	"./en-nz.js": 265,
+	"./eo": 266,
+	"./eo.js": 266,
+	"./es": 267,
+	"./es-do": 268,
+	"./es-do.js": 268,
+	"./es-us": 269,
+	"./es-us.js": 269,
+	"./es.js": 267,
+	"./et": 270,
+	"./et.js": 270,
+	"./eu": 271,
+	"./eu.js": 271,
+	"./fa": 272,
+	"./fa.js": 272,
+	"./fi": 273,
+	"./fi.js": 273,
+	"./fo": 274,
+	"./fo.js": 274,
+	"./fr": 275,
+	"./fr-ca": 276,
+	"./fr-ca.js": 276,
+	"./fr-ch": 277,
+	"./fr-ch.js": 277,
+	"./fr.js": 275,
+	"./fy": 278,
+	"./fy.js": 278,
+	"./ga": 279,
+	"./ga.js": 279,
+	"./gd": 280,
+	"./gd.js": 280,
+	"./gl": 281,
+	"./gl.js": 281,
+	"./gom-latn": 282,
+	"./gom-latn.js": 282,
+	"./gu": 283,
+	"./gu.js": 283,
+	"./he": 284,
+	"./he.js": 284,
+	"./hi": 285,
+	"./hi.js": 285,
+	"./hr": 286,
+	"./hr.js": 286,
+	"./hu": 287,
+	"./hu.js": 287,
+	"./hy-am": 288,
+	"./hy-am.js": 288,
+	"./id": 289,
+	"./id.js": 289,
+	"./is": 290,
+	"./is.js": 290,
+	"./it": 291,
+	"./it-ch": 292,
+	"./it-ch.js": 292,
+	"./it.js": 291,
+	"./ja": 293,
+	"./ja.js": 293,
+	"./jv": 294,
+	"./jv.js": 294,
+	"./ka": 295,
+	"./ka.js": 295,
+	"./kk": 296,
+	"./kk.js": 296,
+	"./km": 297,
+	"./km.js": 297,
+	"./kn": 298,
+	"./kn.js": 298,
+	"./ko": 299,
+	"./ko.js": 299,
+	"./ku": 300,
+	"./ku.js": 300,
+	"./ky": 301,
+	"./ky.js": 301,
+	"./lb": 302,
+	"./lb.js": 302,
+	"./lo": 303,
+	"./lo.js": 303,
+	"./lt": 304,
+	"./lt.js": 304,
+	"./lv": 305,
+	"./lv.js": 305,
+	"./me": 306,
+	"./me.js": 306,
+	"./mi": 307,
+	"./mi.js": 307,
+	"./mk": 308,
+	"./mk.js": 308,
+	"./ml": 309,
+	"./ml.js": 309,
+	"./mn": 310,
+	"./mn.js": 310,
+	"./mr": 311,
+	"./mr.js": 311,
+	"./ms": 312,
+	"./ms-my": 313,
+	"./ms-my.js": 313,
+	"./ms.js": 312,
+	"./mt": 314,
+	"./mt.js": 314,
+	"./my": 315,
+	"./my.js": 315,
+	"./nb": 316,
+	"./nb.js": 316,
+	"./ne": 317,
+	"./ne.js": 317,
+	"./nl": 318,
+	"./nl-be": 319,
+	"./nl-be.js": 319,
+	"./nl.js": 318,
+	"./nn": 320,
+	"./nn.js": 320,
+	"./pa-in": 321,
+	"./pa-in.js": 321,
+	"./pl": 322,
+	"./pl.js": 322,
+	"./pt": 323,
+	"./pt-br": 324,
+	"./pt-br.js": 324,
+	"./pt.js": 323,
+	"./ro": 325,
+	"./ro.js": 325,
+	"./ru": 326,
+	"./ru.js": 326,
+	"./sd": 327,
+	"./sd.js": 327,
+	"./se": 328,
+	"./se.js": 328,
+	"./si": 329,
+	"./si.js": 329,
+	"./sk": 330,
+	"./sk.js": 330,
+	"./sl": 331,
+	"./sl.js": 331,
+	"./sq": 332,
+	"./sq.js": 332,
+	"./sr": 333,
+	"./sr-cyrl": 334,
+	"./sr-cyrl.js": 334,
+	"./sr.js": 333,
+	"./ss": 335,
+	"./ss.js": 335,
+	"./sv": 336,
+	"./sv.js": 336,
+	"./sw": 337,
+	"./sw.js": 337,
+	"./ta": 338,
+	"./ta.js": 338,
+	"./te": 339,
+	"./te.js": 339,
+	"./tet": 340,
+	"./tet.js": 340,
+	"./tg": 341,
+	"./tg.js": 341,
+	"./th": 342,
+	"./th.js": 342,
+	"./tl-ph": 343,
+	"./tl-ph.js": 343,
+	"./tlh": 344,
+	"./tlh.js": 344,
+	"./tr": 345,
+	"./tr.js": 345,
+	"./tzl": 346,
+	"./tzl.js": 346,
+	"./tzm": 347,
+	"./tzm-latn": 348,
+	"./tzm-latn.js": 348,
+	"./tzm.js": 347,
+	"./ug-cn": 349,
+	"./ug-cn.js": 349,
+	"./uk": 350,
+	"./uk.js": 350,
+	"./ur": 351,
+	"./ur.js": 351,
+	"./uz": 352,
+	"./uz-latn": 353,
+	"./uz-latn.js": 353,
+	"./uz.js": 352,
+	"./vi": 354,
+	"./vi.js": 354,
+	"./x-pseudo": 355,
+	"./x-pseudo.js": 355,
+	"./yo": 356,
+	"./yo.js": 356,
+	"./zh-cn": 357,
+	"./zh-cn.js": 357,
+	"./zh-hk": 358,
+	"./zh-hk.js": 358,
+	"./zh-tw": 359,
+	"./zh-tw.js": 359
 };
 function webpackContext(req) {
 	return __webpack_require__(webpackContextResolve(req));
@@ -7481,12 +7626,13 @@ var RelativeTime = /** @class */ (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LoginPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__home_home__ = __webpack_require__(216);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_http__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_map__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_map__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_save_user_name_save_user_name__ = __webpack_require__(115);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__forgot_password_forgot_password__ = __webpack_require__(385);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__home_home__ = __webpack_require__(217);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ads_list_ads_list__ = __webpack_require__(111);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_http__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_map__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_map__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__providers_save_user_name_save_user_name__ = __webpack_require__(115);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__forgot_password_forgot_password__ = __webpack_require__(385);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -7496,6 +7642,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
 
 
 
@@ -7547,7 +7694,10 @@ var LoginPage = /** @class */ (function () {
                     case 1:
                         localStorage.setItem("uid", data.uid);
                         localStorage.setItem("token", data.token);
+                        localStorage.setItem("province", data.province);
+                        localStorage.setItem("city", data.city);
                         _this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_2__home_home__["a" /* HomePage */]);
+                        _this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_3__ads_list_ads_list__["a" /* AdsListPage */]);
                         // this.saveIDProvider.saveUID({"userID": data.uid}).then( result => {
                         //   this.navCtrl.setRoot(HomePage);
                         // })
@@ -7606,7 +7756,10 @@ var LoginPage = /** @class */ (function () {
                     case 1:
                         localStorage.setItem("uid", data.uid);
                         localStorage.setItem("token", data.token);
+                        localStorage.setItem("province", data.province);
+                        localStorage.setItem("city", data.city);
                         _this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_2__home_home__["a" /* HomePage */]);
+                        _this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_3__ads_list_ads_list__["a" /* AdsListPage */]);
                         // this.saveIDProvider.saveUID({"userID": data.uid}).then( result => {
                         //   this.navCtrl.setRoot(HomePage);
                         // })
@@ -7669,7 +7822,10 @@ var LoginPage = /** @class */ (function () {
             loading.dismiss();
             localStorage.setItem("uid", data.uid);
             localStorage.setItem("token", data.token);
+            localStorage.setItem("province", data.province);
+            localStorage.setItem("city", data.city);
             _this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_2__home_home__["a" /* HomePage */]);
+            _this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_3__ads_list_ads_list__["a" /* AdsListPage */]);
             // this.saveIDProvider.saveUID({"userID": data.uid}).then( result => {
             //   this.navCtrl.setRoot(HomePage);
             // })
@@ -7679,7 +7835,7 @@ var LoginPage = /** @class */ (function () {
     };
     LoginPage.prototype.forgotPassword = function () {
         console.log("forgot password");
-        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_6__forgot_password_forgot_password__["a" /* ForgotPasswordPage */]);
+        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_7__forgot_password_forgot_password__["a" /* ForgotPasswordPage */]);
     };
     LoginPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
@@ -7687,10 +7843,10 @@ var LoginPage = /** @class */ (function () {
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_3__angular_http__["a" /* Http */],
+            __WEBPACK_IMPORTED_MODULE_4__angular_http__["a" /* Http */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* LoadingController */],
-            __WEBPACK_IMPORTED_MODULE_5__providers_save_user_name_save_user_name__["a" /* SaveUserNameProvider */]])
+            __WEBPACK_IMPORTED_MODULE_6__providers_save_user_name_save_user_name__["a" /* SaveUserNameProvider */]])
     ], LoginPage);
     return LoginPage;
 }());
@@ -7709,7 +7865,7 @@ var LoginPage = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_http__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_shake__ = __webpack_require__(211);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_shake__ = __webpack_require__(212);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);

@@ -1,3 +1,4 @@
+@use "sass:map";
 ion-app.cameraView,
 ion-app.cameraView ion-content,
 ion-app.cameraView .nav-decor {
@@ -21961,7 +21962,7 @@ ion-navbar.toolbar {
 }
 
 .toolbar-background-ios {
-  background: #f44336;
+  background: #488aff;
 }
 
 .header-ios .toolbar-background-ios,
@@ -23955,7 +23956,7 @@ ion-navbar.toolbar {
 
 .toolbar-background-md {
   border-color: #b2b2b2;
-  background: #f44336;
+  background: #488aff;
 }
 
 .header-md::after,
@@ -25879,7 +25880,7 @@ ion-navbar.toolbar {
 
 .toolbar-background-wp {
   border-color: #b2b2b2;
-  background: #f44336;
+  background: #488aff;
 }
 
 .toolbar-content-wp {
@@ -28053,7 +28054,7 @@ contact-popover .popover-content {
 contact-popover .list {
   margin: 0;
   padding: 0;
-  background: #f44336;
+  background: #488aff;
 }
 
 contact-popover .item {
@@ -28120,7 +28121,7 @@ normall-popover .popover-content {
 normall-popover .list {
   margin: 0;
   padding: 0;
-  background: #f44336;
+  background: #488aff;
 }
 
 normall-popover .item {
@@ -28555,7 +28556,7 @@ page-help-support-item-view .scroll-content {
 
 page-home .tabs .tab-button[aria-selected=true],
 page-home .tabs .tab-button[aria-selected=true] .tab-button-icon {
-  color: #f44336;
+  color: #488aff;
 }
 
 page-login .scroll-content {
@@ -28563,7 +28564,7 @@ page-login .scroll-content {
 }
 
 page-login .login-content {
-  background: #f44336;
+  background: #488aff;
   color: white;
   overflow: hidden;
 }
@@ -28697,6 +28698,14 @@ page-my .item ion-badge {
   position: absolute;
   top: 15px;
   right: 10px;
+}
+
+page-my ion-icon {
+  color: #488aff;
+}
+
+page-my ion-navbar ion-icon {
+  color: white;
 }
 
 page-my-ads-add .scroll-content {
@@ -29545,7 +29554,7 @@ page-my-wallet .list button ion-label {
 
 page-my-wallet .tabs .tab-button[aria-selected=true],
 page-my-wallet .tabs .tab-button[aria-selected=true] .tab-button-icon {
-  color: #f44336;
+  color: #488aff;
 }
 
 page-my-wallet-charge .value-area {

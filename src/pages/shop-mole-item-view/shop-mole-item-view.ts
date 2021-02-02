@@ -71,7 +71,8 @@ export class ShopMoleItemViewPage {
         this.mole_data = data.mole;
         this.realname = data.realname;
         this.mobile = data.mobile;
-        this.diqu = data.diqu;
+        this.diqu = data.diqu;      
+
         // this.options = {
         //   centerAndZoom: {
         //     lat: this.mole_data.lat,

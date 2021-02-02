@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, App, AlertController, LoadingController, PopoverController } from 'ionic-angular';
 
-import { MyContactListPage } from '../my-contact-list/my-contact-list';
 import { MyWalletPage } from '../my-wallet/my-wallet';
 import { MyInfoPage } from '../my-info/my-info';
 
@@ -136,11 +135,7 @@ export class MyPage {
     gotoWallet() {
         this.app.getRootNav().push(MyWalletPage);
     }
-
-    gotoContact() {
-        this.app.getRootNav().push(MyContactListPage);
-    }
-
+       
     gotoInfo() {
         this.app.getRootNav().push(MyInfoPage);
     }
@@ -189,6 +184,10 @@ export class MyPage {
         }).present();
     }
 
+    GotoHelpPage() {
+        this.app.getRootNav().push(HelpSupportPage);
+    }
+
     presentPopover(myEvent) {
         let popover = this.popoverCtrl.create(NormallPopoverComponent);
         popover.present({
@@ -203,10 +202,9 @@ export class MyPage {
                 case 'scan':
                     this.app.getRootNav().push(QrCodeScannerPage);
                     break;
-                case 'help':
+                /*case 'help':
                     this.app.getRootNav().push(HelpSupportPage);
-                    break;
-            
+                    break;*/            
                 default:
                     break;
             }

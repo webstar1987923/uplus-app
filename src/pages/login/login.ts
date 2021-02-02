@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams, AlertController, LoadingController } from 'ionic-angular';
 
 import { HomePage } from '../home/home';
+import { AdsListPage } from '../ads-list/ads-list';
 
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
@@ -59,8 +60,11 @@ export class LoginPage {
           case 1:
             localStorage.setItem("uid", data.uid);
             localStorage.setItem("token", data.token);
-            this.navCtrl.setRoot(HomePage);
+            localStorage.setItem("province", data.province);
+            localStorage.setItem("city", data.city);
             
+            this.navCtrl.setRoot(HomePage);               
+            this.navCtrl.push(AdsListPage);
             // this.saveIDProvider.saveUID({"userID": data.uid}).then( result => {
             //   this.navCtrl.setRoot(HomePage);
             // })
@@ -75,7 +79,7 @@ export class LoginPage {
                 text: '确定',
                 handler: () => {
                   localStorage.setItem("uid", "");
-                  localStorage.setItem("token", "");
+                  localStorage.setItem("token", "");                  
                   localStorage.setItem("infoData", "");
                 }
               }]
@@ -119,8 +123,11 @@ export class LoginPage {
           case 1:
             localStorage.setItem("uid", data.uid);
             localStorage.setItem("token", data.token);
+            localStorage.setItem("province", data.province);
+            localStorage.setItem("city", data.city);
+            
             this.navCtrl.setRoot(HomePage);
-
+            this.navCtrl.push(AdsListPage);
             // this.saveIDProvider.saveUID({"userID": data.uid}).then( result => {
             //   this.navCtrl.setRoot(HomePage);
             // })
@@ -182,8 +189,11 @@ export class LoginPage {
       loading.dismiss();
       localStorage.setItem("uid", data.uid);
       localStorage.setItem("token", data.token);
+      localStorage.setItem("province", data.province);
+      localStorage.setItem("city", data.city);
+
       this.navCtrl.setRoot(HomePage);
-      
+      this.navCtrl.push(AdsListPage);
       // this.saveIDProvider.saveUID({"userID": data.uid}).then( result => {
       //   this.navCtrl.setRoot(HomePage);
       // })
