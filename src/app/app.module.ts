@@ -15,6 +15,7 @@ import { Camera } from '@ionic-native/camera';
 
 import { MyApp } from './app.component';
 import { LoginPage } from '../pages/login/login';
+import { SignupPage } from '../pages/signup/signup';
 import { HomePage } from '../pages/home/home';
 
 import { AdsPage } from '../pages/ads/ads';
@@ -92,6 +93,7 @@ import { UplusHistoryBoardPage } from '../pages/uplus-history-board/uplus-histor
   declarations: [
     MyApp,
     LoginPage,
+    SignupPage,
     ChatPage,
     HomePage,
     AdsPage,
@@ -157,6 +159,7 @@ import { UplusHistoryBoardPage } from '../pages/uplus-history-board/uplus-histor
   entryComponents: [
     MyApp,
     LoginPage,
+    SignupPage,
     ChatPage,
     HomePage,
     AdsPage,

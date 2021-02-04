@@ -8,6 +8,7 @@ import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { SaveUserNameProvider } from '../../providers/save-user-name/save-user-name';
 import { ForgotPasswordPage } from '../forgot-password/forgot-password';
+import { SignupPage } from '../signup/signup';
 
 /**
  * Generated class for the LoginPage page.
@@ -173,6 +174,10 @@ export class LoginPage {
         buttons: ["确定"]
       }).present();
     }
+  }
+
+  gotosignup() {
+    this.navCtrl.push(SignupPage);
   }
 
   forceLogin() {

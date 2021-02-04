@@ -30081,6 +30081,10 @@ page-setting .list button ion-label {
   color: #333333;
 }
 
+page-setting ion-list ion-icon {
+  color: #488aff;
+}
+
 page-setting-change-password .login-content {
   color: white;
   overflow: hidden;
@@ -30147,6 +30151,10 @@ page-setting-change-password .login-content .text-input {
 page-setting-change-password .login-content .login-btn {
   margin-top: 20px;
   font-size: 16px;
+}
+
+page-setting-change-password .login-content button {
+  background-color: #488aff;
 }
 
 page-setting-change-password .list > .item-block:first-child {
@@ -30226,6 +30234,10 @@ page-setting-change-pay-password .login-content .login-btn {
   font-size: 16px;
 }
 
+page-setting-change-pay-password .login-content button {
+  background-color: #488aff;
+}
+
 page-setting-change-pay-password .list > .item-block:first-child {
   border-top: none !important;
 }
@@ -30301,6 +30313,10 @@ page-setting-pay-option .login-content .text-input {
 page-setting-pay-option .login-content .login-btn {
   margin-top: 20px;
   font-size: 16px;
+}
+
+page-setting-pay-option .login-content button {
+  background-color: #488aff;
 }
 
 page-setting-pay-option .text-primary {
@@ -30487,6 +30503,82 @@ page-shop-pay-screen .login-btn {
 }
 
 page-shop-pay-screen .list > .item-block:first-child {
+  border-top: none !important;
+}
+
+page-signup .scroll-content {
+  background-color: transparent !important;
+}
+
+page-signup .signup-content {
+  background: #488aff;
+  color: white;
+  overflow: hidden;
+}
+
+page-signup .signup-content .signup-box {
+  padding: 5px 20px 0px 20px;
+}
+
+page-signup .signup-content ion-row {
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  text-align: center;
+}
+
+page-signup .signup-content ion-item {
+  font-size: 0.9em;
+  margin-bottom: 10px;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+  background: transparent;
+}
+
+page-signup .signup-content .list .item {
+  padding-left: 0;
+  margin: 0 !important;
+}
+
+page-signup .signup-content .item ion-icon {
+  margin: 0 !important;
+}
+
+page-signup .signup-content .list ion-item {
+  border-bottom: solid 1px white !important;
+}
+
+page-signup .signup-content .label,
+page-signup .signup-content .label .input-has-focus {
+  color: white !important;
+}
+
+page-signup .signup-content .label {
+  font-size: 16px;
+}
+
+page-signup .signup-content .item-inner {
+  border-bottom: 0 !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+}
+
+page-signup .signup-content .text-input {
+  color: white;
+  font-size: 16px;
+}
+
+page-signup .signup-content .sms-btn {
+  margin-top: 31px !important;
+}
+
+page-signup .signup-content .signup-btn {
+  margin-top: 20px;
+  font-size: 16px;
+}
+
+page-signup .signup-content .list > .item-block:first-child {
   border-top: none !important;
 }
 
