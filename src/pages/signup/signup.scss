@@ -1,0 +1,63 @@
+page-signup {
+    .scroll-content {
+        background-color: transparent !important;
+    }
+    .signup-content {
+        background: #488aff;        
+        color: white;
+        overflow: hidden;
+       
+        .signup-box {
+            padding: 5px 20px 0px 20px;
+        }
+        ion-row {
+            align-items: center;
+            text-align: center;
+        }
+        ion-item {
+            font-size: 0.9em;
+            margin-bottom: 10px;
+            box-shadow: none !important;
+            background: transparent;
+        }
+        .list .item {
+            padding-left: 0;
+            margin: 0 !important;
+        }
+        .item ion-icon {
+            margin: 0 !important;
+        }
+        .list ion-item {
+            border-bottom: solid 1px white !important;
+        }
+        .label,
+        .label .input-has-focus {
+            color: white !important;
+        }
+        .label {
+            font-size: 16px;
+        }
+        
+        .item-inner {
+            border-bottom: 0 !important;
+            box-shadow: none !important;
+        }
+        .text-input {
+            color: white;
+            font-size: 16px;
+        }
+      
+        .sms-btn {
+            margin-top: 31px !important;
+        }
+
+        .signup-btn {
+            margin-top: 20px;
+            font-size: 16px;
+        }
+        
+        .list>.item-block:first-child {
+            border-top: none !important;
+        }
+    }
+}

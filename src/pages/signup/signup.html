@@ -1,0 +1,70 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>会员注册</ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content class="signup-content" padding>       
+    <div class="signup-box">
+        <ion-row>
+            <ion-col>
+                <ion-list>                    
+                    <ion-item>
+                        <ion-label floating>
+                            <ion-icon name="person" item-start class="text-primary"></ion-icon>
+                            会员姓名
+                        </ion-label>
+                        <ion-input type="text" [(ngModel)]="realname"></ion-input>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label floating>
+                            <ion-icon name="call" item-start class="text-primary"></ion-icon>
+                            输入手机号
+                        </ion-label>
+                        <ion-input type="text" [(ngModel)]="mobile"></ion-input>                        
+                    </ion-item>
+                    <ion-item>
+                        <ion-label floating>
+                            <ion-icon name="mail-open" item-start class="text-primary"></ion-icon>
+                            输入验证码
+                        </ion-label>
+                        <ion-input type="text" [(ngModel)]="sms"></ion-input>                                               
+                        <button ion-button class="sms-btn" item-end color="danger" (click)="sendSMS();">{{sms_btn_caption}}</button>                        
+                    </ion-item>
+                    <ion-item>
+                        <ion-label floating>
+                            <ion-icon name="lock" item-start class="text-primary"></ion-icon>
+                            密码
+                        </ion-label>
+                        <ion-input type="password" [(ngModel)]="pwd"></ion-input>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label floating>
+                            <ion-icon name="lock" item-start class="text-primary"></ion-icon>
+                            确认密码
+                        </ion-label>
+                        <ion-input type="password" [(ngModel)]="repwd"></ion-input>
+                    </ion-item>
+                    <ion-item>  
+                        <ion-label floating>
+                            <ion-icon name="compass" item-start class="text-primary"></ion-icon>
+                            省份，城市，地区
+                        </ion-label>
+                        <ion-input type="text" [(ngModel)]="diqu" (click)="inputProvinceData()" readonly></ion-input>                                              
+                    </ion-item>                    
+                    <ion-item>
+                        <ion-label floating>
+                            <ion-icon name="people" item-start class="text-primary"></ion-icon>
+                            推荐人编号
+                        </ion-label>
+                        <ion-input type="text" [(ngModel)]="tjrname"></ion-input>                        
+                    </ion-item>
+                </ion-list>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col class="signup-col">                
+                <button ion-button class="signup-btn" full color="danger" (click)="signup();">注册</button>
+            </ion-col>
+        </ion-row>
+    </div>
+</ion-content>
