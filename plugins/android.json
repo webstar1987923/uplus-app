@@ -1,0 +1,82 @@
+{
+  "prepare_queue": {
+    "installed": [],
+    "uninstalled": []
+  },
+  "config_munge": {
+    "files": {}
+  },
+  "installed_plugins": {
+    "cordova-plugin-whitelist": {
+      "PACKAGE_NAME": "com.jiang.calldetector"
+    },
+    "cordova-plugin-statusbar": {
+      "PACKAGE_NAME": "com.jiang.calldetector"
+    },
+    "cordova-plugin-device": {
+      "PACKAGE_NAME": "com.jiang.calldetector"
+    },
+    "cordova-plugin-ionic-webview": {
+      "ANDROID_SUPPORT_ANNOTATIONS_VERSION": "27.+",
+      "PACKAGE_NAME": "com.jiang.calldetector"
+    },
+    "cordova-plugin-ionic-keyboard": {
+      "PACKAGE_NAME": "com.jiang.calldetector"
+    },
+    "cordova-plugin-geolocation": {
+      "PACKAGE_NAME": "com.jiang.calldetector"
+    },
+    "cordova-plugin-inappbrowser": {
+      "PACKAGE_NAME": "com.jiang.calldetector"
+    },
+    "cordova-plugin-camera": {
+      "PACKAGE_NAME": "com.jiang.calldetector"
+    },
+    "cordova-plugin-file": {
+      "PACKAGE_NAME": "com.jiang.calldetector"
+    },
+    "cordova-plugin-file-transfer": {
+      "PACKAGE_NAME": "com.jiang.calldetector"
+    },
+    "cordova-plugin-filepath": {
+      "PACKAGE_NAME": "com.jiang.calldetector"
+    },
+    "call-number": {
+      "PACKAGE_NAME": "com.jiang.calldetector"
+    },
+    "phonegap-plugin-barcodescanner": {
+      "ANDROID_SUPPORT_V4_VERSION": "27.+",
+      "PACKAGE_NAME": "com.jiang.calldetector"
+    },
+    "cordova-plugin-baidu-geolocation": {
+      "API_KEY": "tVdy4eXUm05dBXTC9mR7mDjlgUR9GeeV",
+      "PACKAGE_NAME": "com.jiang.calldetector"
+    },
+    "cordova-plugin-splashscreen": {
+      "PACKAGE_NAME": "com.jiang.calldetector"
+    },
+    "cordova-plugin-shake": {
+      "PACKAGE_NAME": "com.jiang.calldetector"
+    },
+    "cordova-plugin-background-mode": {
+      "PACKAGE_NAME": "com.jiang.calldetector"
+    },
+    "cordova-plugin-saveuserid": {
+      "PACKAGE_NAME": "com.jiang.calldetector"
+    },
+    "cordova-plugin-wechat": {
+      "WECHATAPPID": "wxedd4ddf7e0543ad8",
+      "UNIVERSALLINK": "uank.vip",
+      "PACKAGE_NAME": "com.jiang.calldetector"
+    },
+    "cordova-plugin-alipay-v2": {
+      "APP_ID": "2018040302496475",
+      "PACKAGE_NAME": "com.jiang.calldetector"
+    }
+  },
+  "dependent_plugins": {
+    "cordova-plugin-device-motion": {
+      "PACKAGE_NAME": "com.jiang.calldetector"
+    }
+  }
+}

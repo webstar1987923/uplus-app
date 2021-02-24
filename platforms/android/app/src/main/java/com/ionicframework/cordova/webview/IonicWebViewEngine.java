@@ -62,7 +62,7 @@ public class IonicWebViewEngine extends SystemWebViewEngine {
     CDV_LOCAL_SERVER = "http://localhost:" + port;
 
     localServer = new WebViewLocalServer(cordova.getActivity(), "localhost:" + port, true, parser);
-    localServer.hostAssets("www");
+    WebViewLocalServer.AssetHostingDetails ahd = localServer.hostAssets("www");
 
     webView.setWebViewClient(new ServerClient(this, parser));
 
@@ -114,13 +114,13 @@ public class IonicWebViewEngine extends SystemWebViewEngine {
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     @Override
     public WebResourceResponse shouldInterceptRequest(WebView view, WebResourceRequest request) {
-      return localServer.shouldInterceptRequest(request.getUrl(), request);
+      return localServer.shouldInterceptRequest(request.getUrl());
     }
 
     @TargetApi(Build.VERSION_CODES.KITKAT)
     @Override
     public WebResourceResponse shouldInterceptRequest(WebView view, String url) {
-      return localServer.shouldInterceptRequest(Uri.parse(url), null);
+      return localServer.shouldInterceptRequest(Uri.parse(url));
     }
 
     @Override

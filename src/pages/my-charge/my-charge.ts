@@ -19,7 +19,7 @@ declare let cordova;
   templateUrl: 'my-charge.html',
 })
 export class MyChargePage {
-  
+  charge_screen_url: any;
   serverUrl: any = "http://unak.vip/uplus/Api/mobile";
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, public http: Http) {
@@ -89,7 +89,7 @@ export class MyChargePage {
       .subscribe(data => {
         
           let payInfo = this.unescapeHTML(data.response);          
-            
+
           cordova.plugins.alipay.payment(payInfo, (e) => {
             //TODO 支付成功
             this.alertCtrl.create({
@@ -104,7 +104,7 @@ export class MyChargePage {
               message: "支付失败" + e.resultStatus + "," + e.memo,
               buttons: ["确定"]
             }).present();  
-          });        
+          });       
         
       }, err => {
           this.alertCtrl.create({

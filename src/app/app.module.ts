@@ -225,7 +225,7 @@ import { UplusHistoryBoardPage } from '../pages/uplus-history-board/uplus-histor
     BarcodeScanner,
     EmojiProvider,
     ChatService,
-    WechatPlugin   
+    WechatPlugin  
   ]
 })
 export class AppModule {}

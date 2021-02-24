@@ -372,14 +372,6 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
       "clobbers": [
         "cordova.plugins.alipay"
       ]
-    },
-    {
-      "id": "cordova-alipay-chenyu.MyAlipay",
-      "file": "plugins/cordova-alipay-chenyu/www/MyAlipay.js",
-      "pluginId": "cordova-alipay-chenyu",
-      "clobbers": [
-        "cordova.plugins.MyAlipay"
-      ]
     }
   ];
   module.exports.metadata = {
@@ -403,7 +395,6 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
     "cordova-plugin-background-mode": "0.7.3",
     "cordova-plugin-saveuserid": "0.0.1",
     "cordova-plugin-wechat": "3.0.0",
-    "cordova-plugin-alipay-v2": "2.0.0",
-    "cordova-alipay-chenyu": "2.0.4"
+    "cordova-plugin-alipay-v2": "2.0.0"
   };
 });
