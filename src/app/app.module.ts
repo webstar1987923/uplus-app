@@ -42,7 +42,6 @@ import { MyWalletShopPage } from '../pages/my-wallet-shop/my-wallet-shop';
 import { MyWalletOutpuPage } from '../pages/my-wallet-outpu/my-wallet-outpu';
 import { MyWalletUplusOutPage } from '../pages/my-wallet-uplus-out/my-wallet-uplus-out';
 import { MyChargePage } from '../pages/my-charge/my-charge';
-import { MyChargeOptionPage } from '../pages/my-charge-option/my-charge-option';
 import { MyWalletChargePage } from '../pages/my-wallet-charge/my-wallet-charge';
 
 import { ShopPage } from '../pages/shop/shop';
@@ -79,6 +78,7 @@ import { ChatPage } from '../pages/chat/chat';
 
 import { EmojiProvider } from '../providers/emoji';
 import { ChatService } from "../providers/chat-service";
+import { WechatPlugin } from "../providers/WechatPlugin";
 import { EmojiPickerComponentModule } from "../components/emoji-picker/emoji-picker.module";
 import { HttpClientModule } from "@angular/common/http";
 import { RelativeTime } from "../pipes/relative-time";
@@ -124,8 +124,7 @@ import { UplusHistoryBoardPage } from '../pages/uplus-history-board/uplus-histor
     MyWalletUplusOutPage,
     MyWalletChargePage,
     MyMarketInfoPage,
-    MyChargePage,
-    MyChargeOptionPage,
+    MyChargePage,    
     ShopPage,
     ShopPayScreenPage,
     ShopMoleItemViewPage,
@@ -191,7 +190,6 @@ import { UplusHistoryBoardPage } from '../pages/uplus-history-board/uplus-histor
     MyWalletChargePage,
     MyMarketInfoPage,
     MyChargePage,
-    MyChargeOptionPage,
     ShopPage,
     ShopPayScreenPage,
     ShopMoleItemViewPage,
@@ -227,6 +225,7 @@ import { UplusHistoryBoardPage } from '../pages/uplus-history-board/uplus-histor
     BarcodeScanner,
     EmojiProvider,
     ChatService,
+    WechatPlugin   
   ]
 })
 export class AppModule {}

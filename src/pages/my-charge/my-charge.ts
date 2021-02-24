@@ -1,7 +1,11 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, AlertController } from 'ionic-angular';
-import { MyChargeOptionPage } from '../my-charge-option/my-charge-option';
+import { Http } from '@angular/http';
+import 'rxjs/add/operator/map';
 import { WechatPlugin } from '../../providers/WechatPlugin';
+
+declare var Wechat: any; 
+declare let cordova;
 
 /**
  * Generated class for the MyChargePage page.
@@ -15,8 +19,10 @@ import { WechatPlugin } from '../../providers/WechatPlugin';
   templateUrl: 'my-charge.html',
 })
 export class MyChargePage {
+  
+  serverUrl: any = "http://unak.vip/uplus/Api/mobile";
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, public http: Http) {
   }
 
   ionViewDidLoad() {
@@ -73,8 +79,46 @@ export class MyChargePage {
         buttons: ["确定"]
       }).present();
     } else {
-      this.navCtrl.push(MyChargeOptionPage, {amount: amount, kind: kind, option: option})
+
+      var postParam = {        
+        'price': 0.01        
+      };
+
+      this.http.post(this.serverUrl + "/payment/alipay/order.php", JSON.stringify(postParam))    
+      .map(res => res.json())
+      .subscribe(data => {
+        
+          let payInfo = this.unescapeHTML(data.response);          
+            
+          cordova.plugins.alipay.payment(payInfo, (e) => {
+            //TODO 支付成功
+            this.alertCtrl.create({
+              title: "警告",
+              message: '支付成功',
+              buttons: ["确定"]
+            }).present();  
+          }, (e) => {
+            //TODO 支付失败                          
+            this.alertCtrl.create({
+              title: "警告",
+              message: "支付失败" + e.resultStatus + "," + e.memo,
+              buttons: ["确定"]
+            }).present();  
+          });        
+        
+      }, err => {
+          this.alertCtrl.create({
+            title: "警告",
+            message: err,
+            buttons: ["确定"]
+          }).present();  
+      });
     }
   }
 
+  unescapeHTML(a){
+    let aNew = "" + a;
+    
+    return aNew.replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&amp;/g, "&").replace(/&quot;/g, '"').replace(/&apos;/g, "'");
+  } 
 }

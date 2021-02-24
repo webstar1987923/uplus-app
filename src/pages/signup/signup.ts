@@ -21,7 +21,7 @@ export class SignupPage {
   serverUrl: any = "http://unak.vip/uplus/Api/mobile";
   sms_btn_caption: any = "获取验证码";
   sms_timer_hasStarted : Boolean = false;
-  sms_secondsRemaining : Number = 15;
+  sms_secondsRemaining : number = 15;
 
   realname: String = "";
   mobile: string = "";

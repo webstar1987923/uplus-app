@@ -123,5 +123,8 @@
         <variable name="UNIVERSALLINK" value="uank.vip" />
     </plugin>
     <plugin name="call-number" spec="1.0.1" />
+    <plugin name="cordova-plugin-alipay-v2" spec="^2.0.0">
+        <variable name="APP_ID" value="2018040302496475" />
+    </plugin>
     <engine name="android" spec="^8.0.0" />
 </widget>

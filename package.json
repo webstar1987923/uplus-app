@@ -41,6 +41,7 @@
     "chart.js": "^2.8.0",
     "cordova-android": "^8.0.0",
     "cordova-plugin-add-swift-support": "1.7.2",
+    "cordova-plugin-alipay-v2": "^2.0.0",
     "cordova-plugin-background-mode": "^0.7.3",
     "cordova-plugin-baidu-geolocation": "git+https://github.com/ETENG-OSP/cordova-plugin-baidu-geolocation.git",
     "cordova-plugin-camera": "4.0.3",
@@ -104,7 +105,10 @@
         "WECHATAPPID": "wxedd4ddf7e0543ad8",
         "UNIVERSALLINK": "uank.vip"
       },
-      "call-number": {}
+      "call-number": {},
+      "cordova-plugin-alipay-v2": {
+        "APP_ID": "2018040302496475"
+      }
     },
     "platforms": [
       "android"
