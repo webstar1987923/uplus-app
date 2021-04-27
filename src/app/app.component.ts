@@ -22,6 +22,7 @@ export class MyApp {
     public app: App,
     public alertCtrl: AlertController,
     public splashScreen: SplashScreen) {
+
     platform.ready().then(() => {
       
       // Okay, so the platform is ready and our plugins are available.
@@ -29,7 +30,7 @@ export class MyApp {
 
       statusBar.styleDefault();
       // statusBar.backgroundColorByHexString('#f44336');
-      statusBar.backgroundColorByHexString('#f44336');
+      statusBar.backgroundColorByHexString('#488aff');
 
       splashScreen.hide();
 

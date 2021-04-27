@@ -3,11 +3,13 @@ import { NavController, NavParams, LoadingController, AlertController, PopoverCo
 
 import { MyFriendInfoPage } from '../my-friend-info/my-friend-info';
 import { MyContactFindPage } from '../my-contact-find/my-contact-find';
+import { ChatPage } from '../chat/chat';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { CallNumber } from '@ionic-native/call-number';
 
 import { ContactPopoverComponent } from '../../components/contact-popover/contact-popover';
+
 
 /**
  * Generated class for the MyContactListPage page.
@@ -200,7 +202,8 @@ export class MyContactListPage {
                 this.navCtrl.push(MyContactFindPage);
                 break;
             case 'single-chat':
-                this.customAlert("通知", "暂不支持此功能");
+                this.navCtrl.push(ChatPage);
+                //this.customAlert("通知", "暂不支持此功能");
                 break;
             case 'group-chat':
                 this.customAlert("通知", "暂不支持此功能");

@@ -1,6 +1,8 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { NavController, NavParams, LoadingController, AlertController } from 'ionic-angular';
 import { Http } from '@angular/http';
+import { LoginPage } from '../login/login';
+import { SaveUserNameProvider } from '../../providers/save-user-name/save-user-name';
 
 @Component({
   selector: 'page-ads-item-detail',
@@ -20,7 +22,8 @@ export class AdsItemDetailPage {
     public navParams: NavParams,
     public http: Http,
     public loadingCtrl: LoadingController,
-    public alertCtrl: AlertController
+    public alertCtrl: AlertController,
+    public saveUserIDProvider: SaveUserNameProvider
     ) {
   }
 
@@ -57,15 +60,53 @@ export class AdsItemDetailPage {
     .map(res => res.json())
     .subscribe(data => {
       loading.dismiss();
+      
+      if (data.status == true) {
+        //play next video automatically
+        this.curPos++;
+        if (this.curPos >= this.ads_list.length) {
+          this.curPos = 0;
+        }
+        if (this.curPos != this.navParams.get("index")) {
+          this.video_url = this.serverUrl + this.ads_list[this.curPos].video;
+          this.aid = this.ads_list[this.curPos].aid;
+        }
+      } else {
 
-      //play next video automatically
-      this.curPos++;
-      if (this.curPos >= this.ads_list.length) {
-        this.curPos = 0;
-      }
-      if (this.curPos != this.navParams.get("index")) {
-        this.video_url = this.serverUrl + this.ads_list[this.curPos].video;
-        this.aid = this.ads_list[this.curPos].aid;
+        this.alertCtrl.create({
+          title: "警告",
+          message: "这个帐户已经登录了另一个手机。 不能继续看广告。",
+          buttons:[{
+            text: '确定',
+            handler: () => {
+                            
+              let postData = {
+                token: localStorage.getItem("token"),
+                uid: localStorage.getItem('uid'),
+                action: 'logout'
+              };
+              this.http.post(this.serverUrl + "/Api/mobile/logout.php", JSON.stringify(postData))
+              .map(res => res.json())
+              .subscribe(data => {
+                loading.dismiss();
+                if (data.error == '0') {
+                  localStorage.setItem("uid", "");
+                  localStorage.setItem("token", "");
+                  localStorage.setItem("infoData", "");
+                  this.navCtrl.setRoot(LoginPage);
+                  
+                  this.saveUserIDProvider.removeUID('remove').then(result => {
+                    this.navCtrl.setRoot(LoginPage);
+                  })
+                  .catch(err => {
+                  });
+  
+                }
+              });
+
+            }
+          }]
+        }).present();;                
       }
     }, err => {
       loading.dismiss();

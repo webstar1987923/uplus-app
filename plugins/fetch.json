@@ -94,7 +94,7 @@
   "call-number": {
     "source": {
       "type": "registry",
-      "id": "call-number@1.0.1"
+      "id": "mx.ferreyra.callnumber@~0.0.2"
     },
     "is_top_level": true,
     "variables": {}
@@ -125,14 +125,6 @@
       "id": "cordova-plugin-compat@^1.0.0"
     },
     "is_top_level": false,
-    "variables": {}
-  },
-  "cordova-plugin-splashscreen": {
-    "source": {
-      "type": "registry",
-      "id": "cordova-plugin-background-mode@^0.7.3"
-    },
-    "is_top_level": true,
     "variables": {}
   },
   "cordova-plugin-shake": {
@@ -181,11 +173,19 @@
   "cordova-plugin-alipay-v2": {
     "source": {
       "type": "registry",
-      "id": "cordova-plugin-alipay-v2@^2.0.0"
+      "id": "cordova-plugin-alipay-v2"
     },
     "is_top_level": true,
     "variables": {
       "APP_ID": "2018040302496475"
     }
+  },
+  "cordova-plugin-splashscreen": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-splashscreen@6.0.0"
+    },
+    "is_top_level": true,
+    "variables": {}
   }
 }

@@ -3,6 +3,7 @@ import { NavController, NavParams, AlertController, LoadingController } from 'io
 import { SettingChangePasswordPage } from '../setting-change-password/setting-change-password';
 import { SettingPayOptionPage } from '../setting-pay-option/setting-pay-option';
 import { LoginPage } from '../login/login';
+import { AboutAppPage } from '../about-app/about-app';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { SaveUserNameProvider } from '../../providers/save-user-name/save-user-name';
@@ -21,6 +22,8 @@ import { SettingChangePayPasswordPage } from '../setting-change-pay-password/set
   templateUrl: 'setting.html',
 })
 export class SettingPage {
+
+  serverUrl: any = "http://unak.vip/uplus/Api/mobile";
 
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
@@ -42,16 +45,34 @@ export class SettingPage {
         {
           text: "是",
           handler: () => {
-            localStorage.setItem("uid", "");
-            localStorage.setItem("token", "");
-            localStorage.setItem("infoData", "");
-            this.navCtrl.setRoot(LoginPage);
-            
-            this.saveUserIDProvider.removeUID('remove').then(result => {
-              this.navCtrl.setRoot(LoginPage);
-            })
-            .catch(err => {
+
+            const loading = this.loadingCtrl.create();
+            loading.present();
+
+            let postData = {
+              token: localStorage.getItem("token"),
+              uid: localStorage.getItem('uid'),
+              action: 'logout'
+            };
+            this.http.post(this.serverUrl + "/logout.php", JSON.stringify(postData))
+            .map(res => res.json())
+            .subscribe(data => {
+              loading.dismiss();
+              if (data.error == '0') {
+                localStorage.setItem("uid", "");
+                localStorage.setItem("token", "");
+                localStorage.setItem("infoData", "");
+                this.navCtrl.setRoot(LoginPage);
+                
+                this.saveUserIDProvider.removeUID('remove').then(result => {
+                  this.navCtrl.setRoot(LoginPage);
+                })
+                .catch(err => {
+                });
+
+              }
             });
+                       
           }
         }, 
         {
@@ -73,6 +94,11 @@ export class SettingPage {
 
   gotoChangePaymentMethod() {
     this.navCtrl.push(SettingPayOptionPage);
+  }
+
+  gotoAboutApp() 
+  {
+    this.navCtrl.push(AboutAppPage);
   }
 
 }

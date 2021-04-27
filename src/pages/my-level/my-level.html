@@ -12,7 +12,46 @@
 
 </ion-header>
 
-
 <ion-content padding>
-    <iframe width="100%" height="100%" [src]="level_up_url" frameborder="0"></iframe>
+    <!--img src="assets/imgs/other/setting_BG.jpg" alt="" class="one-way-bg"-->
+    <ion-slides class="top-slider" (ionSlideDidChange)="slideChanged()" *ngIf="bgs.length > 1">
+        <ion-slide *ngFor="let name of bgs" [ngStyle]="{'background-image': 'url(http://unak.vip/uplus/Resource/plugins/assets/admin/pages/media/bg/' + name + ')'}">
+        </ion-slide>
+    </ion-slides>    
+    <div class="center">
+        <p class="c1">会员注册</p>
+        <p class="c2">您目前是{{rank_name}}，我们一起加把劲，共享未来，奔向美丽钱途哟！</p>
+        <div *ngIf="rank >= 5">
+            <p class="c2">您目前是星级最高级别，爵位晋级是以您的共享值自动升级的哟！</p>
+        </div>
+        <div *ngIf="rank < 5">            
+            <ion-item>
+                <ion-label>会员级别:</ion-label>
+                <ion-select interface="popover" placeholder="请选择会员等级" [(ngModel)]="up_rank" (ngModelChange)="changeRank($event)">
+                    <ion-option value="1" *ngIf="rank < 1">VIP会员</ion-option>
+                    <ion-option value="3" *ngIf="rank < 3">广告商</ion-option>
+                    <ion-option value="5" *ngIf="rank < 5">金牌广告商</ion-option>
+                </ion-select>
+            </ion-item>            
+
+            <ion-grid>
+                <ion-row>
+                    <ion-col col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6>
+                        <button ion-button color="secondary" outline (click)="pay(1);">
+                            <p class="price">微信支付</p>
+                        </button>
+                    </ion-col>
+                    <ion-col col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6>
+                        <button ion-button color="secondary" outline (click)="pay(2);">
+                            <p class="price">支付宝支付</p>
+                        </button>
+                    </ion-col>                
+                </ion-row>       
+            </ion-grid>
+
+        </div>        
+    </div>
+    <div class="copyright">
+        Copyright ©2006-2021,All Rights Reserved.
+    </div>   
 </ion-content>

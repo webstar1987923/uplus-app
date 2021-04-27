@@ -10,6 +10,7 @@
         <ion-buttons end>
             <button ion-button icon-only (click)="GotoHelpPage();">
                 <ion-icon name="mail"></ion-icon>
+                <ion-badge color="danger" *ngIf="unreadMails != 0" class="mail-number">{{unreadMails}}</ion-badge>
             </button>
             <button ion-button icon-only (click)="presentPopover($event);">
                 <ion-icon name="add"></ion-icon>

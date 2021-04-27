@@ -309,14 +309,6 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
       ]
     },
     {
-      "id": "cordova-plugin-splashscreen.SplashScreen",
-      "file": "plugins/cordova-plugin-splashscreen/www/splashscreen.js",
-      "pluginId": "cordova-plugin-splashscreen",
-      "clobbers": [
-        "navigator.splashscreen"
-      ]
-    },
-    {
       "id": "cordova-plugin-device-motion.Acceleration",
       "file": "plugins/cordova-plugin-device-motion/www/Acceleration.js",
       "pluginId": "cordova-plugin-device-motion",
@@ -372,6 +364,14 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
       "clobbers": [
         "cordova.plugins.alipay"
       ]
+    },
+    {
+      "id": "cordova-plugin-splashscreen.SplashScreen",
+      "file": "plugins/cordova-plugin-splashscreen/www/splashscreen.js",
+      "pluginId": "cordova-plugin-splashscreen",
+      "clobbers": [
+        "navigator.splashscreen"
+      ]
     }
   ];
   module.exports.metadata = {
@@ -389,12 +389,12 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
     "call-number": "0.0.2",
     "phonegap-plugin-barcodescanner": "8.0.1",
     "cordova-plugin-baidu-geolocation": "0.2.3",
-    "cordova-plugin-splashscreen": "5.0.4",
     "cordova-plugin-device-motion": "2.0.1",
     "cordova-plugin-shake": "0.6.0",
     "cordova-plugin-background-mode": "0.7.3",
     "cordova-plugin-saveuserid": "0.0.1",
     "cordova-plugin-wechat": "3.0.0",
-    "cordova-plugin-alipay-v2": "2.0.0"
+    "cordova-plugin-alipay-v2": "2.0.0",
+    "cordova-plugin-splashscreen": "6.0.0"
   };
 });

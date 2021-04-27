@@ -51,4 +51,14 @@ page-my {
     ion-navbar ion-icon {
         color: white;
     }
+
+    .mail-number {
+        padding: 1px 3px;
+        color: red;
+        background-color: white;
+        margin-left: -13px;        
+        margin-top: -14px;
+        border: 1px solid red;
+        border-radius: 1.4rem;
+    }
 }

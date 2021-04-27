@@ -99,7 +99,7 @@ export class MyWalletOutpuPage {
   }
 
   outputRequest() {
-    if(this.requestValue != "" && parseFloat(this.requestValue) > 0) {
+    if(this.requestValue != "" && parseFloat(this.requestValue) >= 10000) {
       let requestedValue = 0;
       for (let index = 0; index < this.historyData.length; index++) {
         if(this.historyData[index].state == "0") {
@@ -114,7 +114,7 @@ export class MyWalletOutpuPage {
           buttons: ["确定"]
         }).present();
       } else {
-        if(parseFloat(this.requestValue) < 100) {
+        if(parseFloat(this.requestValue) < 10000) {
           this.alertCtrl.create({
             title: "警告",
             message: "请输入100元以上金额",
@@ -127,7 +127,9 @@ export class MyWalletOutpuPage {
             action: this.pageAction + "_withdraw_new",
             value: parseFloat(this.requestValue)
           };
-console.log(postParam);
+          
+          console.log(postParam);
+
           let loading = this.loadingCtrl.create();
           loading.present();
           this.http.post(this.serverUrl + "/out_pay_history.php", JSON.stringify(postParam))

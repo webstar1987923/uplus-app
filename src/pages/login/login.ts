@@ -65,7 +65,7 @@ export class LoginPage {
             localStorage.setItem("city", data.city);
             
             this.navCtrl.setRoot(HomePage);               
-            this.navCtrl.push(AdsListPage);
+            //this.navCtrl.push(AdsListPage);
             // this.saveIDProvider.saveUID({"userID": data.uid}).then( result => {
             //   this.navCtrl.setRoot(HomePage);
             // })
@@ -75,7 +75,7 @@ export class LoginPage {
           case 2:
             this.alertCtrl.create({
               title: "警告",
-              message: "Another user is using this account, but are you sure?",
+              message: "这个帐户已经登录了另一个手机",
               buttons:[{
                 text: '确定',
                 handler: () => {
@@ -145,7 +145,7 @@ export class LoginPage {
           case 3:
             this.alertCtrl.create({
               title: "警告",
-              message: "Another user is using this account, but are you sure?",
+              message: "这个帐户已经登录了另一个手机。还要登陆吗？",
               buttons: [
                 {
                   text: '不同意',
@@ -160,6 +160,11 @@ export class LoginPage {
                 }
               ]
             }).present();
+            /*this.alertCtrl.create({
+              title: "警告",
+              message: "这个帐户已经登录了另一个手机。",
+              buttons: ['同意']              
+            }).present();*/
             break;
           default:
             break;
@@ -198,7 +203,7 @@ export class LoginPage {
       localStorage.setItem("city", data.city);
 
       this.navCtrl.setRoot(HomePage);
-      this.navCtrl.push(AdsListPage);
+      //this.navCtrl.push(AdsListPage);
       // this.saveIDProvider.saveUID({"userID": data.uid}).then( result => {
       //   this.navCtrl.setRoot(HomePage);
       // })

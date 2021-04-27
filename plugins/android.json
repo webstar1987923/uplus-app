@@ -52,9 +52,6 @@
       "API_KEY": "tVdy4eXUm05dBXTC9mR7mDjlgUR9GeeV",
       "PACKAGE_NAME": "com.jiang.calldetector"
     },
-    "cordova-plugin-splashscreen": {
-      "PACKAGE_NAME": "com.jiang.calldetector"
-    },
     "cordova-plugin-shake": {
       "PACKAGE_NAME": "com.jiang.calldetector"
     },
@@ -71,6 +68,9 @@
     },
     "cordova-plugin-alipay-v2": {
       "APP_ID": "2018040302496475",
+      "PACKAGE_NAME": "com.jiang.calldetector"
+    },
+    "cordova-plugin-splashscreen": {
       "PACKAGE_NAME": "com.jiang.calldetector"
     }
   },

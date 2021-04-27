@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.jiang.calldetector" version="2.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>钱途2.0</name>
+<widget id="com.jiang.calldetector" version="3.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>钱途3.0</name>
     <description>钱途会员系统</description>
     <author email="hi@ionicframework" href="http://ionicframework.com/">钱途会员系统</author>
     <content src="index.html" />
@@ -11,19 +11,17 @@
     <allow-intent href="sms:*" />
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
-    <allow-intent href="*" />
     <preference name="ScrollEnabled" value="false" />
     <preference name="android-minSdkVersion" value="19" />
     <preference name="BackupWebStorage" value="none" />
     <preference name="SplashMaintainAspectRatio" value="true" />
     <preference name="FadeSplashScreen" value="false" />
-    <preference name="FadeSplashScreenDuration" value="0" />
+    <preference name="FadeSplashScreenDuration" value="3000" />
     <preference name="SplashShowOnlyFirstTime" value="false" />
     <preference name="SplashScreen" value="screen" />
     <preference name="AutohideSplashScreen" value="false" />
-    <preference name="SplashScreenDelay" value="0" />
+    <preference name="SplashScreenDelay" value="5000" />
     <preference name="ShowSplashScreenSpinner" value="false" />
-    <preference name="SplashScreenBackgroundColor" value="0xFFFFFFFF" />
     <platform name="android">
         <allow-intent href="market:*" />
         <icon density="ldpi" src="resources/android/icon/drawable-ldpi-icon.png" />
@@ -117,14 +115,13 @@
     <plugin name="cordova-plugin-baidu-geolocation" spec="https://github.com/ETENG-OSP/cordova-plugin-baidu-geolocation.git">
         <variable name="API_KEY" value="tVdy4eXUm05dBXTC9mR7mDjlgUR9GeeV" />
     </plugin>
-    <plugin name="cordova-plugin-splashscreen" spec="^5.0.3" />
     <plugin name="cordova-plugin-wechat" spec="^3.0.0">
         <variable name="WECHATAPPID" value="wxedd4ddf7e0543ad8" />
         <variable name="UNIVERSALLINK" value="uank.vip" />
     </plugin>
-    <plugin name="call-number" spec="1.0.1" />
     <plugin name="cordova-plugin-alipay-v2" spec="^2.0.0">
         <variable name="APP_ID" value="2018040302496475" />
     </plugin>
+    <plugin name="cordova-plugin-splashscreen" spec="^5.0.3" />
     <engine name="android" spec="^8.0.0" />
 </widget>

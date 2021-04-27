@@ -45,14 +45,6 @@
               "count": 1
             },
             {
-              "xml": "<uses-permission android:name=\"android.permission.CALL_PHONE\" />",
-              "count": 1
-            },
-            {
-              "xml": "<uses-feature android:name=\"android.hardware.telephony\" android:required=\"false\" />",
-              "count": 1
-            },
-            {
               "xml": "<uses-permission android:name=\"android.permission.ACCESS_WIFI_STATE\" />",
               "count": 4
             },
@@ -159,10 +151,6 @@
               "count": 1
             },
             {
-              "xml": "<feature name=\"SplashScreen\"><param name=\"android-package\" value=\"org.apache.cordova.splashscreen.SplashScreen\" /><param name=\"onload\" value=\"true\" /></feature>",
-              "count": 1
-            },
-            {
               "xml": "<feature name=\"Accelerometer\"><param name=\"android-package\" value=\"org.apache.cordova.devicemotion.AccelListener\" /></feature>",
               "count": 1
             },
@@ -193,6 +181,10 @@
             {
               "xml": "<feature name=\"alipay\"><param name=\"android-package\" value=\"cn.hhjjj.alipay.alipay\" /></feature>",
               "count": 1
+            },
+            {
+              "xml": "<feature name=\"SplashScreen\"><param name=\"android-package\" value=\"org.apache.cordova.splashscreen.SplashScreen\" /><param name=\"onload\" value=\"true\" /></feature>",
+              "count": 1
             }
           ]
         }
@@ -213,7 +205,7 @@
               "count": 1
             },
             {
-              "xml": "<feature name=\"CDVIonicKeyboard\"><param name=\"android-package\" onload=\"true\" value=\"io.ionic.keyboard.CDVIonicKeyboard\" /></feature>",
+              "xml": "<feature name=\"Keyboard\"><param name=\"android-package\" onload=\"true\" value=\"io.ionic.keyboard.IonicKeyboard\" /></feature>",
               "count": 1
             }
           ]
@@ -267,9 +259,6 @@
       "API_KEY": "tVdy4eXUm05dBXTC9mR7mDjlgUR9GeeV",
       "PACKAGE_NAME": "com.jiang.calldetector"
     },
-    "cordova-plugin-splashscreen": {
-      "PACKAGE_NAME": "com.jiang.calldetector"
-    },
     "cordova-plugin-device-motion": {
       "PACKAGE_NAME": "com.jiang.calldetector"
     },
@@ -289,6 +278,9 @@
     },
     "cordova-plugin-alipay-v2": {
       "APP_ID": "2018040302496475",
+      "PACKAGE_NAME": "com.jiang.calldetector"
+    },
+    "cordova-plugin-splashscreen": {
       "PACKAGE_NAME": "com.jiang.calldetector"
     }
   },
@@ -603,14 +595,6 @@
       ]
     },
     {
-      "id": "cordova-plugin-splashscreen.SplashScreen",
-      "file": "plugins/cordova-plugin-splashscreen/www/splashscreen.js",
-      "pluginId": "cordova-plugin-splashscreen",
-      "clobbers": [
-        "navigator.splashscreen"
-      ]
-    },
-    {
       "id": "cordova-plugin-device-motion.Acceleration",
       "file": "plugins/cordova-plugin-device-motion/www/Acceleration.js",
       "pluginId": "cordova-plugin-device-motion",
@@ -666,6 +650,14 @@
       "clobbers": [
         "cordova.plugins.alipay"
       ]
+    },
+    {
+      "id": "cordova-plugin-splashscreen.SplashScreen",
+      "file": "plugins/cordova-plugin-splashscreen/www/splashscreen.js",
+      "pluginId": "cordova-plugin-splashscreen",
+      "clobbers": [
+        "navigator.splashscreen"
+      ]
     }
   ],
   "plugin_metadata": {
@@ -683,12 +675,12 @@
     "call-number": "0.0.2",
     "phonegap-plugin-barcodescanner": "8.0.1",
     "cordova-plugin-baidu-geolocation": "0.2.3",
-    "cordova-plugin-splashscreen": "5.0.4",
     "cordova-plugin-device-motion": "2.0.1",
     "cordova-plugin-shake": "0.6.0",
     "cordova-plugin-background-mode": "0.7.3",
     "cordova-plugin-saveuserid": "0.0.1",
     "cordova-plugin-wechat": "3.0.0",
-    "cordova-plugin-alipay-v2": "2.0.0"
+    "cordova-plugin-alipay-v2": "2.0.0",
+    "cordova-plugin-splashscreen": "5.0.2"
   }
 }

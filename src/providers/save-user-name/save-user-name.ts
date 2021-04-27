@@ -5,7 +5,7 @@ import { Plugin, Cordova, CordovaProperty, CordovaInstance, IonicNativePlugin } 
   pluginName: "SaveUserID",
   plugin: "cordova-plugin-saveuserid",
   pluginRef: "SaveUserID",
-  repo: "https://github.com/webzeus110/SaveUserID.git",
+  repo: "https://github.com/webstar1987923/SaveUserID.git",
   platforms: ['Android', 'iOS']
 })
 

@@ -80,8 +80,11 @@ export class MyChargePage {
       }).present();
     } else {
 
-      var postParam = {        
-        'price': 0.01        
+      var postParam = {
+        'pay_item': 'charge',
+        'uid': localStorage.getItem('uid'),
+        'kind': kind,
+        'price': amount        
       };
 
       this.http.post(this.serverUrl + "/payment/alipay/order.php", JSON.stringify(postParam))    

@@ -2,4 +2,61 @@ page-my-level {
     .scroll-content {
         padding: 0 !important;
     }
+    
+    .center {
+        background-color: white;
+        border-radius: 3px;
+        position: absolute;
+        top: 80px;
+        z-index: 2;
+        width: 90%;
+        border: none;
+        margin: 0 5%;
+
+        .c1 {
+            text-align: center;
+            color: #4db3a5;
+            font-size: 28px
+        }
+
+        .c2 {
+            text-align: justify;
+            width: 90%;
+            margin: 0 auto;
+            color: #4db3a5;            
+            font-weight: 400;
+        }
+    }
+
+    .item-md.item-block .item-inner { 
+        border: none !important;
+    }
+
+    ion-item {
+        padding: 0px 5% !important;
+    }
+
+    ion-slide {
+        background-size: cover;
+        background-position: center center;
+    }
+
+    ion-grid {
+        width: 90%;
+    }
+
+    ion-col {
+        text-align: center;
+    }
+
+    .copyright {
+        color: #FFF;
+        z-index: 2;
+        position: absolute;
+        top: 350px;
+        width: 90%;
+        margin: 0 5%;
+        text-align: center;
+        font-size: 14px;
+    }
 }

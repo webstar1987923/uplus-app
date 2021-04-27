@@ -39,6 +39,7 @@ export class MyPage {
     old_version: string = "2.0";
     notiInterval: any = "";
     newChatCount = 0;
+    unreadMails = 0;
 
     constructor(public navCtrl: NavController,
         public navParams: NavParams,
@@ -62,10 +63,26 @@ export class MyPage {
         //     _this.getChatNotify();
         // }, 1000);
         this.getUserInfo();
+        this.getUnreadMailCount();
     }
 
     ionViewWillLeave() {
         // clearInterval(this.notiInterval);
+    }
+
+    getUnreadMailCount() {
+        let postData = {
+            action: 'get_unread_count',
+            uid: localStorage.getItem('uid')           
+        };
+    
+        this.http.post(this.serverUrl + "/support_help.php", JSON.stringify(postData))
+        .map(res => res.json())
+        .subscribe(data => {
+            if(data.error == 1) {
+                this.unreadMails = data.count;              
+            }            
+        });
     }
 
     getChatNotify() {

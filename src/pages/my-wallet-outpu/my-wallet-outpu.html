@@ -19,7 +19,7 @@
         <ion-row>
             <ion-col col-12>
                 <ion-item class="value-area">
-                    <ion-label *ngIf="pageAction == 'price'">现金 : ¥{{n_price}}<br>
+                    <ion-label *ngIf="pageAction == 'price'">现在 : {{n_price}} 个<br>
                         <!-- <font style="font-size: 18px; color:#848484;">(锁现金 : ¥{{price}})</font> -->
                     </ion-label>
                     <ion-label *ngIf="pageAction != 'price'">现金 : ¥{{price}}</ion-label>
@@ -29,17 +29,17 @@
     </ion-grid>
     <ion-list style="margin: 16px;">
         <ion-item>
-            <ion-input type="number" placeholder="0.00" disabled *ngIf="level == '1' || level == '3'"></ion-input>
-            <ion-input type="number" placeholder="0.00" [(ngModel)]="requestValue" *ngIf="level != '1' && level != '3'"></ion-input>
+            <ion-input type="number" placeholder="0" disabled *ngIf="level == '0' "></ion-input>
+            <ion-input type="number" placeholder="0" [(ngModel)]="requestValue" *ngIf="level != '0'"></ion-input>
         </ion-item>
-        <button ion-button block color="primary" style="height: 50px;" disabled *ngIf="level == '1' || level == '3'">
+        <button ion-button block color="primary" style="height: 50px;" disabled *ngIf="level == '0'">
             提现
         </button>
-        <button ion-button block color="main" style="height: 50px;" (click)="outputRequest();" *ngIf="level != '1' && level != '3'">
+        <button ion-button block color="main" style="height: 50px;" (click)="outputRequest();" *ngIf="level != '0' && n_price >= 10000">
             提现
         </button>
     </ion-list>
-    <ion-item *ngIf="level == '1' || level == '3'">
+    <ion-item *ngIf="level == '0' ">
         <!-- <p style="color: #f44336; width: 100%; text-align: center;">如推荐两名以上同级别会员,可申请提现。</p> -->
         <p style="color: #f44336; width: 100%; text-align: center;">如推荐两名以上同级别会员,可申请提现。</p>
     </ion-item>

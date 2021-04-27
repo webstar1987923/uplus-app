@@ -25,12 +25,12 @@
     <img src="assets/imgs/other/setting_BG.jpg" alt="" class="one-way-bg">
     <ion-item class="value-area">
         <!-- <p *ngIf="uplus != '0.00'">钱途 : {{uplus}}</p> -->
-        <p>POINT : {{n_uplus}}</p>
+        <p>现金 : {{n_uplus}}</p>
     </ion-item>
     <ion-list>
         <ion-item *ngFor="let item of historyData">
-            <ion-label class="value-item">{{item.state}} {{item.uplus}}</ion-label>
-            <ion-label class="value-item-time">{{item.date}}<br>{{item.kind}}</ion-label>
+            <ion-label class="value-item">{{item.e_coin}}个 -> {{item.cash}}¥</ion-label>
+            <ion-label class="value-item-time">{{item.date}}</ion-label>
         </ion-item>
     </ion-list>
 </ion-content>

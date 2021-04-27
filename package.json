@@ -100,15 +100,14 @@
         "API_KEY": "tVdy4eXUm05dBXTC9mR7mDjlgUR9GeeV"
       },
       "cordova-plugin-background-mode": {},
-      "cordova-plugin-splashscreen": {},
       "cordova-plugin-wechat": {
         "WECHATAPPID": "wxedd4ddf7e0543ad8",
         "UNIVERSALLINK": "uank.vip"
       },
-      "call-number": {},
       "cordova-plugin-alipay-v2": {
         "APP_ID": "2018040302496475"
-      }
+      },
+      "cordova-plugin-splashscreen": {}
     },
     "platforms": [
       "android"

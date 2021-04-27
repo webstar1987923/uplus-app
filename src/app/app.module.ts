@@ -75,6 +75,7 @@ import { UplusSellBoardPage } from '../pages/uplus-sell-board/uplus-sell-board';
 import { UplusMyBoardPage } from '../pages/uplus-my-board/uplus-my-board';
 
 import { ChatPage } from '../pages/chat/chat';
+import { AboutAppPage } from '../pages/about-app/about-app';
 
 import { EmojiProvider } from '../providers/emoji';
 import { ChatService } from "../providers/chat-service";
@@ -95,6 +96,7 @@ import { UplusHistoryBoardPage } from '../pages/uplus-history-board/uplus-histor
     LoginPage,
     SignupPage,
     ChatPage,
+    AboutAppPage,
     HomePage,
     AdsPage,
     AdsDetailPage,
@@ -160,6 +162,7 @@ import { UplusHistoryBoardPage } from '../pages/uplus-history-board/uplus-histor
     LoginPage,
     SignupPage,
     ChatPage,
+    AboutAppPage,
     HomePage,
     AdsPage,
     AdsDetailPage,
