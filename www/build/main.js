@@ -6620,7 +6620,7 @@ var SignupPage = /** @class */ (function () {
         this.serverUrl = "http://unak.vip/uplus/Api/mobile";
         this.sms_btn_caption = "获取验证码";
         this.sms_timer_hasStarted = false;
-        this.sms_secondsRemaining = 25;
+        this.sms_secondsRemaining = 300;
         this.realname = "";
         this.mobile = "";
         this.sms = "";
@@ -6668,14 +6668,14 @@ var SignupPage = /** @class */ (function () {
             }
             else {
                 _this.sms_timer_hasStarted = false;
-                _this.sms_secondsRemaining = 25;
+                _this.sms_secondsRemaining = 300;
                 _this.sms_btn_caption = "获取验证码";
             }
         }, 1000);
     };
     SignupPage.prototype.signup = function () {
         var _this = this;
-        if (this.sms_secondsRemaining == 25) {
+        if (this.sms_secondsRemaining == 300) {
             this.alertCtrl.create({
                 title: "警告",
                 message: "超过了短信代码的有效时间",

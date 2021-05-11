@@ -21,7 +21,7 @@ export class SignupPage {
   serverUrl: any = "http://unak.vip/uplus/Api/mobile";
   sms_btn_caption: any = "获取验证码";
   sms_timer_hasStarted : Boolean = false;
-  sms_secondsRemaining : number = 25;
+  sms_secondsRemaining : number = 300;
 
   realname: String = "";
   mobile: string = "";
@@ -92,14 +92,14 @@ export class SignupPage {
         }
         else {
             this.sms_timer_hasStarted = false;
-            this.sms_secondsRemaining = 25;
+            this.sms_secondsRemaining = 300;
             this.sms_btn_caption = "获取验证码";
         }
     }, 1000);
   }
 
   signup() {
-    if (this.sms_secondsRemaining == 25) {
+    if (this.sms_secondsRemaining == 300) {
       this.alertCtrl.create({
         title: "警告",
         message: "超过了短信代码的有效时间",
