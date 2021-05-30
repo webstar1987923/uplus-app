@@ -1038,8 +1038,8 @@ var HomePage = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_http__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__login_login__ = __webpack_require__(38);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_save_user_name_save_user_name__ = __webpack_require__(48);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__login_login__ = __webpack_require__(39);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_save_user_name_save_user_name__ = __webpack_require__(38);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1911,7 +1911,7 @@ var MyWalletCoinPage = /** @class */ (function () {
     MyWalletCoinPage.prototype.ionViewDidLoad = function () {
         var _this = this;
         this.slides_bg = [];
-        for (var index = 1; index < 6; index++) {
+        for (var index = 1; index < 10; index++) {
             this.slides_bg.push({
                 id: index
             });
@@ -1940,7 +1940,7 @@ var MyWalletCoinPage = /** @class */ (function () {
     MyWalletCoinPage.prototype.alertWarning = function () {
         this.alertCtrl.create({
             title: '通知',
-            message: '注：钱途加密货币为公司无偿赠送的奖励形式，等国家的相关政策完善，达到符合要求的交易条件时正式上线交易。',
+            message: '注：钱途广告豆为公司赠送的奖励形式，等相关政策完善，达到符合要求的交易条件时正式上线交易。',
             buttons: ['确定']
         }).present();
     };
@@ -1968,7 +1968,7 @@ var MyWalletCoinPage = /** @class */ (function () {
     ], MyWalletCoinPage.prototype, "slides", void 0);
     MyWalletCoinPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-my-wallet-coin',template:/*ion-inline-start:"F:\OnSite\chol\uplus-app\src\pages\my-wallet-coin\my-wallet-coin.html"*/'<!--\n  Generated template for the MyWalletCoinPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n    <ion-navbar>\n        <ion-buttons start class="back-button-custom">\n            <button ion-button icon-only (click)="gotoBack()">\n              <ion-icon name="arrow-back"></ion-icon>\n            </button>\n        </ion-buttons>\n        <ion-title>广告豆</ion-title>\n        <ion-buttons end>\n            <button ion-button icon-only (click)="gotoHistory()">\n                <ion-icon name="add"></ion-icon>\n            </button>\n        </ion-buttons>\n    </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n    <div class="coin-value-area">\n        <div class="coin-bg"></div>\n        <div class="coin-info" (click)="gotoHistory()">\n            <img src="assets/imgs/other/default.png" *ngIf="!photo">\n            <img src="{{serverUrl}}/profile_imgs/{{photo}}" *ngIf="photo">\n            <p>广告豆</p>\n            <p>{{e_coin}}个</p>\n        </div>\n        <div class="scan-img-area">\n            <img src="assets/imgs/scan.png" alt="" (click)="scanCode();">\n        </div>\n    </div>\n    <ion-slides class="top-slider" (ionSlideDidChange)="slideChanged()" *ngIf="slides_bg.length > 0">\n        <ion-slide *ngFor="let s_bg of slides_bg" [ngStyle]="{\'background-image\': \'url(assets/imgs/coin/c_b_\' + s_bg.id + \'.jpg)\'}">\n        </ion-slide>\n    </ion-slides>\n    <ion-grid>\n        <img src="assets/imgs/other/setting_BG.jpg" alt="" class="one-way-bg">\n\n        <ion-row>\n            <ion-col>\n                <button ion-button class="text-on-bottom" (click)="alertWarning();">\n                    <img src="assets/imgs/coin/sell.png" alt="">\n                    <p>卖出</p>\n                </button>\n            </ion-col>\n            <ion-col>\n                <button ion-button class="text-on-bottom" (click)="alertWarning();">\n                    <img src="assets/imgs/coin/digital.png" alt="">\n                    <p>数字资产</p>\n                </button>\n            </ion-col>\n            <ion-col>\n                <button ion-button class="text-on-bottom" (click)="gotoSellBoard();">\n                    <img src="assets/imgs/coin/shop.png" alt="">\n                    <p style="color: red;">积分交易所</p>\n                </button>\n            </ion-col>\n        </ion-row>\n        <ion-row>\n            <ion-col>\n                <button ion-button class="text-on-bottom" (click)="alertWarning();">\n                    <img src="assets/imgs/coin/tranfer_out.png" alt="">\n                    <p>转出</p>\n                </button>\n            </ion-col>\n            <ion-col>\n                <button ion-button class="text-on-bottom" (click)="alertWarning();">\n                    <img src="assets/imgs/coin/transfer_in.png" alt="">\n                    <p>转入</p>\n                </button>\n            </ion-col>\n            <ion-col>\n                <button ion-button class="text-on-bottom" (click)="alertWarning();">\n                    <img src="assets/imgs/coin/buy.png" alt="">\n                    <p>买入</p>\n                </button>\n            </ion-col>\n        </ion-row>\n    </ion-grid>\n</ion-content>'/*ion-inline-end:"F:\OnSite\chol\uplus-app\src\pages\my-wallet-coin\my-wallet-coin.html"*/,
+            selector: 'page-my-wallet-coin',template:/*ion-inline-start:"F:\OnSite\chol\uplus-app\src\pages\my-wallet-coin\my-wallet-coin.html"*/'<!--\n  Generated template for the MyWalletCoinPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n    <ion-navbar>\n        <ion-buttons start class="back-button-custom">\n            <button ion-button icon-only (click)="gotoBack()">\n              <ion-icon name="arrow-back"></ion-icon>\n            </button>\n        </ion-buttons>\n        <ion-title>广告豆</ion-title>\n        <ion-buttons end>\n            <button ion-button icon-only (click)="gotoHistory()">\n                <ion-icon name="add"></ion-icon>\n            </button>\n        </ion-buttons>\n    </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n    <div class="coin-value-area">\n        <div class="coin-bg"></div>\n        <div class="coin-info" (click)="gotoHistory()">\n            <img src="assets/imgs/other/default.png" *ngIf="!photo">\n            <img src="{{serverUrl}}/profile_imgs/{{photo}}" *ngIf="photo">\n            <p>广告豆</p>\n            <p>{{e_coin}}个</p>\n        </div>\n        <div class="scan-img-area">\n            <img src="assets/imgs/scan.png" alt="" (click)="scanCode();">\n        </div>\n    </div>\n    <ion-slides class="top-slider" (ionSlideDidChange)="slideChanged()" *ngIf="slides_bg.length > 0">\n        <ion-slide *ngFor="let s_bg of slides_bg" [ngStyle]="{\'background-image\': \'url(assets/imgs/coin/n_b_\' + s_bg.id + \'.jpg)\'}">\n        </ion-slide>\n    </ion-slides>\n    <ion-grid>\n        <img src="assets/imgs/other/setting_BG.jpg" alt="" class="one-way-bg">\n\n        <ion-row>\n            <ion-col>\n                <button ion-button class="text-on-bottom" (click)="alertWarning();">\n                    <img src="assets/imgs/coin/sell.png" alt="">\n                    <p>卖出</p>\n                </button>\n            </ion-col>\n            <ion-col>\n                <button ion-button class="text-on-bottom" (click)="alertWarning();">\n                    <img src="assets/imgs/coin/digital.png" alt="">\n                    <p>数字资产</p>\n                </button>\n            </ion-col>\n            <ion-col>\n                <button ion-button class="text-on-bottom" (click)="gotoSellBoard();">\n                    <img src="assets/imgs/coin/shop.png" alt="">\n                    <p style="color: red;">积分交易所</p>\n                </button>\n            </ion-col>\n        </ion-row>\n        <ion-row>\n            <ion-col>\n                <button ion-button class="text-on-bottom" (click)="alertWarning();">\n                    <img src="assets/imgs/coin/tranfer_out.png" alt="">\n                    <p>转出</p>\n                </button>\n            </ion-col>\n            <ion-col>\n                <button ion-button class="text-on-bottom" (click)="alertWarning();">\n                    <img src="assets/imgs/coin/transfer_in.png" alt="">\n                    <p>转入</p>\n                </button>\n            </ion-col>\n            <ion-col>\n                <button ion-button class="text-on-bottom" (click)="alertWarning();">\n                    <img src="assets/imgs/coin/buy.png" alt="">\n                    <p>买入</p>\n                </button>\n            </ion-col>\n        </ion-row>\n    </ion-grid>\n</ion-content>'/*ion-inline-end:"F:\OnSite\chol\uplus-app\src\pages\my-wallet-coin\my-wallet-coin.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* NavParams */],
@@ -3929,12 +3929,12 @@ var MyShopMolePage = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__setting_change_password_setting_change_password__ = __webpack_require__(366);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__setting_pay_option_setting_pay_option__ = __webpack_require__(367);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__login_login__ = __webpack_require__(38);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__login_login__ = __webpack_require__(39);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__about_app_about_app__ = __webpack_require__(368);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__angular_http__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_rxjs_add_operator_map__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_rxjs_add_operator_map__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__providers_save_user_name_save_user_name__ = __webpack_require__(48);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__providers_save_user_name_save_user_name__ = __webpack_require__(38);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__setting_change_pay_password_setting_change_pay_password__ = __webpack_require__(369);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -5616,17 +5616,9 @@ var ShopMoleItemViewPage = /** @class */ (function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LoginPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SaveUserNameProvider; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__home_home__ = __webpack_require__(218);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ads_list_ads_list__ = __webpack_require__(58);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_http__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_map__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_map__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__providers_save_user_name_save_user_name__ = __webpack_require__(48);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__forgot_password_forgot_password__ = __webpack_require__(383);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__signup_signup__ = __webpack_require__(385);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ionic_native_core__ = __webpack_require__(21);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -5638,223 +5630,41 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
-
-
-
-
-
-
-
-/**
- * Generated class for the LoginPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-var LoginPage = /** @class */ (function () {
-    function LoginPage(navCtrl, navParams, http, alertCtrl, loadingCtrl, saveIDProvider) {
-        this.navCtrl = navCtrl;
-        this.navParams = navParams;
-        this.http = http;
-        this.alertCtrl = alertCtrl;
-        this.loadingCtrl = loadingCtrl;
-        this.saveIDProvider = saveIDProvider;
-        this.serverUrl = "http://unak.vip/uplus/Api/mobile";
-        this.username = "";
-        this.password = "";
+var SaveUserNameProvider = /** @class */ (function () {
+    function SaveUserNameProvider() {
     }
-    LoginPage.prototype.ionViewDidLoad = function () {
-        navigator.geolocation.getCurrentPosition(function (pos) {
-        });
+    SaveUserNameProvider.prototype.saveUID = function (arg1) {
+        return;
     };
-    LoginPage.prototype.ionViewWillEnter = function () {
-        var _this = this;
-        var loading = this.loadingCtrl.create();
-        loading.present();
-        var token = localStorage.getItem("token");
-        if (token == undefined || token == "") {
-            loading.dismiss();
-        }
-        else {
-            var postData = {
-                token: token,
-                uid: localStorage.getItem('uid'),
-                action: 'validate'
-            };
-            this.http.post(this.serverUrl + "/token_validate.php", JSON.stringify(postData))
-                .map(function (res) { return res.json(); })
-                .subscribe(function (data) {
-                loading.dismiss();
-                switch (data.error) {
-                    case 1:
-                        localStorage.setItem("uid", data.uid);
-                        localStorage.setItem("token", data.token);
-                        localStorage.setItem("province", data.province);
-                        localStorage.setItem("city", data.city);
-                        _this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_2__home_home__["a" /* HomePage */]);
-                        //this.navCtrl.push(AdsListPage);
-                        // this.saveIDProvider.saveUID({"userID": data.uid}).then( result => {
-                        //   this.navCtrl.setRoot(HomePage);
-                        // })
-                        // .catch( err => {
-                        // });
-                        break;
-                    case 2:
-                        _this.alertCtrl.create({
-                            title: "警告",
-                            message: "这个帐户已经登录了另一个手机",
-                            buttons: [{
-                                    text: '确定',
-                                    handler: function () {
-                                        localStorage.setItem("uid", "");
-                                        localStorage.setItem("token", "");
-                                        localStorage.setItem("infoData", "");
-                                    }
-                                }]
-                        });
-                        break;
-                    case 3:
-                        _this.alertCtrl.create({
-                            title: "警告",
-                            message: "您的账号已禁止使用，请向客服咨询。",
-                            buttons: ["确定"]
-                        });
-                        break;
-                    default:
-                        break;
-                }
-            }, function (err) {
-                loading.dismiss();
-                _this.alertCtrl.create({
-                    title: "警告",
-                    message: "网络失败!",
-                    buttons: ["确定"]
-                }).present();
-            });
-        }
+    SaveUserNameProvider.prototype.removeUID = function (arg1) {
+        return;
     };
-    LoginPage.prototype.login = function () {
-        var _this = this;
-        if (this.username.trim() != "" && this.password.trim() != "") {
-            var postParam = {
-                'username': this.username,
-                'password': this.password,
-                'action': 'login'
-            };
-            var loading_1 = this.loadingCtrl.create();
-            loading_1.present();
-            this.http.post(this.serverUrl + "/login.php", JSON.stringify(postParam))
-                .map(function (res) { return res.json(); })
-                .subscribe(function (data) {
-                loading_1.dismiss();
-                switch (data.error) {
-                    case 1:
-                        localStorage.setItem("uid", data.uid);
-                        localStorage.setItem("token", data.token);
-                        localStorage.setItem("province", data.province);
-                        localStorage.setItem("city", data.city);
-                        _this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_2__home_home__["a" /* HomePage */]);
-                        _this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_3__ads_list_ads_list__["a" /* AdsListPage */]);
-                        // this.saveIDProvider.saveUID({"userID": data.uid}).then( result => {
-                        //   this.navCtrl.setRoot(HomePage);
-                        // })
-                        // .catch( err => {
-                        // });
-                        break;
-                    case 2:
-                        _this.alertCtrl.create({
-                            title: "警告",
-                            message: "您的账号信息不准确。",
-                            buttons: ["确定"]
-                        }).present();
-                        break;
-                    case 3:
-                        _this.alertCtrl.create({
-                            title: "警告",
-                            message: "这个帐户已经登录了另一个手机。还要登陆吗？",
-                            buttons: [
-                                {
-                                    text: '不同意',
-                                    handler: function () {
-                                    }
-                                },
-                                {
-                                    text: '同意',
-                                    handler: function () {
-                                        _this.forceLogin();
-                                    }
-                                }
-                            ]
-                        }).present();
-                        /*this.alertCtrl.create({
-                          title: "警告",
-                          message: "这个帐户已经登录了另一个手机。",
-                          buttons: ['同意']
-                        }).present();*/
-                        break;
-                    default:
-                        break;
-                }
-            }, function (err) {
-                loading_1.dismiss();
-            });
-        }
-        else {
-            this.alertCtrl.create({
-                title: "警告",
-                message: "请输入会员帐号和密码。",
-                buttons: ["确定"]
-            }).present();
-        }
-    };
-    LoginPage.prototype.gotosignup = function () {
-        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_8__signup_signup__["a" /* SignupPage */]);
-    };
-    LoginPage.prototype.forceLogin = function () {
-        var _this = this;
-        var forceParam = {
-            action: 'force',
-            username: this.username,
-            password: this.password
-        };
-        var loading = this.loadingCtrl.create();
-        loading.present();
-        this.http.post(this.serverUrl + "/login.php", JSON.stringify(forceParam))
-            .map(function (res) { return res.json(); })
-            .subscribe(function (data) {
-            loading.dismiss();
-            localStorage.setItem("uid", data.uid);
-            localStorage.setItem("token", data.token);
-            localStorage.setItem("province", data.province);
-            localStorage.setItem("city", data.city);
-            _this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_2__home_home__["a" /* HomePage */]);
-            //this.navCtrl.push(AdsListPage);
-            // this.saveIDProvider.saveUID({"userID": data.uid}).then( result => {
-            //   this.navCtrl.setRoot(HomePage);
-            // })
-            // .catch( err => {
-            // });
-        });
-    };
-    LoginPage.prototype.forgotPassword = function () {
-        console.log("forgot password");
-        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_7__forgot_password_forgot_password__["a" /* ForgotPasswordPage */]);
-    };
-    LoginPage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-login',template:/*ion-inline-start:"F:\OnSite\chol\uplus-app\src\pages\login\login.html"*/'<ion-content class="login-content" padding>\n    <ion-row class="logo-row">\n        <ion-col></ion-col>\n        <ion-col width-67>\n            <img src="assets/imgs/login/logo-white.png" alt="">\n        </ion-col>\n        <ion-col></ion-col>\n    </ion-row>\n    <div class="login-box">\n        <ion-row>\n            <ion-col>\n                <ion-list>\n                    <ion-item>\n                        <ion-label floating>\n                            <ion-icon name="person" item-start class="text-primary"></ion-icon>\n                            会员编号\n                        </ion-label>\n                        <ion-input type="text" [(ngModel)]="username"></ion-input>\n                    </ion-item>\n                    <ion-item>\n                        <ion-label floating>\n                            <ion-icon name="lock" item-start class="text-primary"></ion-icon>\n                            密码\n                        </ion-label>\n                        <ion-input type="password" [(ngModel)]="password"></ion-input>\n                    </ion-item>\n                </ion-list>\n            </ion-col>\n        </ion-row>\n        <ion-row>\n            <ion-col class="login-col">\n                <button ion-button class="forgot-btn" full clear (click)="forgotPassword();">忘记密码或会员编号?</button>\n                <button ion-button class="login-btn" full color="danger" (click)="login();">登录</button>\n                <button ion-button class="login-btn" full color="danger" (click)="gotosignup();">注册</button>\n            </ion-col>\n        </ion-row>\n    </div>\n</ion-content>'/*ion-inline-end:"F:\OnSite\chol\uplus-app\src\pages\login\login.html"*/,
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_1__ionic_native_core__["a" /* Cordova */])(),
+        __metadata("design:type", Function),
+        __metadata("design:paramtypes", [Object]),
+        __metadata("design:returntype", Promise)
+    ], SaveUserNameProvider.prototype, "saveUID", null);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_1__ionic_native_core__["a" /* Cordova */])(),
+        __metadata("design:type", Function),
+        __metadata("design:paramtypes", [Object]),
+        __metadata("design:returntype", Promise)
+    ], SaveUserNameProvider.prototype, "removeUID", null);
+    SaveUserNameProvider = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_1__ionic_native_core__["g" /* Plugin */])({
+            pluginName: "SaveUserID",
+            plugin: "cordova-plugin-saveuserid",
+            pluginRef: "SaveUserID",
+            repo: "https://github.com/webstar1987923/SaveUserID.git",
+            platforms: ['Android', 'iOS']
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_4__angular_http__["a" /* Http */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* LoadingController */],
-            __WEBPACK_IMPORTED_MODULE_6__providers_save_user_name_save_user_name__["a" /* SaveUserNameProvider */]])
-    ], LoginPage);
-    return LoginPage;
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])()
+    ], SaveUserNameProvider);
+    return SaveUserNameProvider;
 }());
 
-//# sourceMappingURL=login.js.map
+//# sourceMappingURL=save-user-name.js.map
 
 /***/ }),
 
@@ -6296,7 +6106,7 @@ var ContactPopoverComponent = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__forgot_password_change_forgot_password_change__ = __webpack_require__(384);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__login_login__ = __webpack_require__(38);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__login_login__ = __webpack_require__(39);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -6463,7 +6273,7 @@ var ForgotPasswordPage = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_http__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__login_login__ = __webpack_require__(38);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__login_login__ = __webpack_require__(39);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -6587,7 +6397,7 @@ var ForgotPasswordChangePage = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_http__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_save_user_name_save_user_name__ = __webpack_require__(48);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_save_user_name_save_user_name__ = __webpack_require__(38);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -6988,6 +6798,252 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 
 /***/ }),
 
+/***/ 39:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LoginPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__home_home__ = __webpack_require__(218);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ads_list_ads_list__ = __webpack_require__(58);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_http__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_map__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_map__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__providers_save_user_name_save_user_name__ = __webpack_require__(38);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__forgot_password_forgot_password__ = __webpack_require__(383);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__signup_signup__ = __webpack_require__(385);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+
+
+
+
+/**
+ * Generated class for the LoginPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+var LoginPage = /** @class */ (function () {
+    function LoginPage(navCtrl, navParams, http, alertCtrl, loadingCtrl, saveIDProvider) {
+        this.navCtrl = navCtrl;
+        this.navParams = navParams;
+        this.http = http;
+        this.alertCtrl = alertCtrl;
+        this.loadingCtrl = loadingCtrl;
+        this.saveIDProvider = saveIDProvider;
+        this.serverUrl = "http://unak.vip/uplus/Api/mobile";
+        this.username = "";
+        this.password = "";
+    }
+    LoginPage.prototype.ionViewDidLoad = function () {
+        navigator.geolocation.getCurrentPosition(function (pos) {
+        });
+    };
+    LoginPage.prototype.ionViewWillEnter = function () {
+        var _this = this;
+        var loading = this.loadingCtrl.create();
+        loading.present();
+        var token = localStorage.getItem("token");
+        if (token == undefined || token == "") {
+            loading.dismiss();
+        }
+        else {
+            var postData = {
+                token: token,
+                uid: localStorage.getItem('uid'),
+                action: 'validate'
+            };
+            this.http.post(this.serverUrl + "/token_validate.php", JSON.stringify(postData))
+                .map(function (res) { return res.json(); })
+                .subscribe(function (data) {
+                loading.dismiss();
+                switch (data.error) {
+                    case 1:
+                        localStorage.setItem("uid", data.uid);
+                        localStorage.setItem("token", data.token);
+                        localStorage.setItem("province", data.province);
+                        localStorage.setItem("city", data.city);
+                        _this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_2__home_home__["a" /* HomePage */]);
+                        //this.navCtrl.push(AdsListPage);
+                        // this.saveIDProvider.saveUID({"userID": data.uid}).then( result => {
+                        //   this.navCtrl.setRoot(HomePage);
+                        // })
+                        // .catch( err => {
+                        // });
+                        break;
+                    case 2:
+                        _this.alertCtrl.create({
+                            title: "警告",
+                            message: "这个帐户已经登录了另一个手机",
+                            buttons: [{
+                                    text: '确定',
+                                    handler: function () {
+                                        localStorage.setItem("uid", "");
+                                        localStorage.setItem("token", "");
+                                        localStorage.setItem("infoData", "");
+                                    }
+                                }]
+                        });
+                        break;
+                    case 3:
+                        _this.alertCtrl.create({
+                            title: "警告",
+                            message: "您的账号已禁止使用，请向客服咨询。",
+                            buttons: ["确定"]
+                        });
+                        break;
+                    default:
+                        break;
+                }
+            }, function (err) {
+                loading.dismiss();
+                _this.alertCtrl.create({
+                    title: "警告",
+                    message: "网络失败!",
+                    buttons: ["确定"]
+                }).present();
+            });
+        }
+    };
+    LoginPage.prototype.login = function () {
+        var _this = this;
+        if (this.username.trim() != "" && this.password.trim() != "") {
+            var postParam = {
+                'username': this.username,
+                'password': this.password,
+                'action': 'login'
+            };
+            var loading_1 = this.loadingCtrl.create();
+            loading_1.present();
+            this.http.post(this.serverUrl + "/login.php", JSON.stringify(postParam))
+                .map(function (res) { return res.json(); })
+                .subscribe(function (data) {
+                loading_1.dismiss();
+                switch (data.error) {
+                    case 1:
+                        localStorage.setItem("uid", data.uid);
+                        localStorage.setItem("token", data.token);
+                        localStorage.setItem("province", data.province);
+                        localStorage.setItem("city", data.city);
+                        _this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_2__home_home__["a" /* HomePage */]);
+                        _this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_3__ads_list_ads_list__["a" /* AdsListPage */]);
+                        // this.saveIDProvider.saveUID({"userID": data.uid}).then( result => {
+                        //   this.navCtrl.setRoot(HomePage);
+                        // })
+                        // .catch( err => {
+                        // });
+                        break;
+                    case 2:
+                        _this.alertCtrl.create({
+                            title: "警告",
+                            message: "您的账号信息不准确。",
+                            buttons: ["确定"]
+                        }).present();
+                        break;
+                    case 3:
+                        _this.alertCtrl.create({
+                            title: "警告",
+                            message: "这个帐户已经登录了另一个手机。还要登陆吗？",
+                            buttons: [
+                                {
+                                    text: '不同意',
+                                    handler: function () {
+                                    }
+                                },
+                                {
+                                    text: '同意',
+                                    handler: function () {
+                                        _this.forceLogin();
+                                    }
+                                }
+                            ]
+                        }).present();
+                        /*this.alertCtrl.create({
+                          title: "警告",
+                          message: "这个帐户已经登录了另一个手机。",
+                          buttons: ['同意']
+                        }).present();*/
+                        break;
+                    default:
+                        break;
+                }
+            }, function (err) {
+                loading_1.dismiss();
+            });
+        }
+        else {
+            this.alertCtrl.create({
+                title: "警告",
+                message: "请输入会员帐号和密码。",
+                buttons: ["确定"]
+            }).present();
+        }
+    };
+    LoginPage.prototype.gotosignup = function () {
+        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_8__signup_signup__["a" /* SignupPage */]);
+    };
+    LoginPage.prototype.forceLogin = function () {
+        var _this = this;
+        var forceParam = {
+            action: 'force',
+            username: this.username,
+            password: this.password
+        };
+        var loading = this.loadingCtrl.create();
+        loading.present();
+        this.http.post(this.serverUrl + "/login.php", JSON.stringify(forceParam))
+            .map(function (res) { return res.json(); })
+            .subscribe(function (data) {
+            loading.dismiss();
+            localStorage.setItem("uid", data.uid);
+            localStorage.setItem("token", data.token);
+            localStorage.setItem("province", data.province);
+            localStorage.setItem("city", data.city);
+            _this.navCtrl.setRoot(__WEBPACK_IMPORTED_MODULE_2__home_home__["a" /* HomePage */]);
+            //this.navCtrl.push(AdsListPage);
+            // this.saveIDProvider.saveUID({"userID": data.uid}).then( result => {
+            //   this.navCtrl.setRoot(HomePage);
+            // })
+            // .catch( err => {
+            // });
+        });
+    };
+    LoginPage.prototype.forgotPassword = function () {
+        console.log("forgot password");
+        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_7__forgot_password_forgot_password__["a" /* ForgotPasswordPage */]);
+    };
+    LoginPage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
+            selector: 'page-login',template:/*ion-inline-start:"F:\OnSite\chol\uplus-app\src\pages\login\login.html"*/'<ion-content class="login-content" padding>\n    <ion-row class="logo-row">\n        <ion-col></ion-col>\n        <ion-col width-67>\n            <img src="assets/imgs/login/logo-white.png" alt="">\n        </ion-col>\n        <ion-col></ion-col>\n    </ion-row>\n    <div class="login-box">\n        <ion-row>\n            <ion-col>\n                <ion-list>\n                    <ion-item>\n                        <ion-label floating>\n                            <ion-icon name="person" item-start class="text-primary"></ion-icon>\n                            会员编号\n                        </ion-label>\n                        <ion-input type="text" [(ngModel)]="username"></ion-input>\n                    </ion-item>\n                    <ion-item>\n                        <ion-label floating>\n                            <ion-icon name="lock" item-start class="text-primary"></ion-icon>\n                            密码\n                        </ion-label>\n                        <ion-input type="password" [(ngModel)]="password"></ion-input>\n                    </ion-item>\n                </ion-list>\n            </ion-col>\n        </ion-row>\n        <ion-row>\n            <ion-col class="login-col">\n                <button ion-button class="forgot-btn" full clear (click)="forgotPassword();">忘记密码或会员编号?</button>\n                <button ion-button class="login-btn" full color="danger" (click)="login();">登录</button>\n                <button ion-button class="login-btn" full color="danger" (click)="gotosignup();">注册</button>\n            </ion-col>\n        </ion-row>\n    </div>\n</ion-content>'/*ion-inline-end:"F:\OnSite\chol\uplus-app\src\pages\login\login.html"*/,
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* NavParams */],
+            __WEBPACK_IMPORTED_MODULE_4__angular_http__["a" /* Http */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* LoadingController */],
+            __WEBPACK_IMPORTED_MODULE_6__providers_save_user_name_save_user_name__["a" /* SaveUserNameProvider */]])
+    ], LoginPage);
+    return LoginPage;
+}());
+
+//# sourceMappingURL=login.js.map
+
+/***/ }),
+
 /***/ 410:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -7006,7 +7062,7 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__ionic_native_file_path__ = __webpack_require__(216);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__ionic_native_camera__ = __webpack_require__(217);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__app_component__ = __webpack_require__(460);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__pages_login_login__ = __webpack_require__(38);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__pages_login_login__ = __webpack_require__(39);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__pages_signup_signup__ = __webpack_require__(385);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__pages_home_home__ = __webpack_require__(218);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__pages_ads_ads__ = __webpack_require__(464);
@@ -7046,7 +7102,7 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_50__pages_help_support_item_view_help_support_item_view__ = __webpack_require__(371);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_51__components_normall_popover_normall_popover__ = __webpack_require__(114);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_52__components_contact_popover_contact_popover__ = __webpack_require__(382);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_53__providers_save_user_name_save_user_name__ = __webpack_require__(48);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_53__providers_save_user_name_save_user_name__ = __webpack_require__(38);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_54__ionic_native_call_number__ = __webpack_require__(116);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_55_angular2_baidu_map__ = __webpack_require__(466);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_56__ionic_native_barcode_scanner__ = __webpack_require__(226);
@@ -7315,7 +7371,11 @@ var AppModule = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__ = __webpack_require__(212);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(210);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_login_login__ = __webpack_require__(38);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_http__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_map__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_map__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__providers_save_user_name_save_user_name__ = __webpack_require__(38);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pages_login_login__ = __webpack_require__(39);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -7330,17 +7390,24 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
+
+
 var MyApp = /** @class */ (function () {
-    function MyApp(platform, statusBar, app, alertCtrl, splashScreen) {
+    function MyApp(platform, statusBar, app, alertCtrl, loadingCtrl, http, saveUserIDProvider, splashScreen) {
         var _this = this;
         this.platform = platform;
         this.statusBar = statusBar;
         this.app = app;
         this.alertCtrl = alertCtrl;
+        this.loadingCtrl = loadingCtrl;
+        this.http = http;
+        this.saveUserIDProvider = saveUserIDProvider;
         this.splashScreen = splashScreen;
-        this.rootPage = __WEBPACK_IMPORTED_MODULE_4__pages_login_login__["a" /* LoginPage */];
+        this.rootPage = __WEBPACK_IMPORTED_MODULE_7__pages_login_login__["a" /* LoginPage */];
         // rootPage: any = MyChargePage;
         this.showedFlag = false;
+        this.serverUrl = "http://unak.vip/uplus/Api/mobile";
         platform.ready().then(function () {
             // Okay, so the platform is ready and our plugins are available.
             // Here you can do any higher level native things you might need.   
@@ -7370,7 +7437,30 @@ var MyApp = /** @class */ (function () {
                 {
                     text: '是',
                     handler: function () {
-                        _this.platform.exitApp();
+                        var loading = _this.loadingCtrl.create();
+                        loading.present();
+                        var postData = {
+                            token: localStorage.getItem("token"),
+                            uid: localStorage.getItem('uid'),
+                            action: 'logout'
+                        };
+                        _this.http.post(_this.serverUrl + "/logout.php", JSON.stringify(postData))
+                            .map(function (res) { return res.json(); })
+                            .subscribe(function (data) {
+                            loading.dismiss();
+                            if (data.error == '0') {
+                                localStorage.setItem("uid", "");
+                                localStorage.setItem("token", "");
+                                localStorage.setItem("infoData", "");
+                                //this.navCtrl.setRoot(LoginPage);
+                                _this.saveUserIDProvider.removeUID('remove').then(function (result) {
+                                    //this.navCtrl.setRoot(LoginPage);
+                                })
+                                    .catch(function (err) {
+                                });
+                                _this.platform.exitApp();
+                            }
+                        });
                     }
                 },
                 {
@@ -7397,6 +7487,9 @@ var MyApp = /** @class */ (function () {
             __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["c" /* App */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* LoadingController */],
+            __WEBPACK_IMPORTED_MODULE_4__angular_http__["a" /* Http */],
+            __WEBPACK_IMPORTED_MODULE_6__providers_save_user_name_save_user_name__["a" /* SaveUserNameProvider */],
             __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */]])
     ], MyApp);
     return MyApp;
@@ -8251,62 +8344,6 @@ var RelativeTime = /** @class */ (function () {
 }());
 
 //# sourceMappingURL=relative-time.js.map
-
-/***/ }),
-
-/***/ 48:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SaveUserNameProvider; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ionic_native_core__ = __webpack_require__(21);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-var SaveUserNameProvider = /** @class */ (function () {
-    function SaveUserNameProvider() {
-    }
-    SaveUserNameProvider.prototype.saveUID = function (arg1) {
-        return;
-    };
-    SaveUserNameProvider.prototype.removeUID = function (arg1) {
-        return;
-    };
-    __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_1__ionic_native_core__["a" /* Cordova */])(),
-        __metadata("design:type", Function),
-        __metadata("design:paramtypes", [Object]),
-        __metadata("design:returntype", Promise)
-    ], SaveUserNameProvider.prototype, "saveUID", null);
-    __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_1__ionic_native_core__["a" /* Cordova */])(),
-        __metadata("design:type", Function),
-        __metadata("design:paramtypes", [Object]),
-        __metadata("design:returntype", Promise)
-    ], SaveUserNameProvider.prototype, "removeUID", null);
-    SaveUserNameProvider = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_1__ionic_native_core__["g" /* Plugin */])({
-            pluginName: "SaveUserID",
-            plugin: "cordova-plugin-saveuserid",
-            pluginRef: "SaveUserID",
-            repo: "https://github.com/webstar1987923/SaveUserID.git",
-            platforms: ['Android', 'iOS']
-        }),
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])()
-    ], SaveUserNameProvider);
-    return SaveUserNameProvider;
-}());
-
-//# sourceMappingURL=save-user-name.js.map
 
 /***/ }),
 

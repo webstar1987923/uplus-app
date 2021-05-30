@@ -75,12 +75,12 @@ export class AdsItemDetailPage {
 
         this.alertCtrl.create({
           title: "警告",
-          message: "这个帐户已经登录了另一个手机。 不能继续看广告。",
+          message: data.mes, //"这个帐户已经登录了另一个手机。 不能继续看广告。",
           buttons:[{
             text: '确定',
             handler: () => {
                             
-              let postData = {
+              /*let postData = {
                 token: localStorage.getItem("token"),
                 uid: localStorage.getItem('uid'),
                 action: 'logout'
@@ -102,7 +102,7 @@ export class AdsItemDetailPage {
                   });
   
                 }
-              });
+              });*/
 
             }
           }]

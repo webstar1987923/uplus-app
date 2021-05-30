@@ -37,7 +37,7 @@
         </div>
     </div>
     <ion-slides class="top-slider" (ionSlideDidChange)="slideChanged()" *ngIf="slides_bg.length > 0">
-        <ion-slide *ngFor="let s_bg of slides_bg" [ngStyle]="{'background-image': 'url(assets/imgs/coin/c_b_' + s_bg.id + '.jpg)'}">
+        <ion-slide *ngFor="let s_bg of slides_bg" [ngStyle]="{'background-image': 'url(assets/imgs/coin/n_b_' + s_bg.id + '.jpg)'}">
         </ion-slide>
     </ion-slides>
     <ion-grid>
@@ -80,6 +80,14 @@
                 <button ion-button class="text-on-bottom" (click)="alertWarning();">
                     <img src="assets/imgs/coin/buy.png" alt="">
                     <p>买入</p>
+                </button>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col>
+                <button ion-button class="text-on-bottom" (click)="transferCoins();">
+                    <img src="assets/imgs/coin/transfer_in.png" alt="">
+                    <p>转让</p>
                 </button>
             </ion-col>
         </ion-row>

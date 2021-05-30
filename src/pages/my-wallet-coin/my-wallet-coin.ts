@@ -4,7 +4,7 @@ import { QrCodeScannerPage } from '../qr-code-scanner/qr-code-scanner';
 import { Slides } from 'ionic-angular';
 import { UplusSellBoardPage } from '../uplus-sell-board/uplus-sell-board';
 import { MyWalletCoinOutPage } from '../my-wallet-coin-out/my-wallet-coin-out';
-
+import { TransferCoinPage } from '../transfer-coin/transfer-coin';
 /**
  * Generated class for the MyWalletCoinPage page.
  *
@@ -35,12 +35,12 @@ export class MyWalletCoinPage {
 
   ionViewDidLoad() {
     this.slides_bg = [];
-    for (let index = 1; index < 6; index++) {
+    for (let index = 1; index < 10; index++) {
       this.slides_bg.push({
         id: index
       });      
     }
-
+    
     setTimeout(()=>{
       if(this.slides_bg && this.slides_bg.length > 0){
         this.slides.freeMode = true;
@@ -68,7 +68,7 @@ export class MyWalletCoinPage {
   alertWarning() {
     this.alertCtrl.create({
       title: '通知',
-      message: '注：钱途加密货币为公司无偿赠送的奖励形式，等国家的相关政策完善，达到符合要求的交易条件时正式上线交易。',
+      message: '注：钱途广告豆为公司赠送的奖励形式，等相关政策完善，达到符合要求的交易条件时正式上线交易。',
       buttons: ['确定']
     }).present();
   }
@@ -93,6 +93,10 @@ export class MyWalletCoinPage {
 
   gotoHistory() {
     this.app.getRootNav().push(MyWalletCoinOutPage);
+  }
+
+  transferCoins() {
+    this.app.getRootNav().push(TransferCoinPage);
   }
 
 }

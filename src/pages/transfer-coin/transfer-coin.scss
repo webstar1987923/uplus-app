@@ -1,0 +1,68 @@
+page-transfer-coin {
+    .scroll-content {
+        padding: 0 !important;
+        color: #e2e2e2;
+    }
+    .value-area {
+        // background: #435053;
+        background: #05596d;
+        padding: 10px;
+        ion-label {
+            text-align: center;
+        }
+        .item-inner {
+            border-bottom: 0 !important;
+            color: white;
+            font-size: 20px;
+        }
+    }
+    .cate-grid {
+        // background: #435053;
+        background: #05596d;
+        padding: 10px 0;
+    }
+    .cate-grid ion-col {
+        text-align: center;
+        padding: 0 !important;
+    }
+    .cate-grid ion-icon {
+        // font-size: 30px;
+        color: #e2e2e2;
+    }
+    .item-desc {
+        text-align: center;
+        width: 100%;
+    }
+    .balance-value {
+        font-size: 12px;
+    }
+    .text-on-bottom {
+        background: transparent;
+        border: none !important;
+        box-shadow: none !important;
+    }
+    .text-on-bottom .button-inner {
+        // justify-content: left;
+    }
+    .button.activated {
+        background-color: #313131 !important;
+    }
+    .history-list {}
+    .history-item {
+        .item-inner {
+            margin-left: 0 !important;
+        }
+    }
+    .action-date {
+        font-size: 12px;
+    }
+    .ico-check {
+        color: #1ca8ff;
+    }
+    .ico-info {
+        color: #ffb21c;
+    }
+    .ico-cancel {
+        color: #ff1c1c;
+    }
+}

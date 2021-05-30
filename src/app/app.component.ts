@@ -1,8 +1,10 @@
 import { Component, ViewChild } from '@angular/core';
-import { Nav, Platform, App, AlertController } from 'ionic-angular';
+import { Nav, Platform, App, AlertController, LoadingController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-
+import { Http } from '@angular/http';
+import 'rxjs/add/operator/map';
+import { SaveUserNameProvider } from '../providers/save-user-name/save-user-name';
 import { LoginPage } from '../pages/login/login';
 import { MyChargePage } from '../pages/my-charge/my-charge';
 
@@ -16,11 +18,15 @@ export class MyApp {
   // rootPage: any = MyChargePage;
   
   showedFlag: boolean = false;
+  serverUrl: any = "http://unak.vip/uplus/Api/mobile";
 
   constructor(public platform: Platform, 
     public statusBar: StatusBar, 
     public app: App,
     public alertCtrl: AlertController,
+    public loadingCtrl: LoadingController,
+    public http: Http,
+    public saveUserIDProvider: SaveUserNameProvider,
     public splashScreen: SplashScreen) {
 
     platform.ready().then(() => {
@@ -57,7 +63,35 @@ export class MyApp {
             {
                 text: '是',
                 handler: () => {
-                  this.platform.exitApp();
+
+                  const loading = this.loadingCtrl.create();
+                  loading.present();
+      
+                  let postData = {
+                    token: localStorage.getItem("token"),
+                    uid: localStorage.getItem('uid'),
+                    action: 'logout'
+                  };
+                  this.http.post(this.serverUrl + "/logout.php", JSON.stringify(postData))
+                  .map(res => res.json())
+                  .subscribe(data => {
+                    loading.dismiss();
+                    if (data.error == '0') {
+                      localStorage.setItem("uid", "");
+                      localStorage.setItem("token", "");
+                      localStorage.setItem("infoData", "");
+                      //this.navCtrl.setRoot(LoginPage);
+                      
+                      this.saveUserIDProvider.removeUID('remove').then(result => {
+                        //this.navCtrl.setRoot(LoginPage);
+                      })
+                      .catch(err => {
+                      });
+      
+                      this.platform.exitApp();
+                    }
+                  });
+
                 }
               },
               {

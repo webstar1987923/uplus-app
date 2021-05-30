@@ -44,6 +44,8 @@ import { MyWalletUplusOutPage } from '../pages/my-wallet-uplus-out/my-wallet-upl
 import { MyChargePage } from '../pages/my-charge/my-charge';
 import { MyWalletChargePage } from '../pages/my-wallet-charge/my-wallet-charge';
 
+import { TransferCoinPage } from '../pages/transfer-coin/transfer-coin';
+
 import { ShopPage } from '../pages/shop/shop';
 import { ShopMoleItemViewPage } from '../pages/shop-mole-item-view/shop-mole-item-view';
 import { ShopPayScreenPage } from '../pages/shop-pay-screen/shop-pay-screen';
@@ -126,7 +128,8 @@ import { UplusHistoryBoardPage } from '../pages/uplus-history-board/uplus-histor
     MyWalletUplusOutPage,
     MyWalletChargePage,
     MyMarketInfoPage,
-    MyChargePage,    
+    MyChargePage,
+    TransferCoinPage,
     ShopPage,
     ShopPayScreenPage,
     ShopMoleItemViewPage,
@@ -193,6 +196,7 @@ import { UplusHistoryBoardPage } from '../pages/uplus-history-board/uplus-histor
     MyWalletChargePage,
     MyMarketInfoPage,
     MyChargePage,
+    TransferCoinPage,
     ShopPage,
     ShopPayScreenPage,
     ShopMoleItemViewPage,

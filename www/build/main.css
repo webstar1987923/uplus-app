@@ -30698,6 +30698,80 @@ page-signup .signup-content .list > .item-block:first-child {
   border-top: none !important;
 }
 
+page-transfer-coin .scroll-content {
+  padding: 0 !important;
+  color: #e2e2e2;
+}
+
+page-transfer-coin .value-area {
+  background: #05596d;
+  padding: 10px;
+}
+
+page-transfer-coin .value-area ion-label {
+  text-align: center;
+}
+
+page-transfer-coin .value-area .item-inner {
+  border-bottom: 0 !important;
+  color: white;
+  font-size: 20px;
+}
+
+page-transfer-coin .cate-grid {
+  background: #05596d;
+  padding: 10px 0;
+}
+
+page-transfer-coin .cate-grid ion-col {
+  text-align: center;
+  padding: 0 !important;
+}
+
+page-transfer-coin .cate-grid ion-icon {
+  color: #e2e2e2;
+}
+
+page-transfer-coin .item-desc {
+  text-align: center;
+  width: 100%;
+}
+
+page-transfer-coin .balance-value {
+  font-size: 12px;
+}
+
+page-transfer-coin .text-on-bottom {
+  background: transparent;
+  border: none !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+}
+
+page-transfer-coin .button.activated {
+  background-color: #313131 !important;
+}
+
+page-transfer-coin .history-item .item-inner {
+  margin-left: 0 !important;
+}
+
+page-transfer-coin .action-date {
+  font-size: 12px;
+}
+
+page-transfer-coin .ico-check {
+  color: #1ca8ff;
+}
+
+page-transfer-coin .ico-info {
+  color: #ffb21c;
+}
+
+page-transfer-coin .ico-cancel {
+  color: #ff1c1c;
+}
+
 page-uplus-history-board .scroll-content {
   padding: 0 !important;
   color: #e2e2e2;
