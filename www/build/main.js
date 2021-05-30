@@ -1873,6 +1873,9 @@ var MyWalletUplusOutPage = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__uplus_sell_board_uplus_sell_board__ = __webpack_require__(228);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__my_wallet_coin_out_my_wallet_coin_out__ = __webpack_require__(357);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__transfer_coin_transfer_coin__ = __webpack_require__(358);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__angular_http__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_rxjs_add_operator_map__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_rxjs_add_operator_map__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1889,6 +1892,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
+
 /**
  * Generated class for the MyWalletCoinPage page.
  *
@@ -1896,15 +1901,18 @@ var __metadata = (this && this.__metadata) || function (k, v) {
  * Ionic pages and navigation.
  */
 var MyWalletCoinPage = /** @class */ (function () {
-    function MyWalletCoinPage(navCtrl, navParams, alertCtrl, app) {
+    function MyWalletCoinPage(navCtrl, navParams, alertCtrl, loadingCtrl, http, app) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
         this.alertCtrl = alertCtrl;
+        this.loadingCtrl = loadingCtrl;
+        this.http = http;
         this.app = app;
         this.serverUrl = "http://unak.vip/uplus/Api/mobile";
         this.slides_bg = [];
         this.e_coin = "";
         this.photo = "";
+        this.coin_release = "";
     }
     MyWalletCoinPage.prototype.ionViewDidLoad = function () {
         var _this = this;
@@ -1931,6 +1939,7 @@ var MyWalletCoinPage = /** @class */ (function () {
         var tmp = JSON.parse(localStorage.getItem('infoData'));
         this.e_coin = tmp.e_coin;
         this.photo = tmp.photo;
+        this.coin_release = tmp.coin_release;
         if (this.e_coin == null || this.e_coin == "") {
             this.e_coin = "";
         }
@@ -1963,20 +1972,60 @@ var MyWalletCoinPage = /** @class */ (function () {
     MyWalletCoinPage.prototype.transferCoins = function () {
         this.app.getRootNav().push(__WEBPACK_IMPORTED_MODULE_5__transfer_coin_transfer_coin__["a" /* TransferCoinPage */]);
     };
+    MyWalletCoinPage.prototype.showReleaseCoinSetDlg = function () {
+        var _this = this;
+        this.alertCtrl.create({
+            title: "设置",
+            message: "本月领取广告豆奖金吗 ?",
+            buttons: [
+                {
+                    text: 'No',
+                    handler: function () {
+                        _this.setCoinReleaseStatus(0);
+                    }
+                },
+                {
+                    text: 'Yes',
+                    handler: function () {
+                        _this.setCoinReleaseStatus(1);
+                    }
+                }
+            ]
+        }).present();
+    };
+    MyWalletCoinPage.prototype.setCoinReleaseStatus = function (status) {
+        this.coin_release = status;
+        var tmp = JSON.parse(localStorage.getItem("infoData"));
+        tmp.coin_release = this.coin_release;
+        localStorage.setItem("infoData", JSON.stringify(tmp));
+        var postData = {
+            action: 'set_coin_release',
+            uid: localStorage.getItem("uid"),
+            coin_release: status
+        };
+        var loading = this.loadingCtrl.create();
+        loading.present();
+        this.http.post(this.serverUrl + "/current_user.php", JSON.stringify(postData))
+            .map(function (res) { return res.json(); })
+            .subscribe(function (data) {
+            loading.dismiss();
+        }, function (err) {
+            console.log(err);
+            loading.dismiss();
+        });
+    };
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* ViewChild */])(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* Slides */]),
-        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* Slides */])
+        __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* Slides */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* Slides */]) === "function" && _a || Object)
     ], MyWalletCoinPage.prototype, "slides", void 0);
     MyWalletCoinPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-my-wallet-coin',template:/*ion-inline-start:"F:\OnSite\chol\uplus-app\src\pages\my-wallet-coin\my-wallet-coin.html"*/'<!--\n  Generated template for the MyWalletCoinPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n    <ion-navbar>\n        <ion-buttons start class="back-button-custom">\n            <button ion-button icon-only (click)="gotoBack()">\n              <ion-icon name="arrow-back"></ion-icon>\n            </button>\n        </ion-buttons>\n        <ion-title>广告豆</ion-title>\n        <ion-buttons end>\n            <button ion-button icon-only (click)="gotoHistory()">\n                <ion-icon name="add"></ion-icon>\n            </button>\n        </ion-buttons>\n    </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n    <div class="coin-value-area">\n        <div class="coin-bg"></div>\n        <div class="coin-info" (click)="gotoHistory()">\n            <img src="assets/imgs/other/default.png" *ngIf="!photo">\n            <img src="{{serverUrl}}/profile_imgs/{{photo}}" *ngIf="photo">\n            <p>广告豆</p>\n            <p>{{e_coin}}个</p>\n        </div>\n        <div class="scan-img-area">\n            <img src="assets/imgs/scan.png" alt="" (click)="scanCode();">\n        </div>\n    </div>\n    <ion-slides class="top-slider" (ionSlideDidChange)="slideChanged()" *ngIf="slides_bg.length > 0">\n        <ion-slide *ngFor="let s_bg of slides_bg" [ngStyle]="{\'background-image\': \'url(assets/imgs/coin/n_b_\' + s_bg.id + \'.jpg)\'}">\n        </ion-slide>\n    </ion-slides>\n    <ion-grid>\n        <img src="assets/imgs/other/setting_BG.jpg" alt="" class="one-way-bg">\n\n        <ion-row>\n            <ion-col>\n                <button ion-button class="text-on-bottom" (click)="alertWarning();">\n                    <img src="assets/imgs/coin/sell.png" alt="">\n                    <p>卖出</p>\n                </button>\n            </ion-col>\n            <ion-col>\n                <button ion-button class="text-on-bottom" (click)="alertWarning();">\n                    <img src="assets/imgs/coin/digital.png" alt="">\n                    <p>数字资产</p>\n                </button>\n            </ion-col>\n            <ion-col>\n                <button ion-button class="text-on-bottom" (click)="gotoSellBoard();">\n                    <img src="assets/imgs/coin/shop.png" alt="">\n                    <p style="color: red;">积分交易所</p>\n                </button>\n            </ion-col>\n        </ion-row>\n        <ion-row>\n            <ion-col>\n                <button ion-button class="text-on-bottom" (click)="alertWarning();">\n                    <img src="assets/imgs/coin/tranfer_out.png" alt="">\n                    <p>转出</p>\n                </button>\n            </ion-col>\n            <ion-col>\n                <button ion-button class="text-on-bottom" (click)="alertWarning();">\n                    <img src="assets/imgs/coin/transfer_in.png" alt="">\n                    <p>转入</p>\n                </button>\n            </ion-col>\n            <ion-col>\n                <button ion-button class="text-on-bottom" (click)="alertWarning();">\n                    <img src="assets/imgs/coin/buy.png" alt="">\n                    <p>买入</p>\n                </button>\n            </ion-col>\n        </ion-row>\n        <ion-row>\n            <ion-col>\n                <button ion-button class="text-on-bottom" (click)="transferCoins();">\n                    <img src="assets/imgs/coin/transfer_in.png" alt="">\n                    <p>转让</p>\n                </button>\n            </ion-col>\n        </ion-row>\n    </ion-grid>\n</ion-content>'/*ion-inline-end:"F:\OnSite\chol\uplus-app\src\pages\my-wallet-coin\my-wallet-coin.html"*/,
+            selector: 'page-my-wallet-coin',template:/*ion-inline-start:"F:\OnSite\chol\uplus-app\src\pages\my-wallet-coin\my-wallet-coin.html"*/'<!--\n  Generated template for the MyWalletCoinPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n    <ion-navbar>\n        <ion-buttons start class="back-button-custom">\n            <button ion-button icon-only (click)="gotoBack()">\n              <ion-icon name="arrow-back"></ion-icon>\n            </button>\n        </ion-buttons>\n        <ion-title>广告豆</ion-title>\n        <ion-buttons end>\n            <button ion-button icon-only (click)="gotoHistory()">\n                <ion-icon name="add"></ion-icon>\n            </button>\n        </ion-buttons>\n    </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n    <div class="coin-value-area">\n        <div class="coin-bg"></div>\n        <div class="coin-info" (click)="gotoHistory()">\n            <img src="assets/imgs/other/default.png" *ngIf="!photo">\n            <img src="{{serverUrl}}/profile_imgs/{{photo}}" *ngIf="photo">\n            <p>广告豆</p>\n            <p>{{e_coin}}个</p>\n        </div>\n        <div class="scan-img-area">\n            <img src="assets/imgs/scan.png" alt="" (click)="scanCode();">\n        </div>\n    </div>\n    <ion-slides class="top-slider" (ionSlideDidChange)="slideChanged()" *ngIf="slides_bg.length > 0">\n        <ion-slide *ngFor="let s_bg of slides_bg" [ngStyle]="{\'background-image\': \'url(assets/imgs/coin/n_b_\' + s_bg.id + \'.jpg)\'}">\n        </ion-slide>\n    </ion-slides>\n    <ion-grid>\n        <img src="assets/imgs/other/setting_BG.jpg" alt="" class="one-way-bg">\n\n        <ion-row>\n            <ion-col>\n                <button ion-button class="text-on-bottom" (click)="alertWarning();">\n                    <img src="assets/imgs/coin/sell.png" alt="">\n                    <p>卖出</p>\n                </button>\n            </ion-col>\n            <ion-col>\n                <button ion-button class="text-on-bottom" (click)="alertWarning();">\n                    <img src="assets/imgs/coin/digital.png" alt="">\n                    <p>数字资产</p>\n                </button>\n            </ion-col>\n            <ion-col>\n                <button ion-button class="text-on-bottom" (click)="gotoSellBoard();">\n                    <img src="assets/imgs/coin/shop.png" alt="">\n                    <p style="color: red;">积分交易所</p>\n                </button>\n            </ion-col>\n        </ion-row>\n        <ion-row>\n            <ion-col>\n                <button ion-button class="text-on-bottom" (click)="alertWarning();">\n                    <img src="assets/imgs/coin/tranfer_out.png" alt="">\n                    <p>转出</p>\n                </button>\n            </ion-col>\n            <ion-col>\n                <button ion-button class="text-on-bottom" (click)="alertWarning();">\n                    <img src="assets/imgs/coin/transfer_in.png" alt="">\n                    <p>转入</p>\n                </button>\n            </ion-col>\n            <ion-col>\n                <button ion-button class="text-on-bottom" (click)="alertWarning();">\n                    <img src="assets/imgs/coin/buy.png" alt="">\n                    <p>买入</p>\n                </button>\n            </ion-col>\n        </ion-row>\n        <ion-row>\n            <ion-col>\n                <button ion-button class="text-on-bottom" (click)="showReleaseCoinSetDlg();">\n                    <img src="assets/imgs/coin/sell.png" alt="">\n                    <p *ngIf="coin_release == \'1\' ">释放广告豆: Yes</p>\n                    <p *ngIf="coin_release == \'0\' ">释放广告豆: No</p>\n                </button>\n            </ion-col>\n            <ion-col>\n                <button ion-button class="text-on-bottom" (click)="transferCoins();">\n                    <img src="assets/imgs/coin/transfer_in.png" alt="">\n                    <p>转让</p>\n                </button>\n            </ion-col>\n        </ion-row>\n    </ion-grid>\n</ion-content>'/*ion-inline-end:"F:\OnSite\chol\uplus-app\src\pages\my-wallet-coin\my-wallet-coin.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["c" /* App */]])
+        __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavController */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* NavParams */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* LoadingController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* LoadingController */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_6__angular_http__["a" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6__angular_http__["a" /* Http */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["c" /* App */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["c" /* App */]) === "function" && _g || Object])
     ], MyWalletCoinPage);
     return MyWalletCoinPage;
+    var _a, _b, _c, _d, _e, _f, _g;
 }());
 
 //# sourceMappingURL=my-wallet-coin.js.map

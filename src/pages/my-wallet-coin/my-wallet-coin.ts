@@ -1,10 +1,13 @@
 import { Component, ViewChild } from '@angular/core';
-import { NavController, NavParams, AlertController, App } from 'ionic-angular';
+import { NavController, NavParams, AlertController, LoadingController, App } from 'ionic-angular';
 import { QrCodeScannerPage } from '../qr-code-scanner/qr-code-scanner';
 import { Slides } from 'ionic-angular';
 import { UplusSellBoardPage } from '../uplus-sell-board/uplus-sell-board';
 import { MyWalletCoinOutPage } from '../my-wallet-coin-out/my-wallet-coin-out';
 import { TransferCoinPage } from '../transfer-coin/transfer-coin';
+import { Http } from  '@angular/http';
+import 'rxjs/add/operator/map';
+
 /**
  * Generated class for the MyWalletCoinPage page.
  *
@@ -25,10 +28,13 @@ export class MyWalletCoinPage {
   slides_bg: any = [];
   e_coin: any = "";
   photo: any = "";
+  coin_release: any = "";
 
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
     public alertCtrl: AlertController,
+    public loadingCtrl: LoadingController,
+    public http: Http,
     public app: App
     ) {
   }
@@ -60,6 +66,8 @@ export class MyWalletCoinPage {
     let tmp = JSON.parse(localStorage.getItem('infoData'));
     this.e_coin = tmp.e_coin;
     this.photo = tmp.photo;
+    this.coin_release = tmp.coin_release;
+
     if(this.e_coin == null || this.e_coin == "") {
       this.e_coin = "";
     }
@@ -99,4 +107,52 @@ export class MyWalletCoinPage {
     this.app.getRootNav().push(TransferCoinPage);
   }
 
+  showReleaseCoinSetDlg() {
+    
+    this.alertCtrl.create({
+      title: "设置",
+      message: "本月领取广告豆奖金吗 ?",
+      buttons: [
+        {
+          text: 'No',
+          handler: () => {            
+            this.setCoinReleaseStatus(0);
+          }
+        },
+        {
+          text: 'Yes',
+          handler: () => {
+            this.setCoinReleaseStatus(1);
+          }
+        }
+      ]
+    }).present();
+  }
+
+  setCoinReleaseStatus (status) {
+    this.coin_release = status;
+
+    let tmp = JSON.parse(localStorage.getItem("infoData"));    
+    tmp.coin_release = this.coin_release;
+    localStorage.setItem("infoData", JSON.stringify(tmp));
+
+    let postData = {
+      action: 'set_coin_release',
+      uid: localStorage.getItem("uid"),
+      coin_release: status
+    };
+    
+    let loading = this.loadingCtrl.create();
+    loading.present();
+
+    this.http.post(this.serverUrl + "/current_user.php", JSON.stringify(postData))
+    .map(res => res.json())
+    .subscribe(data => {
+        loading.dismiss();        
+    }, err => {
+        console.log(err);
+        loading.dismiss();
+    });
+
+  }
 }
